@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Project Overview
 
 This is version 2.0 of my personal portfolio website, built with Next.js (App Router), Tailwind CSS, and TypeScript. It's designed to showcase my projects, skills, and host a technical blog, along with several interactive tools and applications. The focus is on performance, SEO, and a modern developer experience.
