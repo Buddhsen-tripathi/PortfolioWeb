@@ -1,7 +1,6 @@
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import './globals.css'
 import ScrollProgress from '@/components/ScrollProgress'
 
@@ -60,7 +59,6 @@ export default function RootLayout({
               {children}
             </div>
           </main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
