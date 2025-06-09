@@ -9,7 +9,6 @@ This is version 2.0 of my personal portfolio website, built with Next.js (App Ro
     -   View counters for blog posts ([`components/ViewCounter.tsx`](components/ViewCounter.tsx), [`app/api/views/route.ts`](app/api/views/route.ts)).
     -   Read-aloud functionality for blog posts ([`app/blogs/[slug]/ReadAloudButton.tsx`](app/blogs/[slug]/ReadAloudButton.tsx)).
 -   **Interactive Tools & Pages:**
-    -   **Craftfolio (Resume Builder):** An AI-assisted resume builder ([`app/craftfolio/page.tsx`](app/craftfolio/page.tsx)).
     -   **Code Runner:** A simple browser game ([`app/code-runner/page.tsx`](app/code-runner/page.tsx)).
     -   **Twitter/X Spam Check:** Analyzes Twitter/X user activity for spam-like behavior using AI ([`app/spam-or-not/page.tsx`](app/spam-or-not/page.tsx)).
     -   **Linkedinfy My Post:** Helps optimize posts for LinkedIn ([`app/linkedinfy-my-post/page.tsx`](app/linkedinfy-my-post/page.tsx)).
@@ -27,7 +26,7 @@ This is version 2.0 of my personal portfolio website, built with Next.js (App Ro
 -   **Backend/Database (for dynamic content like views):** [Supabase](https://supabase.io/)
 -   **Content:** [MDX](https://mdxjs.com/) for blog posts
 -   **External APIs:**
-    -   [Google Gemini API](https://ai.google.dev/): For AI-powered features in Craftfolio and Spam Check.
+    -   [Google Gemini API](https://ai.google.dev/): For AI-powered features in and Spam Check.
     -   [Exa API](https://exa.ai/): For fetching Twitter/X data in the Spam Check tool.
 -   **Deployment:** [Vercel](https://vercel.com/)
 
@@ -81,7 +80,7 @@ This project requires the following environment variables to be set in a `.env.l
 -   `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL.
 -   `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase project public anon key.
 -   `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase project service role key (used for admin tasks like incrementing view counts and newsletter subscriptions).
--   `GEMINI_API_KEY`: Your Google Gemini API key (used for AI features like resume suggestions in Craftfolio and the Spam Check tool).
+-   `GEMINI_API_KEY`: Your Google Gemini API key (used for AI features like resume suggestions in the Spam Check tool).
 -   `EXA_API_KEY`: Your Exa API key (used for the Twitter/X Spam Check tool to retrieve tweets).
 
 Example `.env.local`:
@@ -100,7 +99,7 @@ A brief overview of the key directories within `2.0/`:
 -   **`app/`**: Contains all the routes, pages, and API endpoints, following the Next.js App Router structure.
     -   `app/api/`: API routes (e.g., for view counts, spam checks, resume suggestions).
     -   `app/blogs/`: Blog-related pages, MDX posts are in `app/blogs/posts/`.
-    -   `app/(tools)/`: Directories for interactive tools like `craftfolio/`, `code-runner/`, `spam-or-not/`, `linkedinfy-my-post/`.
+    -   `app/(tools)/`: Directories for interactive tools like `code-runner/`, `spam-or-not/`, `linkedinfy-my-post/`.
     -   `app/layout.tsx`: The main layout component.
     -   `app/page.tsx`: The entry page for the portfolio.
     -   `app/globals.css`: Global styles and Tailwind CSS directives.
