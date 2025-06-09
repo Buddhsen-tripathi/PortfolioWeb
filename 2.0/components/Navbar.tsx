@@ -102,7 +102,7 @@ const Navbar = memo(() => {
               <div className="flex flex-col items-center space-y-1.5">
                 <div
                   onClick={toggleTheme}
-                  className="relative w-11 h-6 bg-gray-300 dark:bg-gray-700 rounded-full cursor-pointer transition-all duration-300 shadow-inner hover:scale-110 sleek-switch border border-cyan-400/30"
+                  className="relative w-11 h-7 bg-gray-300 dark:bg-gray-700 rounded-full cursor-pointer transition-all duration-300 shadow-inner hover:scale-110 sleek-switch border border-cyan-400/30"
                 >
                   {/* Minimal switch handle */}
                   <div className={`absolute top-0.5 w-5 h-5 bg-white dark:bg-gray-800 rounded-full shadow-md transition-all duration-300 flex items-center justify-center border border-cyan-400/50 ${theme === 'dark' ? 'translate-x-5' : 'translate-x-0.5'

@@ -3,7 +3,7 @@ import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode } from
 
 export default function Hero() {
   return (
-    <section className="flex flex-col md:flex-row items-center md:items-start gap-12 mb-16">
+    <section className="flex flex-col md:flex-row items-center md:items-start gap-12 mb-12 md:mb-16">
       <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-lg">
         <Image
           src="/profpic.webp"
@@ -12,7 +12,7 @@ export default function Hero() {
           className="object-cover border-4 border-transparent rounded-full hover:border-[#4299e1] transition-all duration-300"
         />
       </div>
-      <div className="flex flex-col items-center md:items-start space-y-4">
+      <div className="flex flex-col items-center md:items-start space-y-2 md:space-y-4">
         <h1 className="text-4xl font-bold">Buddhsen Tripathi</h1>
         <p className="max-w-2xl text-center md:text-left text-muted-foreground">
           Hello! I'm a passionate full-stack web developer with expertise in React, Next.js, Java and TypeScript.<br/>
