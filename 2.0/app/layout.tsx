@@ -65,11 +65,12 @@ export default function RootLayout({
           <main className="flex-grow">
             <div className="max-w-[1000px] mx-auto px-4 py-12">
               <PostHogProvider>
-              {children}
+                {children}
               </PostHogProvider>
             </div>
           </main>
         </ThemeProvider>
+        <div className='mb-32 md:mb-16'></div>
       </body>
     </html>
   )
