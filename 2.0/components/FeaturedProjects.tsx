@@ -2,19 +2,19 @@
 const projects = [
   {
     title: "DeepFind.Me",
-    image: "/dfme.webp",
+    image: "/dfme.png",
     description: "Deepfind.me is an educational OSINT platform offering tools and resources to help users understand and manage their digital footprint.",
     github: null,
     demo: "https://deepfind.me?ref=buddhsen-tripathi",
     technologies: ["Next.Js", "NestJs", "Supabase", "Web Crypto API", "OpenAI API"],
   },
   {
-    title: "Craftfolio",
-    image: "/craftfolio.webp",
-    description: "Craftfolio is a resume builder that allows users to create and customize their resumes using various templates and sections.",
+    title: "Clonvo",
+    image: "/clonvo.png",
+    description: "Developed the website for Clonvo, an organisation which offers business solutions for AI and web development.",
     github: null,
-    demo: "https://www.buddhsentripathi.com/craftfolio",
-    technologies: ["Next.Js", "TypeScript", "Tailwind CSS", "PDFKit", "Gemini API"],
+    demo: "https://clonvo.com",
+    technologies: ["Next.Js", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "openai-api-helper",
