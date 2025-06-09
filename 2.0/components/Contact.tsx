@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <section className="mb-16">
       <h2 className="text-3xl font-bold mb-6">Reach Out</h2>
-      <div className="bg-card rounded-lg shadow-md p-6 border w-full text-card-foreground hover:shadow-lg dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800 transition-shadow">
+      <div className="bg-card rounded-lg shadow-md p-6 border w-full text-card-foreground hover:shadow-lg dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800 transition-shadow mb-12">
         <p className="mb-6 text-muted-foreground">
         You're welcome to contact me via email for any questions, collaboration opportunities, or additional details. I'm also highly active on X, so don't hesitate to drop me a DM there!
         </p>
