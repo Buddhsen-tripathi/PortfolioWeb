@@ -75,7 +75,7 @@ const Navbar = memo(() => {
                     : 'text-gray-700 dark:text-gray-200 hover:text-white hover:bg-gradient-to-br hover:from-cyan-500/70 hover:to-cyan-600/70 hover:scale-105'
                   }`}
               >
-                <Home size={20} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
+                <Home size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
               </Link>
 
               <Link
@@ -85,7 +85,7 @@ const Navbar = memo(() => {
                     : 'text-gray-700 dark:text-gray-200 hover:text-white hover:bg-gradient-to-br hover:from-cyan-500/70 hover:to-cyan-600/70 hover:scale-105'
                   }`}
               >
-                <Code2 size={20} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
+                <Code2 size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
               </Link>
 
               <Link
@@ -95,7 +95,7 @@ const Navbar = memo(() => {
                     : 'text-gray-700 dark:text-gray-200 hover:text-white hover:bg-gradient-to-br hover:from-cyan-500/70 hover:to-cyan-600/70 hover:scale-105'
                   }`}
               >
-                <UserPen size={20} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
+                <UserPen size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
               </Link>
 
               {/* Ultra-minimal Theme Switch */}
