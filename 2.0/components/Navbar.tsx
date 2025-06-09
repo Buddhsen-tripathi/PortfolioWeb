@@ -38,13 +38,16 @@ const Navbar = memo(() => {
     }
   }, [])
 
+  // Move useCallback inside the mounted check or make it conditional
+  const toggleTheme = useCallback(() => {
+    if (setTheme && theme) {
+      setTheme(theme === 'dark' ? 'light' : 'dark')
+    }
+  }, [theme, setTheme])
+
   if (!mounted) {
     return null
   }
-
-  const toggleTheme = useCallback(() => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
-  }, [theme, setTheme])
 
   const timeZone = 'Asia/Kolkata'
   const zonedTime = toZonedTime(currentTime, timeZone)
@@ -257,5 +260,7 @@ const Navbar = memo(() => {
     </nav>
   )
 })
+
+Navbar.displayName = 'Navbar'
 
 export default Navbar
