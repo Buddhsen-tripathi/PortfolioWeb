@@ -3,6 +3,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import ScrollProgress from '@/components/ScrollProgress'
+import { PostHogProvider } from './providers/PostHogProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,6 +47,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Preload critical resources */}
+        <link rel="preload" href="/dfme.png" as="image" />
+        <link rel="preload" href="/clonvo.png" as="image" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      </head>
       <body className={`${inter.className} bg-background text-foreground flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -56,7 +64,9 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-grow">
             <div className="max-w-[1000px] mx-auto px-4 py-12">
+              <PostHogProvider>
               {children}
+              </PostHogProvider>
             </div>
           </main>
         </ThemeProvider>

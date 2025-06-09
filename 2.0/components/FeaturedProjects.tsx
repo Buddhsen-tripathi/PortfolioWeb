@@ -88,7 +88,7 @@ export default function FeaturedProjects() {
     <section>
       <h1 className="text-3xl font-bold mb-6">Projects</h1>
       <div className="space-y-4">
-        {projects.slice(0, isHomePage ? 2 : projects.length).map((project) => (
+        {projects.slice(0, isHomePage ? 2 : projects.length).map((project, index) => (
           <div key={project.title} className="flex flex-col md:flex-row gap-6 bg-card rounded-lg overflow-hidden shadow-md transition-all hover:shadow-lg hover:bg-primary/5 border dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800">
             <div className="md:w-2/5 w-full h-full relative">
               <Image
@@ -97,6 +97,10 @@ export default function FeaturedProjects() {
                 width={640}
                 height={360}
                 className="w-full h-full object-cover"
+                priority={index < 2} // Prioritize first 2 images
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
             <div className="md:w-3/5 p-4">
