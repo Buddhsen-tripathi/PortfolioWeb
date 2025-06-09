@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { toZonedTime, format as formatTz } from 'date-fns-tz'
 import { Moon, Sun, Home, FolderOpen, BookOpen, Clock } from 'lucide-react'
 
-export default function Navbar() {
+const Navbar = memo(() => {
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -18,12 +18,19 @@ export default function Navbar() {
     setMounted(true)
     const timer = setInterval(() => setCurrentTime(new Date()), 1000)
     
+    let ticking = false
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50
-      setScrolled(isScrolled)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 50
+          setScrolled(isScrolled)
+          ticking = false
+        })
+        ticking = true
+      }
     }
     
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     
     return () => {
       clearInterval(timer)
@@ -34,6 +41,10 @@ export default function Navbar() {
   if (!mounted) {
     return null
   }
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }, [theme, setTheme])
 
   const timeZone = 'Asia/Kolkata'
   const zonedTime = toZonedTime(currentTime, timeZone)
@@ -94,7 +105,7 @@ export default function Navbar() {
               {/* Ultra-minimal Theme Switch */}
               <div className="flex flex-col items-center space-y-1.5">
                 <div 
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  onClick={toggleTheme}
                   className="relative w-11 h-6 bg-gray-300 dark:bg-gray-700 rounded-full cursor-pointer transition-all duration-300 shadow-inner hover:scale-110 sleek-switch border border-cyan-400/30"
                 >
                   {/* Minimal switch handle */}
@@ -224,7 +235,7 @@ export default function Navbar() {
             {/* Minimal Desktop Theme Switch */}
             <div className="flex items-center space-x-3">
               <div 
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                onClick={toggleTheme}
                 className="relative w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full cursor-pointer transition-all duration-300 shadow-inner hover:scale-105 border border-cyan-400/30"
               >
                 {/* Clean switch handle */}
@@ -245,4 +256,6 @@ export default function Navbar() {
       </div>
     </nav>
   )
-}
+})
+
+export default Navbar
