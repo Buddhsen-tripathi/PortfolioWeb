@@ -1,11 +1,11 @@
-import { Inter } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import ScrollProgress from '@/components/ScrollProgress'
 import { PostHogProvider } from './providers/PostHogProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const geist = Geist({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Buddhsen Tripathi',
@@ -49,18 +49,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Preload critical resources */}
-        <link rel="preload" href="/dfme.webp" as="image" />
-        <link rel="preload" href="/clonvo.webp" as="image" />
+        <link rel="preload" href="/profpic.webp" as="image" />
+        <link rel="preload" href="/dfme.avif" as="image" />
+        <link rel="preload" href="/clonvo.avif" as="image" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
-      <body className={`${inter.className} bg-background text-foreground flex flex-col min-h-screen antialiased`}>
+      <body className={`${geist.className} bg-background text-foreground flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        > <ScrollProgress />
+        > 
+          <ScrollProgress />
           <Navbar />
           <main className="flex-grow">
             <div className="max-w-[1000px] mx-auto px-4 py-12">
