@@ -14,7 +14,7 @@ export default async function BlogPage() {
   const personalPosts = allPosts.filter(post => post.type === 'personal');
 
   return (
-    <div className="container max-w-4xl py-8 space-y-8">
+    <div className="container max-w-4xl space-y-8">
       <meta name="title" content="Blogs - Buddhsen Tripathi" />
       <meta name="description" content="Read the latest articles, tutorials, and personal thoughts on technology, programming, and more." />
       <meta property="og:url" content="https://buddhsentripathi.com/blogs" />

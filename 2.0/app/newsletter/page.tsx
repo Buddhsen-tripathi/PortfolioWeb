@@ -1,5 +1,7 @@
 import NewsletterSubscription from "@/components/NewsletterSubscription";
+import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Newsletter - Buddhsen Tripathi",
@@ -8,14 +10,6 @@ export const metadata: Metadata = {
         title: "Newsletter - Buddhsen Tripathi",
         description: "Subscribe to my newsletter for updates on web development, AI, and personal projects.",
         url: "https://buddhsentripathi.com/newsletter",
-        // images: [
-        //     {
-        //         url: "/default-image.webp",
-        //         width: 1200,
-        //         height: 630,
-        //         alt: "Newsletter Subscription",
-        //     },
-        // ],
     },
     twitter: {
         card: "summary_large_image",
@@ -28,20 +22,26 @@ export const metadata: Metadata = {
 
 export default function NewsletterPage() {
     return (
-        <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
-            <div className="max-w-2xl mx-auto text-center">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
-                    Join My Newsletter
-                </h1>
-                <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
-                    Stay ahead of the curve! Subscribe to Buddhsen Tripathi's newsletter for exclusive updates on web development, AI insights, personal projects, and the latest tech trends.
-                </p>
+        <div className="container max-w-4xl items-center space-y-8">
+            <Link href="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Home
+            </Link>
+            <div className="mx-auto px-4 py-8 md:py-12 lg:py-20">
+                <div className="max-w-2xl mx-auto text-center">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
+                        Join My Newsletter
+                    </h1>
+                    <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+                        Personal stories. Tech updates. No spam, just value.
+                    </p>
 
-                <NewsletterSubscription />
+                    <NewsletterSubscription />
 
-                <p className="mt-8 text-sm text-gray-500 dark:text-gray-400">
-                    You can unsubscribe at any time. Your privacy is respected.
-                </p>
+                    <p className="mt-8 text-sm text-gray-500 dark:text-gray-400">
+                        You can unsubscribe at any time. Your privacy is respected.
+                    </p>
+                </div>
             </div>
         </div>
     );
