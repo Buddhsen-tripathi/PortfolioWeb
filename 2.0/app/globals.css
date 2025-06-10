@@ -109,3 +109,39 @@
     will-change: transform; /* Optimize for animations */
   }
 }
+
+@layer utilities {
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  
+  .animate-scroll-left {
+    animation: scroll-left 10s linear infinite;
+    display: flex;
+    white-space: nowrap;
+  }
+
+  /* Shimmer animation for progress bar */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Custom gradient animation utilities */
+  .bg-size-200 {
+    background-size: 200% 100%;
+  }
+  
+  .bg-pos-0 {
+    background-position: 0% 0%;
+  }
+  
+  .bg-pos-100 {
+    background-position: 100% 0%;
+  }
+}

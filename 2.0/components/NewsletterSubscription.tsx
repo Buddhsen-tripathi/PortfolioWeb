@@ -1,5 +1,6 @@
 'use client'
 
+import { CalendarHeart, CalendarPlus } from 'lucide-react'
 import React, { useState } from 'react'
 
 export default function NewsletterSubscription() {
@@ -36,9 +37,9 @@ export default function NewsletterSubscription() {
 
     return (
         <div className="group block p-6 border rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white dark:bg-black dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800">
-            <h2 className="text-2xl font-bold mb-4 dark:text-white">Never Miss a <span className='text-red-600'>Blog</span></h2>
-            <p className="mb-4 text-sm text-muted-foreground dark:text-gray-400">
-                It’s <span className='text-green-600'>free!</span> Get notified instantly whenever a new post drops. Stay updated, stay ahead.
+            <h2 className="text-2xl font-bold mb-2 dark:text-white">Never Miss a <span className='text-red-600'>Blog</span></h2>
+            <p className="mb-4 text-md text-muted-foreground dark:text-gray-400">
+                It's <span className='text-green-600'>free!</span> Get notified instantly whenever a new post drops. Stay updated, stay ahead.
             </p>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <input
@@ -46,7 +47,7 @@ export default function NewsletterSubscription() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
-                    className="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-950 dark:text-white"
+                    className="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-black dark:text-white"
                     required
                 />
                 <div className="flex items-center gap-8 mt-4">
@@ -62,9 +63,28 @@ export default function NewsletterSubscription() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="ml-auto bg-primary text-white dark:text-black px-4 py-2 rounded hover:bg-primary-dark focus:outline-none"
+                        className={`ml-auto inline-flex items-center justify-center gap-2 px-6 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm transition-all duration-300 min-w-[140px] ${
+                            success 
+                                ? 'text-green-600 bg-green-100 dark:bg-green-900/20' 
+                                : 'text-primary bg-primary/20 hover:bg-primary/40'
+                        }`}
                     >
-                        {loading ? 'Subscribing...' : 'Subscribe'}
+                        {success ? (
+                            <>
+                                <CalendarHeart size={16} className="animate-pulse" />
+                                Subscribed!
+                            </>
+                        ) : loading ? (
+                            <>
+                                <div className="animate-spin h-4 w-4 border-2 border-primary border-t-transparent rounded-full"></div>
+                                Subscribing...
+                            </>
+                        ) : (
+                            <>
+                                <CalendarPlus size={16} />
+                                Subscribe
+                            </>
+                        )}
                     </button>
                 </div>
             </form>
