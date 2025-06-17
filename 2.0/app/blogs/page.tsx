@@ -5,7 +5,7 @@ import BlogList from './BlogList'
 import BackToTopButton from '@/components/BacktoTopButton'
 import NewsletterSubscription from '@/components/NewsletterSubscription'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Script from 'next/script'
+import { AdScript } from '@/components/AdScript'
 
 export default async function BlogPage() {
   const allPosts: BlogPost[] = await getAllBlogPosts()
@@ -22,8 +22,7 @@ export default async function BlogPage() {
       <meta property="og:image" content="https://buddhsentripathi.com/default-image-blogs.webp" />
       <title>Blogs - Buddhsen Tripathi</title>
 
-      <Script async src={process.env.AD_SCRIPT_URL} crossOrigin="anonymous">
-      </Script>
+      <AdScript/>
 
       <Link href="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
         <ArrowLeft className="w-4 h-4 mr-2" />

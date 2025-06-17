@@ -5,7 +5,7 @@ import { birthdayRankings, defaultRanking } from "./rankings";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import ViewCounter from "@/components/ViewCounter";
-import Script from "next/script";
+import { AdScript } from "@/components/AdScript";
 
 interface Ranking {
     date: string;
@@ -51,8 +51,7 @@ const BirthdayRankings = () => {
 
     return (
         <div className="space-y-8">
-            <Script async src={process.env.AD_SCRIPT_URL} crossOrigin="anonymous">
-            </Script>
+            <AdScript/>
             <div className="w-full flex items-center justify-between mb-6">
                 <Link href="/projects" className="flex items-center text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600">
                     <ArrowLeft className="w-4 h-4 mr-2" />
