@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabaseClient';
+import { supabaseAdmin } from '@/lib/supabaseAdmin';
 
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ error: 'No slug provided' }, { status: 400 });
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
         .from('views')
         .select('count')
         .eq('slug', slug)
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Call the RPC function to handle both insert and increment
-    const { error: incrementError } = await supabase
+    const { error: incrementError } = await supabaseAdmin
         .rpc('increment_view_count', { post_slug: slug });
 
     if (incrementError) {
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Fetch the updated count
-    const { data, error: fetchError } = await supabase
+    const { data, error: fetchError } = await supabaseAdmin
         .from('views')
         .select('count')
         .eq('slug', slug)
