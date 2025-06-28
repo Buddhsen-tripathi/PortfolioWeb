@@ -71,7 +71,7 @@ const Navbar = memo(() => {
                 href="/"
                 className={`group flex flex-col items-center space-y-1.5 p-2 rounded-xl transition-all duration-200 transform ${pathname === '/'
                     ? 'text-primary-foreground bg-primary shadow-lg scale-105'
-                    : 'text-foreground hover:text-primary-foreground hover:bg-primary/80 hover:scale-105'
+                    : 'text-foreground hover:text-primary-foreground hover:bg-primary/80'
                   }`}
               >
                 <Home size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
@@ -81,7 +81,7 @@ const Navbar = memo(() => {
                 href="/projects"
                 className={`group flex flex-col items-center space-y-1.5 p-2 rounded-xl transition-all duration-200 transform ${pathname === '/projects'
                     ? 'text-primary-foreground bg-primary shadow-lg scale-105'
-                    : 'text-foreground hover:text-primary-foreground hover:bg-primary/80 hover:scale-105'
+                    : 'text-foreground hover:text-primary-foreground hover:bg-primary/80'
                   }`}
               >
                 <Code2 size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
@@ -91,7 +91,7 @@ const Navbar = memo(() => {
                 href="/blogs"
                 className={`group flex flex-col items-center space-y-1.5 p-2 rounded-xl transition-all duration-200 transform ${pathname === '/blogs'
                     ? 'text-primary-foreground bg-primary shadow-lg scale-105'
-                    : 'text-foreground hover:text-primary-foreground hover:bg-primary/80 hover:scale-105'
+                    : 'text-foreground hover:text-primary-foreground hover:bg-primary/80'
                   }`}
               >
                 <UserPen size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
@@ -159,7 +159,7 @@ const Navbar = memo(() => {
               <a
                 href='https://www.google.com/search?q=time'
                 target='_blank'
-                className="hover:text-primary transition-all duration-300 font-medium hover:scale-105"
+                className="hover:text-primary transition-all duration-300 font-medium"
               >
                 {formattedTime}
               </a>
@@ -191,7 +191,7 @@ const Navbar = memo(() => {
           <div className="relative flex items-center space-x-4">
             <Link
               href="/"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 ${pathname === '/'
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 transform ${pathname === '/'
                   ? 'text-primary-foreground bg-primary shadow-lg scale-105'
                   : 'text-foreground hover:text-primary-foreground hover:bg-primary/80'
                 }`}
@@ -201,7 +201,7 @@ const Navbar = memo(() => {
             
             <Link
               href="/projects"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 ${pathname === '/projects'
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 transform ${pathname === '/projects'
                   ? 'text-primary-foreground bg-primary shadow-lg scale-105'
                   : 'text-foreground hover:text-primary-foreground hover:bg-primary/80'
                 }`}
@@ -211,7 +211,7 @@ const Navbar = memo(() => {
             
             <Link
               href="/blogs"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 ${pathname === '/blogs'
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 transform ${pathname === '/blogs'
                   ? 'text-primary-foreground bg-primary shadow-lg scale-105'
                   : 'text-foreground hover:text-primary-foreground hover:bg-primary/80'
                 }`}
@@ -223,7 +223,7 @@ const Navbar = memo(() => {
             <div className="flex items-center space-x-3">
               <div
                 onClick={toggleTheme}
-                className="relative w-12 h-6 bg-secondary hover:bg-secondary/80 rounded-full cursor-pointer transition-all duration-300 shadow-inner hover:scale-105 border border-border"
+                className="relative w-12 h-6 bg-secondary hover:bg-secondary/80 rounded-full cursor-pointer transition-all duration-300 shadow-inner border border-border"
               >
                 {/* Clean switch handle */}
                 <div className={`absolute top-0.5 w-5 h-5 bg-background rounded-full shadow-md transition-all duration-300 flex items-center justify-center border border-border ${theme === 'dark' ? 'translate-x-6' : 'translate-x-0.5'
