@@ -6,46 +6,8 @@ slug: ai-in-cybersecurity-explained
 
 ---
 
-<div className="table-of-contents">
-  <h3 class="text-xl font-semibold text-primary my-4">Quick Navigation</h3>
-  <table style={{ width: "100%", borderSpacing: "0", borderCollapse: "collapse", border: "1px solid #e2e8f0" }}>
-    <tbody>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#understanding-ai-in-cybersecurity" className="text-purple-500 hover:underline">Understanding AI in Cybersecurity</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#key-applications-and-use-cases" className="text-purple-500 hover:underline">Key Applications and Use Cases</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#technical-implementation-guide" className="text-purple-500 hover:underline">Technical Implementation Guide</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#ai-security-vs-traditional-security" className="text-purple-500 hover:underline">AI Security vs Traditional Security</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#leading-ai-security-solutions" className="text-purple-500 hover:underline">Leading AI Security Solutions</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#challenges-and-limitations" className="text-purple-500 hover:underline">Challenges and Limitations</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#future-trends-and-predictions" className="text-purple-500 hover:underline">Future Trends and Predictions</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#best-practices-and-recommendations" className="text-purple-500 hover:underline">Best Practices and Recommendations</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#additional-resources" className="text-purple-500 hover:underline">Additional Resources</a></td>
-      </tr>
-      <tr>
-        <td style={{ padding: "12px", border: "1px solid #e2e8f0" }}><a href="#conclusion" className="text-purple-500 hover:underline">Conclusion</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
 <div className="prerequisites">
-  <h3 class="text-xl font-semibold text-primary my-4">Prerequisites</h3>
+  <h3 class="text-xl font-semibold text-primary my-4" id="prerequisites">Prerequisites</h3>
   <ul>
     <li>Basic understanding of cybersecurity concepts</li>
     <li>Familiarity with Python programming</li>
@@ -68,7 +30,7 @@ AI in cybersecurity represents a paradigm shift from rule-based systems to intel
 
 > **Key Insight**: Unlike traditional security tools that rely on predefined rules, AI systems can identify new and unknown threats by learning from patterns in data and adapting their responses accordingly.
 
-<h3 class="text-xl font-semibold text-primary my-4">Core Components of AI Security Systems </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="core-components-of-ai-security-systems">Core Components of AI Security Systems </h3>
 
 **1. Data Collection and Processing**
    - Network traffic analysis
@@ -98,7 +60,7 @@ AI in cybersecurity represents a paradigm shift from rule-based systems to intel
 
 <h2 class="text-2xl font-semibold text-primary my-4" id="key-applications-and-use-cases">Key Applications and Use Cases </h2>
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Advanced Threat Detection </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="advanced-threat-detection">1. Advanced Threat Detection </h3>
 
 AI systems excel at identifying sophisticated threats through:
 
@@ -107,7 +69,7 @@ AI systems excel at identifying sophisticated threats through:
 - **Anomaly Detection**: Flagging unusual activities
 - **Predictive Analytics**: Forecasting potential security incidents
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Automated Response Systems </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="automated-response-systems">2. Automated Response Systems </h3>
 
 Modern AI security solutions can:
 
@@ -119,7 +81,7 @@ Modern AI security solutions can:
 
 > **Implementation Note**: While automation is powerful, maintain human oversight for critical decisions. AI should augment, not replace, human security teams.
 
-<h3 class="text-xl font-semibold text-primary my-4">3. Phishing and Fraud Detection </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="phishing-and-fraud-detection">3. Phishing and Fraud Detection </h3>
 
 AI-powered systems analyze:
 
@@ -132,7 +94,7 @@ AI-powered systems analyze:
 
 <h2 class="text-2xl font-semibold text-primary my-4" id="technical-implementation-guide">Technical Implementation Guide </h2>
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Building a Basic AI Security System </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="building-basic-ai-security-system">1. Building a Basic AI Security System </h3>
 
 Here's a comprehensive example using Python for anomaly detection:
 
@@ -183,7 +145,7 @@ plt.show()
 
 > **Code Explanation**: This example demonstrates how to use Isolation Forest, an unsupervised learning algorithm, to detect anomalies in login attempts. The system learns normal patterns and flags unusual activities that might indicate security threats.
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Implementing Real-time IP Reputation Checking </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="implementing-real-time-ip-reputation-checking">2. Implementing Real-time IP Reputation Checking </h3>
 
 ```javascript
 const axios = require('axios');
@@ -293,7 +255,7 @@ async function checkIPReputation(ip) {
 
 <h2 class="text-2xl font-semibold text-primary my-4" id="leading-ai-security-solutions">Leading AI Security Solutions </h2>
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Enterprise Solutions </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="enterprise-solutions">1. Enterprise Solutions </h3>
 
 **Darktrace**: Enterprise Immune System
   - Autonomous response
@@ -310,7 +272,7 @@ async function checkIPReputation(ip) {
   - AI-powered analytics
   - Automated response
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Open Source Tools </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="open-source-tools">2. Open Source Tools </h3>
 
 - **ELK Stack**: Log analysis and visualization
 - **Snort**: Network intrusion detection
@@ -320,14 +282,14 @@ async function checkIPReputation(ip) {
 
 <h2 class="text-2xl font-semibold text-primary my-4" id="challenges-and-limitations">Challenges and Limitations </h2>
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Technical Challenges </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="technical-challenges">1. Technical Challenges </h3>
 
 - **Data Quality**: AI systems require high-quality, diverse training data
 - **Model Complexity**: Balancing accuracy with interpretability
 - **Computational Resources**: High-performance requirements
 - **Integration Issues**: Compatibility with existing systems
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Operational Challenges </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="operational-challenges">2. Operational Challenges </h3>
 
 - **Skill Gap**: Need for AI and security expertise
 - **Cost**: Initial investment and maintenance
@@ -348,7 +310,7 @@ async function checkIPReputation(ip) {
 
 <h2 class="text-2xl font-semibold text-primary my-4" id="best-practices-and-recommendations">Best Practices and Recommendations </h2>
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Implementation Strategy </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="implementation-strategy">1. Implementation Strategy </h3>
 
 - Start with specific use cases
 - Gradually expand AI capabilities
@@ -356,7 +318,7 @@ async function checkIPReputation(ip) {
 - Regular model retraining
 - Continuous monitoring and adjustment
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Security Considerations </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="security-considerations">2. Security Considerations </h3>
 
 - Secure AI model deployment
 - Protect training data

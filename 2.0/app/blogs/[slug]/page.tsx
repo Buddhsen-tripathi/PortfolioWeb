@@ -15,6 +15,8 @@ import { getReadingTime } from '@/lib/utils'
 import NewsletterSubscription from '@/components/NewsletterSubscription'
 import SocialShare from '../SocialShare'
 import { AdScript } from '@/components/AdScript'
+import { mdxComponents } from '@/components/MdxComponents'
+import TableOfContents from '@/components/TableOfContents'
 
 interface BlogPostData {
   title: string
@@ -91,6 +93,12 @@ export default async function BlogPost({ params }: { params: paramsType }) {
         <span>•</span>
         <span>{getReadingTime(content)} min read</span>
       </div>
+
+      <div className="lg:col-span-1">
+        <div className="lg:sticky lg:top-20">
+          <TableOfContents content={content} />
+        </div>
+      </div>
       {/* Render the MDX content */}
       <MDXRemote
         source={content}
@@ -101,6 +109,7 @@ export default async function BlogPost({ params }: { params: paramsType }) {
           },
         }}
         components={{
+          ...mdxComponents,
           SocialShare: SocialShare
         }}
       />
