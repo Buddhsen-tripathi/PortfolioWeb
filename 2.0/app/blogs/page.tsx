@@ -36,8 +36,8 @@ export default async function BlogPage() {
 
       <Tabs defaultValue="technical" className="w-full">
         <TabsList className="grid w-full grid-cols-2 mb-6">
-          <TabsTrigger value="technical">Technical</TabsTrigger>
-          <TabsTrigger value="personal">Personal</TabsTrigger>
+          <TabsTrigger value="technical" className="bg-transparent text-muted-foreground hover:text-foreground transition-colors duration-300 ease-in-out rounded-lg">Technical</TabsTrigger>
+          <TabsTrigger value="personal" className="bg-transparent text-muted-foreground hover:text-foreground transition-colors duration-300 ease-in-out rounded-lg">Personal</TabsTrigger>
         </TabsList>
 
         <TabsContent value="technical">
