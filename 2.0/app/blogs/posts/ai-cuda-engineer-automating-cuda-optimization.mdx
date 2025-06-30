@@ -6,11 +6,11 @@ slug: ai-cuda-engineer-automating-cuda-optimization
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Introduction</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="introduction">Introduction</h2>
 
 **CUDA** (Compute Unified Device Architecture) is the backbone of **high-performance GPU computing**, powering everything from AI models to scientific simulations. However, writing optimized CUDA kernels requires deep expertise in **parallel computing, memory access patterns, and low-level GPU programming**.  
 
-Sakana AI’s **AI CUDA Engineer** introduces a game-changing **automation system**, using **LLMs (Large Language Models) and evolutionary optimization** to automatically generate and refine **highly efficient CUDA kernels**.  
+Sakana AI's **AI CUDA Engineer** introduces a game-changing **automation system**, using **LLMs (Large Language Models) and evolutionary optimization** to automatically generate and refine **highly efficient CUDA kernels**.  
 
 This blog explores **how AI CUDA Engineer works**, its **performance benchmarks**, and its **potential impact on AI, deep learning, and scientific computing**.
 
@@ -20,7 +20,7 @@ This blog explores **how AI CUDA Engineer works**, its **performance benchmarks*
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Why is CUDA Optimization So Difficult?</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="why-is-cuda-optimization-difficult">Why is CUDA Optimization So Difficult?</h2>
 
 CUDA allows **fine-grained control** over **how computations are executed on a GPU**, but achieving peak efficiency requires:  
 
@@ -32,7 +32,7 @@ Even expert engineers spend weeks or months optimizing CUDA kernels for specific
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">What is AI CUDA Engineer?</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="what-is-ai-cuda-engineer">What is AI CUDA Engineer?</h2>
 
 AI CUDA Engineer is an **autonomous AI system** that:  
 
@@ -44,11 +44,11 @@ Unlike traditional compiler-based optimizations (e.g., `torch.compile`), AI CUDA
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">How AI CUDA Engineer Works</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="how-ai-cuda-engineer-works">How AI CUDA Engineer Works</h2>
 
 AI CUDA Engineer consists of **four key stages**:
 
-<h3 class="text-xl font-semibold text-primary my-4">1️. PyTorch to Functional Representation</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="pytorch-to-functional-representation">1️. PyTorch to Functional Representation</h3>
 
 - Converts PyTorch `nn.Module` into a **fully functional representation**.  
 - Removes **non-essential layers and dependencies**, simplifying kernel translation.  
@@ -58,7 +58,7 @@ AI CUDA Engineer consists of **four key stages**:
   <img src="/blog-images/ai-cuda-engineer-stage-1.webp" className="m-4" alt="Figure 1: AI CUDA Engineer Stage 1" width="600" height="400" />
 </div>
 
-<h3 class="text-xl font-semibold text-primary my-4">2️. Translation to CUDA Kernels</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="translation-to-cuda-kernels">2️. Translation to CUDA Kernels</h3>
 
 - Uses **LLMs to generate CUDA kernel implementations**.  
 - Ensures correctness by applying **syntactic and semantic validation**.  
@@ -68,7 +68,7 @@ AI CUDA Engineer consists of **four key stages**:
   <img src="/blog-images/ai-cuda-engineer-stage-2.webp" className="m-4" alt="Figure 1: AI CUDA Engineer Stage 2" width="600" height="400" />
 </div>
 
-<h3 class="text-xl font-semibold text-primary my-4">3️. Evolutionary Kernel Optimization</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="evolutionary-kernel-optimization">3️. Evolutionary Kernel Optimization</h3>
 
 - Applies **mutation-based search algorithms** to refine kernel performance.  
 - Uses **temperature sampling** and **crossover optimizations** to explore better variations.  
@@ -78,7 +78,7 @@ AI CUDA Engineer consists of **four key stages**:
   <img src="/blog-images/ai-cuda-engineer-stage-3.webp" className="m-4" alt="Figure 1: AI CUDA Engineer Stage 3" width="600" height="400" />
 </div>
 
-<h3 class="text-xl font-semibold text-primary my-4">4️. Kernel Composition & Storage</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="kernel-composition-storage">4️. Kernel Composition & Storage</h3>
 
 - Stores **optimized kernels** for future reference.  
 - Retrieves **past optimizations** to improve new generations.  
@@ -90,7 +90,7 @@ AI CUDA Engineer consists of **four key stages**:
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Benchmark Performance</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="benchmark-performance">Benchmark Performance</h2>
 
 AI CUDA Engineer was tested across **250 diverse CUDA optimization tasks**, showing significant improvements:
 
@@ -125,7 +125,7 @@ AI CUDA Engineer was tested across **250 diverse CUDA optimization tasks**, show
   </tbody>
 </table>
 
-<h3 class="text-xl font-semibold text-primary my-4">Case Study: ResNet18 Optimization</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="case-study-resnet18-optimization">Case Study: ResNet18 Optimization</h3>
 
 - AI CUDA Engineer optimized **ResNet18**, a widely used deep learning model.  
 - Enhanced **matrix multiplications, convolutions, and activation functions**.  
@@ -137,7 +137,7 @@ AI CUDA Engineer was tested across **250 diverse CUDA optimization tasks**, show
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Key Use Cases</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="key-use-cases">Key Use Cases</h2>
 
 AI CUDA Engineer can be applied across **multiple domains**:
 
@@ -148,7 +148,7 @@ AI CUDA Engineer can be applied across **multiple domains**:
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Future of AI-Assisted CUDA Optimization</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="future-of-ai-assisted-cuda-optimization">Future of AI-Assisted CUDA Optimization</h2>
 
 AI CUDA Engineer represents **a paradigm shift** in AI-powered programming. Future developments could:  
 
@@ -158,12 +158,12 @@ AI CUDA Engineer represents **a paradigm shift** in AI-powered programming. Futu
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Conclusion</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="conclusion">Conclusion</h2>
 
-**Sakana AI’s AI CUDA Engineer** is a breakthrough in automated kernel optimization. By integrating **LLMs and evolutionary optimization**, it outperforms **manual CUDA tuning** while making high-performance computing more accessible.
+**Sakana AI's AI CUDA Engineer** is a breakthrough in automated kernel optimization. By integrating **LLMs and evolutionary optimization**, it outperforms **manual CUDA tuning** while making high-performance computing more accessible.
 
 As AI-driven programming advances, autonomous code optimization will be a key driver in AI research, deep learning, and scientific computing.
 
-> *This blog is based on insights from the official paper ([AI CUDA Engineer](https://pub.sakana.ai/static/paper.pdf)) and related analyses. While I’ve made every effort to ensure accuracy, some details may not be 100% precise. If you find anything inaccurate, please DM me on X.* 
+> *This blog is based on insights from the official paper ([AI CUDA Engineer](https://pub.sakana.ai/static/paper.pdf)) and related analyses. While I've made every effort to ensure accuracy, some details may not be 100% precise. If you find anything inaccurate, please DM me on X.* 
 
 ---

@@ -10,7 +10,7 @@ Ever wondered how hackers keep sneaking into apps? I was shocked to learn **80% 
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">What Are APIs and Databases? </h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="what-are-apis-and-databases">What Are APIs and Databases? </h2>
 
 Before we dive in, let's clarify:
 - **APIs (Application Programming Interfaces)** act as messengers between applications, allowing them to communicate and exchange data seamlessly.
@@ -20,11 +20,11 @@ If these "messengers" or "filing cabinets" aren't properly secured, hackers can 
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Types of API Security Threats </h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="types-of-api-security-threats">Types of API Security Threats </h2>
 
 Think of threats as ways a thief might break into your house. Here's what to watch out for:
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Injection Attacks </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="injection-attacks">1. Injection Attacks </h3>
 
 **What**:  Imagine a thief slipping a secret note into your mailbox that says, "Unlock all doors." Your system follows it without question.
 
@@ -38,7 +38,7 @@ Think of threats as ways a thief might break into your house. Here's what to wat
 
 **Example**: Entering ```1; DROP TABLE users``` into a login form could erase an entire user database if the input isn't sanitized.
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Broken Authentication</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="broken-authentication">2. Broken Authentication</h3>
 
 **What**:  Imagine a thief guessing your house key or stealing it to walk right in.
 
@@ -47,7 +47,7 @@ Think of threats as ways a thief might break into your house. Here's what to wat
 - **Stolen tokens** used for authentication (like session cookies).
 - **Session hijacking**, where an attacker takes over an active user session.
 
-<h3 class="text-xl font-semibold text-primary my-4">3. Sensitive Data Exposure </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="sensitive-data-exposure">3. Sensitive Data Exposure </h3>
 
 **What**: Imagine leaving your safe's combination written on a sticky note for anyone to see.
 
@@ -58,7 +58,7 @@ Think of threats as ways a thief might break into your house. Here's what to wat
 
 💡 **Why it's dangerous**: Hackers can easily intercept or discover this information and use it to exploit your system.
 
-<h3 class="text-xl font-semibold text-primary my-4">4. Security Misconfigurations</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="security-misconfigurations">4. Security Misconfigurations</h3>
 
 **What**: Imagine leaving a window unlocked or never changing the default "admin" password—inviting trouble.
 
@@ -69,7 +69,7 @@ Think of threats as ways a thief might break into your house. Here's what to wat
 
 💡 **Why it's dangerous**: Hackers look for these easy entry points to gain control or steal data.
 
-<h3 class="text-xl font-semibold text-primary my-4">5. Denial of Service (DoS) Attacks </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="denial-of-service-attacks">5. Denial of Service (DoS) Attacks </h3>
 
 **What**: Imagine a mob banging on your door nonstop, blocking real guests from entering.
 
@@ -78,7 +78,7 @@ Think of threats as ways a thief might break into your house. Here's what to wat
 - **Distributed DoS (DDoS)**: Using a botnet to overwhelm servers with traffic.
 - **Resource exhaustion**: Sending massive payloads to deplete memory or CPU.
 
-<h3 class="text-xl font-semibold text-primary my-4">6. Sneaky Advanced Threats </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="sneaky-advanced-threats">6. Sneaky Advanced Threats </h3>
 - **CSRF (Cross-Site Request Forgery)**:
 Tricking a user into unknowingly performing an action, like accidentally transferring money by clicking a malicious link.
 - **GraphQL Introspection Attacks**:
@@ -88,11 +88,11 @@ Peeking at your API's blueprint to find and exploit vulnerabilities in exposed q
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">API Security Best Practices </h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="api-security-best-practices">API Security Best Practices </h2>
 
 Now that we know how hackers break in, let's build locks and alarms for your API "doors" using JavaScript. We'll use ```Express.js```, a lightweight framework that makes server-building easy—think of it as a LEGO kit for apps.
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Check IDs with Authentication and Authorization </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="check-ids-with-authentication-and-authorization">1. Check IDs with Authentication and Authorization </h3>
 
 Before letting anyone access your API, we need to verify:
 
@@ -147,7 +147,7 @@ Now that we've built authentication, let's test it to ensure it works as expecte
 - Run the code: ```node <name-of-your-file>.js```
 - Use a tool like Postman to send a ```GET``` request to ```/protected``` with a fake token, it'll say "Access Denied!"
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Set Rules with Role-Based Access Control (RBAC) </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="set-rules-with-role-based-access-control">2. Set Rules with Role-Based Access Control (RBAC) </h3>
 
 **Imagine a school**:
 - Students can't enter the principal's office.
@@ -175,7 +175,7 @@ app.get('/admin', authenticateToken, authorizeRole(['admin']), (req, res) => {
 ```
 **How It Works**: If req.user.role isn't "admin" (set by the JWT), they're blocked.
 
-<h3 class="text-xl font-semibold text-primary my-4">3. Clean Up User Input </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="clean-up-user-input">3. Clean Up User Input </h3>
 
 Hackers love messy input-like typing ```<script>stealData()</script>``` into a form to inject malicious scripts. If your app doesn't clean or validate input, it's a free pass for attackers.
 
@@ -201,7 +201,7 @@ app.post('/register', [
 
 **Try It:** Install ```npm install express-validator```, send a weak password, and see the error.
 
-<h3 class="text-xl font-semibold text-primary my-4">4. Stop Overcrowding with Rate Limiting </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="stop-overcrowding-with-rate-limiting">4. Stop Overcrowding with Rate Limiting </h3>
 
 Imagine too many people knocking on your door at once—it crashes! Rate limiting acts like a security guard: <br/>
 🚪 "Only 100 knocks every 15 minutes."
@@ -233,11 +233,11 @@ app.use('/api', limiter); // Apply to all /api routes
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Database Protection Strategies </h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="database-protection-strategies">Database Protection Strategies </h2>
 
 Ensuring database security is critical to protecting sensitive data. A vulnerable database can be easily exploited, leading to data breaches, unauthorized access, and system compromise. Let's explore common weak points and best practices for securing your database effectively.
 
-<h3 class="text-xl font-semibold text-primary my-4">1. Common Weak Spots </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="common-weak-spots">1. Common Weak Spots </h3>
 
 Even the most secure systems can have vulnerabilities. Here are some key areas where databases are often at risk:
 
@@ -247,7 +247,7 @@ Even the most secure systems can have vulnerabilities. Here are some key areas w
 🔹 **Weak Authentication →** Lack of additional identity verification mechanisms makes unauthorized access easier. <br/>
 🔹 **Unencrypted Data →** Storing passwords in plain text (e.g., "password123") rather than hashing them leaves data exposed. <br/>
 
-<h3 class="text-xl font-semibold text-primary my-4">2. Safe Queries with Parameters </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="safe-queries-with-parameters">2. Safe Queries with Parameters </h3>
 
 Instead of directly incorporating user input into queries, which poses a security risk, parameterized queries ensure that input is treated as data rather than executable code.
 
@@ -273,7 +273,7 @@ async function getUserById(userId) {
 - The ```?``` prevents SQL Injection by ensuring user input is treated as a parameter, not a command.
 - If an attacker attempts ```1; DROP TABLE users;```, it is safely handled as a string rather than executing a dangerous operation.
 
-<h3 class="text-xl font-semibold text-primary my-4">3. Scramble Sensitive Data</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="scramble-sensitive-data">3. Scramble Sensitive Data</h3>
 
 Storing passwords in plain text is a major security risk. Instead, they should be hashed, i.e, converted into unreadable strings that only your system can verify.
 
@@ -302,7 +302,7 @@ hashPassword("mySecret123!");
 
 💡 **Test It**: Run the code multiple times, you'll get a different hash each time due to the salt.
 
-<h3 class="text-xl font-semibold text-primary my-4">4. Row-Level Security (RLS)</h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="row-level-security">4. Row-Level Security (RLS)</h3>
 
 Imagine a shared notebook where each person can only see their own pages, that's how Row-Level Security (RLS) works for databases. It ensures users can only access their own data instead of viewing everything.
 
@@ -323,7 +323,7 @@ CREATE POLICY user_isolation ON users
 ✅ Prevents unauthorized data access <br/>
 ✅ Works at the database level (no need to filter manually in the backend)
 
-<h3 class="text-xl font-semibold text-primary my-4">5. Lock the Safe </h3>
+<h3 class="text-xl font-semibold text-primary my-4" id="lock-the-safe">5. Lock the Safe </h3>
 
 Even with secure queries and hashed passwords, your database needs extra layers of protection:
 
@@ -354,7 +354,7 @@ By implementing these measures, you fortify your database against attacks and pr
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Conclusion </h2> 
+<h2 class="text-2xl font-semibold text-primary my-4" id="conclusion">Conclusion </h2> 
 
 Keeping APIs and databases secure isn't just about best practices-it's a necessity. By adding authentication, access controls, input validation, safe queries, hashing, and row-level security, we make it much harder for attackers to get in.
 
