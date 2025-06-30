@@ -2,10 +2,10 @@
 const projects = [
   {
     title: "DeepFind.Me",
-    image: "/dfme.avif",
+    image: "/dfme.webp",
     description: "Deepfind.me is an educational OSINT platform offering tools and resources to help users understand and manage their digital footprint.",
     github: null,
-    demo: "https://deepfind.me?ref=buddhsen-tripathi",
+    demo: "https://deepfind.me",
     technologies: ["Next.Js", "NestJs", "Supabase", "Web Crypto API", "OpenAI API"],
   },
   {
