@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ArrowLeft, Loader2, AlertCircle, CheckCircle, Twitter } from 'lucide-react';
@@ -11,6 +11,7 @@ import ViewCounter from '@/components/ViewCounter';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from "@/components/ui/progress";
+import { AdScript } from '@/components/AdScript';
 
 interface SpamAnalysisResult {
     isSpam: boolean;
@@ -76,6 +77,7 @@ export default function SpamOrNotPage() {
 
     return (
         <main className="container mx-auto space-y-4 px-4">
+            <AdScript/>
             <div className="flex items-center justify-between mb-16">
                 <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" />

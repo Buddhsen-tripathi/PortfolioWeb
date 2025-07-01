@@ -8,11 +8,11 @@ slug: cybersecurity-terms-decoded
 
 In today's digital world, cybersecurity is more important than ever. Whether you're browsing the web, managing online accounts, or working remotely, understanding key cybersecurity terms can help you stay safe. This guide breaks down essential cybersecurity concepts in simple terms.
 
-<h2 class="text-2xl font-semibold text-primary my-4">1. Malware</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="malware">1. Malware</h2>
 
 **Malware** (short for **malicious software**) is any program designed to **harm, exploit, or damage** devices and networks.
 
-### **Common Types of Malware**:
+<h3 class="text-xl font-semibold text-primary my-4" id="common-types-of-malware">Common Types of Malware</h3>
 - **Viruses**: Attach themselves to files and spread when executed.
 - **Trojans**: Disguised as useful programs but perform harmful actions.
 - **Worms**: Self-replicate and spread across networks without user action.
@@ -27,17 +27,17 @@ In today's digital world, cybersecurity is more important than ever. Whether you
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">2. Phishing</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="phishing">2. Phishing</h2>
 
 **Phishing** is a cyberattack where **hackers trick users** into revealing sensitive information by pretending to be a trustworthy source.
 
-### **How Phishing Works**:
+<h3 class="text-xl font-semibold text-primary my-4" id="how-phishing-works">How Phishing Works</h3>
 1. You receive an email that looks like it's from your bank.
 2. It contains an urgent message: "Your account has been locked. Click here to verify."
 3. Clicking the link takes you to a **fake website** that looks like your bank's login page.
 4. If you enter your credentials, **hackers steal your login details.**
 
-#### **Example: Fake Phishing Email**
+<h4 class="text-lg font-semibold text-primary my-4" id="example-fake-phishing-email">Example: Fake Phishing Email</h4>
 ```email
 From: security@yourbank.com  
 Subject: Urgent! Account Verification Needed  
@@ -60,11 +60,11 @@ Your Bank's Security Team
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">3. Ransomware</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="ransomware">3. Ransomware</h2>
 
 **Ransomware** is a type of malware that **locks or encrypts your files** and demands payment (a ransom) to restore access.
 
-### **How Ransomware Works**
+<h3 class="text-xl font-semibold text-primary my-4" id="how-ransomware-works">How Ransomware Works</h3>
 1. You download an infected attachment or click a malicious link.
 2. Your files become **encrypted** and inaccessible.
 3. A message appears: *"Pay $500 in Bitcoin to recover your files."*
@@ -77,22 +77,22 @@ Your Bank's Security Team
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">4. Zero-Day Attack</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="zero-day-attack">4. Zero-Day Attack</h2>
 
-A **Zero-Day Attack** occurs when hackers exploit a software vulnerability **before the developer releases a fix**. Since the issue is unknown to the software vendor, there’s **zero time** to fix it before exploitation.
+A **Zero-Day Attack** occurs when hackers exploit a software vulnerability **before the developer releases a fix**. Since the issue is unknown to the software vendor, there's **zero time** to fix it before exploitation.
 
-### **Why "Zero-Day"?**
+<h3 class="text-xl font-semibold text-primary my-4" id="why-zero-day">Why "Zero-Day"?</h3>
 The term **"zero-day"** signifies that developers have **zero days** to patch the vulnerability before hackers start using it.
 
-### **How It Works**
+<h3 class="text-xl font-semibold text-primary my-4" id="how-zero-day-works">How It Works</h3>
 1. A **hidden security flaw** exists in the software.
 2. Hackers **discover and exploit** the flaw before the vendor is aware.
 3. The attack spreads before a **security patch** is released.
 4. Developers rush to fix the issue, but unpatched systems remain vulnerable.
 
-💡 **Did you know:** The **Stuxnet worm**, which targeted Iran’s nuclear program, was one of the most sophisticated **zero-day exploits** ever discovered.
+💡 **Did you know:** The **Stuxnet worm**, which targeted Iran's nuclear program, was one of the most sophisticated **zero-day exploits** ever discovered.
 
-#### **Example: Exploiting an Unpatched Software Bug**
+<h4 class="text-lg font-semibold text-primary my-4" id="example-exploiting-unpatched-bug">Example: Exploiting an Unpatched Software Bug</h4>
 ```python
 # Example of a zero-day exploit concept (not actual attack code)
 def vulnerable_function(input_data):
@@ -107,16 +107,16 @@ def vulnerable_function(input_data):
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">5. Firewall</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="firewall">5. Firewall</h2>
 
 A **firewall** is a network security system that **monitors and controls** incoming and outgoing traffic based on predetermined security rules.
 
-### **How Firewalls Work**
+<h3 class="text-xl font-semibold text-primary my-4" id="how-firewalls-work">How Firewalls Work</h3>
 - **Packet Filtering:** Inspects data packets and allows or blocks them based on security rules.
 - **Stateful Inspection:** Tracks active connections and blocks unauthorized access.
 - **Proxy Firewall:** Intermediary between users and the internet, filtering malicious traffic.
 
-#### **Example: A Simple Firewall Rule in Python**
+<h4 class="text-lg font-semibold text-primary my-4" id="example-simple-firewall-rule">Example: A Simple Firewall Rule in Python</h4>
 ```python
 import socket
 
@@ -136,11 +136,11 @@ block_ip("192.168.1.10")
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">6. Social Engineering</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="social-engineering">6. Social Engineering</h2>
 
 **Social engineering** is when hackers use **psychological tricks** to manipulate people into revealing confidential information.
 
-### **Common Techniques**:
+<h3 class="text-xl font-semibold text-primary my-4" id="common-techniques">Common Techniques</h3>
 - **Pretexting**: Pretending to be a trusted figure (e.g., IT support) to get information.
 - **Baiting**: Leaving infected USB drives in public places to trick users into plugging them in.
 - **Impersonation**: Using fake social media profiles to steal personal data.
@@ -155,11 +155,11 @@ block_ip("192.168.1.10")
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">7. VPN (Virtual Private Network)</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="vpn-virtual-private-network">7. VPN (Virtual Private Network)</h2>
 
 A **VPN** encrypts your internet traffic, making your online activities **private and secure**.
 
-### **Why Use a VPN?**
+<h3 class="text-xl font-semibold text-primary my-4" id="why-use-a-vpn">Why Use a VPN?</h3>
 - **Prevents hacking** on public Wi-Fi networks.
 - **Hides your IP address** to prevent tracking.
 - **Bypasses geo-restrictions** to access content unavailable in your region.
@@ -172,16 +172,16 @@ A **VPN** encrypts your internet traffic, making your online activities **privat
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">8. DDoS Attack</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="ddos-attack">8. DDoS Attack</h2>
 
 A **DDoS (Distributed Denial-of-Service) attack** overwhelms a website or server by flooding it with excessive traffic, causing it to crash.
 
-### **How DDoS Attacks Work**
+<h3 class="text-xl font-semibold text-primary my-4" id="how-ddos-attacks-work">How DDoS Attacks Work</h3>
 1. Hackers infect thousands of devices with malware, forming a **botnet**.
 2. The botnet sends **massive amounts of requests** to a website.
 3. The website **crashes** due to overload.
 
-#### **Example: A Basic DDoS Simulation in Python**
+<h4 class="text-lg font-semibold text-primary my-4" id="example-basic-ddos-simulation">Example: A Basic DDoS Simulation in Python</h4>
 ```python
 import requests
 
@@ -196,12 +196,12 @@ while True:
 
 ---
 
-<h2 class="text-2xl font-semibold text-primary my-4">Final Thoughts</h2>
+<h2 class="text-2xl font-semibold text-primary my-4" id="final-thoughts">Final Thoughts</h2>
 
 Understanding these cybersecurity concepts is **crucial** for staying safe online. **Cyber threats evolve daily**, so staying informed and using security best practices can help protect your data.
 
 **Next Steps**: Enable 2FA, use strong passwords, and stay cautious online.
 
-Stay tuned for more tech content and tutorials. Hit me up on my socials and let me know what you think, I’m always up for a good tech convo.
+Stay tuned for more tech content and tutorials. Hit me up on my socials and let me know what you think, I'm always up for a good tech convo.
 
 ---
