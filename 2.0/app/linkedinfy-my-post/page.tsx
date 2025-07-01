@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import ViewCounter from '@/components/ViewCounter'
+import { AdScript } from '@/components/AdScript'
 
 export default function LinkedinfyMyPostPage() {
   const [input, setInput] = useState('')
@@ -41,6 +42,7 @@ export default function LinkedinfyMyPostPage() {
 
   return (
     <div className="w-full p-6">
+      <AdScript/>
       {/* Navigation bar */}
       <nav className="flex items-center justify-between mb-6">
         <Link href="/projects" className="flex items-center text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600">
