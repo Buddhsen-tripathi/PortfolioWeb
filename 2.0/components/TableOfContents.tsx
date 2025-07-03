@@ -160,12 +160,13 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
                   `}
                   style={{ 
                     paddingLeft: `${(item.level - 1) * 12 + 12}px`,
-                    fontSize: item.level === 2 ? '0.875rem' : '0.8125rem'
+                    fontSize: item.level === 2 ? '0.875rem' : item.level === 3 ? '0.8125rem' : '0.75rem'
                   }}
                 >
                   <span className="block truncate">
                     {item.level === 2 && '📄 '}
                     {item.level === 3 && '🔸 '}
+                    {item.level === 4 && '▫️ '}
                     {item.text}
                   </span>
                 </motion.button>
