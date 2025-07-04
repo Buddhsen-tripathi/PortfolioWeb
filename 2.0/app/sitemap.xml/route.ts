@@ -23,7 +23,7 @@ export async function GET(): Promise<Response> {
     changefreq,
   }));
 
-  const blogPosts = posts.map((post) => ({
+  const blogPosts = (await posts).map((post) => ({
     url: `${baseUrl}/blogs/${post.slug}`,
     lastModified: parseDate(post.date),
     priority: "0.8",

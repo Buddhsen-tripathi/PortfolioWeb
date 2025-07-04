@@ -1,40 +1,13 @@
-import fs from 'fs'
-import path from 'path'
 import Link from 'next/link'
-import matter from 'gray-matter'
-
-interface BlogPost {
-  title: string
-  excerpt: string
-  date: string
-  slug: string
-}
+import { getAllBlogPostsFromS3, BlogPostData } from '@/lib/r2Client'
 
 interface RelatedBlogsProps {
   currentSlug: string
   currentTitle: string
 }
 
-async function getAllPosts(): Promise<BlogPost[]> {
-  const postsDirectory = path.join(process.cwd(), 'app/blogs/posts')
-  const filenames = fs.readdirSync(postsDirectory)
-
-  const posts = filenames
-    .filter((filename) => filename.endsWith('.md') || filename.endsWith('.mdx'))
-    .map((filename) => {
-      const filePath = path.join(postsDirectory, filename)
-      const fileContents = fs.readFileSync(filePath, 'utf8')
-      const { data } = matter(fileContents)
-      
-      return {
-        title: data.title,
-        excerpt: data.excerpt,
-        date: data.date,
-        slug: filename.replace(/\.mdx?$/, ''),
-      }
-    })
-
-  return posts
+async function getAllPosts(): Promise<BlogPostData[]> {
+  return await getAllBlogPostsFromS3()
 }
 
 function jaccardSimilarity(str1: string, str2: string): number {
