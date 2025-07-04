@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate-blogs": "npx tsx scripts/migrate-blogs-to-r2.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.842.0",
     "@google/generative-ai": "^0.24.0",
     "@mdx-js/mdx": "^3.1.0",
     "@next/bundle-analyzer": "^15.3.3",
@@ -53,6 +55,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/rss": "^0.0.32",
+    "dotenv": "^17.0.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "postcss": "^8",
