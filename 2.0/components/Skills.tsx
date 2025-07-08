@@ -1,17 +1,20 @@
 'use client'
 import Marquee from 'react-fast-marquee'
-import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiAngular, SiCplusplus, SiDocker, SiFlask, SiGooglecloud, SiJenkins, SiKubernetes, SiMysql, SiNestjs, SiPostgresql, SiPython, SiSupabase, SiGithubactions, SiMocha, SiTensorflow} from 'react-icons/si'
+import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiAngular, SiCplusplus, SiDocker, SiFlask, SiGooglecloud, SiJenkins, SiKubernetes, SiMysql, SiNestjs, SiPostgresql, SiPython, SiSupabase, SiGithubactions, SiMocha, SiTensorflow, SiVuedotjs, SiPrometheus, SiFastapi, SiScikitlearn, SiRedux} from 'react-icons/si'
 import { FaAws, FaJava } from "react-icons/fa"
 import { VscAzure } from "react-icons/vsc"
 
 const FRONTEND_N_CICD_SKILLS = [
   { Icon: SiReact, name: "React" },
   { Icon: SiNextdotjs, name: "Next.js" },
+  { Icon: SiVuedotjs, name: "Vue.js"},
+  { Icon: SiRedux, name: "Redux" },
   { Icon: SiTypescript, name: "TypeScript" },
   { Icon: SiJavascript, name: "JavaScript" },
   { Icon: SiTailwindcss, name: "Tailwind CSS" },
   { Icon: SiAngular, name: "Angular" },
   { Icon: SiTensorflow, name: "Tensorflow" },
+  { Icon: SiScikitlearn, name: "scikit-learn" },
   { Icon: SiJenkins, name: "Jenkins" },
   { Icon: SiGithubactions, name: "GitHub Actions" },
   { Icon: SiMocha, name: "Mocha" },
@@ -31,6 +34,8 @@ const BACKEND_DEVOPS_SKILLS = [
   { Icon: FaAws, name: "AWS" },
   { Icon: SiGooglecloud, name: "Google Cloud" },
   { Icon: VscAzure, name: "Azure" },
+  { Icon: SiPrometheus, name: "Prometheus" },
+  { Icon: SiFastapi, name: "FastAPI" },
   { Icon: SiJenkins, name: "Jenkins" },
   { Icon: FaJava, name: "Java" },
   { Icon: SiPython, name: "Python" },
