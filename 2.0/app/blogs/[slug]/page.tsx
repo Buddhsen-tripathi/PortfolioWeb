@@ -37,7 +37,7 @@ export default async function BlogPost({ params }: { params: paramsType }) {
       <meta property="og:image" content="https://buddhsentripathi.com/default-image-blogs.webp" />
       <title>{`${data.title} - Buddhsen Tripathi`}</title>
 
-      <AdScript/>
+      <AdScript />
 
       <div className="flex justify-between items-center">
         <Link href="/blogs" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
@@ -75,6 +75,15 @@ export default async function BlogPost({ params }: { params: paramsType }) {
           SocialShare: SocialShare
         }}
       />
+
+      {/* Social Share component */}
+      <SocialShare
+        url={`https://buddhsentripathi.com/blogs/${data.slug}`}
+        title={data.title}
+      />
+
+      <hr className="my-8 border-t border-gray-300 dark:border-gray-700" />
+
       {/* Newsletter subscription component */}
       <NewsletterSubscription />
 
