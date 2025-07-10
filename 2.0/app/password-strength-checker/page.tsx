@@ -146,7 +146,7 @@ export default function PasswordStrengthCheckerPage() {
                     <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
                     <AlertTitle className="text-green-800 dark:text-green-300">Excellent Strength</AlertTitle>
                     <AlertDescription className="text-green-700 dark:text-green-400">
-                      This is a strong password. Keep it safe and unique to this account.
+                      This is a strong password. Keep it safe and unique.
                     </AlertDescription>
                   </Alert>
                 )}
