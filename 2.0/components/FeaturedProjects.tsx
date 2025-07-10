@@ -36,6 +36,15 @@ const projects = [
 
 const funnyProjects = [
   {
+    title: "Password Strength Checker",
+    image: "/ps-checker.avif",
+    description: "A tool to analyze the strength of your passwords and provide a genuine feedback.",
+    github: "null",
+    demo: "https://www.buddhsentripathi.com/password-strength-checker",
+    technologies: [],  
+    path: "password-strength-checker"
+  },
+  {
     title: "Twitter/X Spam Check",
     image: "/spam-or-not.webp",
     description: "Enter a Twitter/X username to analyze their recent activity for potential spam-like behavior using AI.",
@@ -79,6 +88,7 @@ import { SiGithub } from "react-icons/si";
 import { BsArrowUpRight, BsArrowRight } from "react-icons/bs";
 import { usePathname } from 'next/navigation'
 import ViewCounter from './ViewCounter';
+import { path } from 'pdfkit';
 
 export default function FeaturedProjects() {
   const pathname = usePathname()
