@@ -54,15 +54,6 @@ const funnyProjects = [
     path: "spam-or-not"
   },
   {
-    title: "Linkedinfy My Post",
-    image: "/linkedinfy.webp",
-    description: "Transform your posts into high-engagement LinkedIn content in seconds. Optimize, refine, and stand out effortlessly.",
-    github: null,
-    demo: "https://www.buddhsentripathi.com/linkedinfy-my-post",
-    technologies: [],
-    path: "linkedinfy-my-post"
-  },
-  {
     title: "Code Runner",
     image: "/code-runner.webp",
     description: "A fast-paced game where you dodge bugs and climb the leaderboard. Sharpen your reflexes and aim for the top.",
