@@ -34,7 +34,7 @@ const projects = [
   }
 ];
 
-const funnyProjects = [
+const funProjects = [
   {
     title: "Password Strength Checker",
     image: "/ps-checker.avif",
@@ -79,7 +79,6 @@ import { SiGithub } from "react-icons/si";
 import { BsArrowUpRight, BsArrowRight } from "react-icons/bs";
 import { usePathname } from 'next/navigation'
 import ViewCounter from './ViewCounter';
-import { path } from 'pdfkit';
 
 export default function FeaturedProjects() {
   const pathname = usePathname()
@@ -149,7 +148,7 @@ export default function FeaturedProjects() {
           Random projects to engage my 𝕏 community (<a href="https://x.com/intent/follow?screen_name=btr1pathi" className='text-blue-500'>@btr1pathi</a>)
         </h3>
         <div className="space-y-4">
-          {funnyProjects.map((project) => (
+          {funProjects.map((project) => (
             <div key={project.title} className="flex flex-col md:flex-row gap-6 bg-card rounded-lg overflow-hidden shadow-md transition-all hover:shadow-lg hover:bg-primary/5 border dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800">
               <div className="md:w-2/5 w-full h-full relative">
                 <Image
@@ -165,9 +164,9 @@ export default function FeaturedProjects() {
                 <p className="mb-4 mt-4">{project.description}</p>
                 {project.path && <p className="mb-4 mt-4"><ViewCounter slug={project.path} readOnly={true} /></p>}
                 <div className="flex space-x-4">
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  <Link href={`/${project.path}`} className="text-primary hover:underline">
                     <BsArrowUpRight className="inline-block mr-1" /> Live
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
