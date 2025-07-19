@@ -18,14 +18,13 @@ if (!geminiApiKey) {
 const exa = new Exa(exaApiKey);
 const genAI = new GoogleGenerativeAI(geminiApiKey || "fallback-gemini-key");
 
-// --- Rate Limiter Configuration ---
+// Rate Limiter Configuration
 const rateLimiter = new RateLimiterMemory({
-    points: 5, // Allow 5 requests...
-    duration: 20, // ...per 20 seconds per unique key (IP + Origin)
+    points: 5, // Allow 5 requests
+    duration: 20, // per 20 seconds per unique key (IP + Origin)
 });
-// --- End Rate Limiter Configuration ---
 
-// --- Gemini Configuration ---
+// Gemini Configuration
 const generationConfig = {
     temperature: 0.5,
     topK: 1,
@@ -41,17 +40,16 @@ const safetySettings = [
 ];
 
 const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash", // Use a supported model like 1.5-flash
+    model: "gemini-1.5-flash", // Use a supported model like 2.0-flash
     generationConfig,
     safetySettings
 });
-// --- End Gemini Configuration ---
 
 const CACHE_TTL_HOURS = 24;
 
 export async function POST(request: NextRequest) {
 
-    // --- Rate Limiting Check ---
+    //Rate Limiting Check
     const requestHeaders = await headers(); 
     const origin = requestHeaders.get('origin') ?? 'unknown_origin';
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || request.headers.get('x-real-ip') || 'unknown_ip';
@@ -63,15 +61,14 @@ export async function POST(request: NextRequest) {
         // Add any other origins that should bypass rate limiting
     ];
 
-    // --- Origin Check ---
+    //Origin Check
     // Block requests from origins not in the allowed list
     if (!allowedOrigins.includes(origin)) {
         console.warn(`Blocked request from disallowed origin: ${origin} (IP: ${ip})`);
         return NextResponse.json({ error: 'Forbidden: Invalid origin' }, { status: 403 });
     }
-    // --- End Origin Check ---
 
-    // --- Rate Limiting Check (Now only applies to allowed origins) ---
+    //Rate Limiting Check (Now only applies to allowed origins)
     // Create a combined key using IP and the allowed origin
     const rateLimitKey = `${ip}_${origin}`;
 
@@ -88,7 +85,6 @@ export async function POST(request: NextRequest) {
             },
         });
     }
-    // --- End Rate Limiting Check ---
 
     if (!exaApiKey || !geminiApiKey) {
         return NextResponse.json({ error: 'API keys are not configured correctly on the server.' }, { status: 500 });
@@ -102,7 +98,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'Username is required and must be a string.' }, { status: 400 });
         }
 
-        // --- 1. Check Supabase Cache ---
+        //1. Check Supabase Cache
         const cacheCutoff = new Date();
         cacheCutoff.setHours(cacheCutoff.getHours() - CACHE_TTL_HOURS);
 
@@ -124,10 +120,9 @@ export async function POST(request: NextRequest) {
                 return NextResponse.json(cachedResult, { status: 200 });
         }
         console.log(`Cache miss or expired for username: ${username}`);
-        // --- End Cache Check ---
 
 
-        // --- 2. Fetch Tweets with Exa (if not cached) ---
+        //2. Fetch Tweets with Exa (if not cached)
         const endDate = new Date();
         const startDate = new Date();
         startDate.setDate(endDate.getDate() - 30); // Look back 30 days
@@ -148,7 +143,7 @@ export async function POST(request: NextRequest) {
 
         console.log(`Exa API Cost: $${exaResult?.costDollars?.total || 'N/A'}`);
 
-        // --- 3. Extract Text Content ---
+        //3. Extract Text Content
         let combinedTweetsText = "";
         exaResult.results.forEach(result => {
             if (result.text) {
@@ -179,19 +174,19 @@ export async function POST(request: NextRequest) {
             return NextResponse.json(noTweetsResult, { status: 200 });
         }
 
-        const MAX_TEXT_LENGTH = 15000; // Gemini Pro has context limits
+        const MAX_TEXT_LENGTH = 15000; // Gemini has context limits
         if (combinedTweetsText.length > MAX_TEXT_LENGTH) {
             combinedTweetsText = combinedTweetsText.substring(0, MAX_TEXT_LENGTH) + "... [truncated]";
         }
 
-        // --- 4. Analyze with Gemini (if not cached) ---
+        //4. Analyze with Gemini (if not cached)
         const prompt = `
                 Analyze the following collection of recent tweets (separated by '---') from the user "${username}" to determine if their activity seems like spam. Consider factors like repetitive posting of identical or near-identical content, excessive promotion (especially affiliate links or low-quality products), irrelevant replies or mentions, engagement baiting (e.g., "like if you agree"), posting frequency, and overall bot-like behavior. Provide a confidence score for your assessment.
 
                 Tweets:
-                ---
+               
                 ${combinedTweetsText}
-                ---
+               
 
                 Based ONLY on the provided tweets, provide a JSON response with the following structure:
                 {
@@ -234,7 +229,7 @@ export async function POST(request: NextRequest) {
             }
         }
 
-        // --- 5. Prepare Final Result ---
+        //5. Prepare Final Result
          const finalResult = {
             isSpam: geminiAnalysis?.isSpam ?? false,
             reason: geminiAnalysis?.reason ?? "Analysis unavailable",
@@ -245,7 +240,7 @@ export async function POST(request: NextRequest) {
         };
 
 
-        // --- 6. Store Result in Supabase Cache ---
+        //6. Store Result in Supabase Cache
         const { error: upsertError } = await supabaseAdmin
             .from('spam_analysis_cache')
             .upsert({
@@ -260,10 +255,9 @@ export async function POST(request: NextRequest) {
         } else {
                 console.log(`Cached result for username: ${username}`);
         }
-        // --- End Cache Store ---
 
 
-        // --- 7. Return Result ---
+        //7. Return Result
         return NextResponse.json(finalResult, { status: 200 });
 
     } catch (error: any) {

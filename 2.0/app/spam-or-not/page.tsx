@@ -76,9 +76,9 @@ export default function SpamOrNotPage() {
     };
 
     return (
-        <main className="container mx-auto space-y-4 px-4">
+        <main className="container mx-auto">
             <AdScript/>
-            <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center justify-between mb-8">
                 <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Projects
@@ -159,6 +159,11 @@ export default function SpamOrNotPage() {
                     </CardContent>
                 </Card>
             )}
+            <div className="flex justify-center mt-8">
+                <p className="text-center text-sm text-muted-foreground max-w-lg">
+                    Note: This analysis is based on recent activity and may not be accurate.<br/>Always use caution when interacting with accounts. If the username was recently changed, results may be inaccurate due to insufficient data.
+                </p>
+            </div>
         </main>
     );
 }
