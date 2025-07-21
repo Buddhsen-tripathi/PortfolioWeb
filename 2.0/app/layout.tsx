@@ -62,15 +62,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         > 
+        <PostHogProvider>
           <ScrollProgress />
           <Navbar />
           <main className="flex-grow">
             <div className="max-w-[1000px] mx-auto px-4 py-12">
-              <PostHogProvider>
                 {children}
-              </PostHogProvider>
             </div>
           </main>
+        </PostHogProvider>
         </ThemeProvider>
         <div className='mb-32 md:mb-16'></div>
       </body>
