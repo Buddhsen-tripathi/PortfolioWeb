@@ -87,30 +87,37 @@ export interface BlogPostData {
 
 // Get a single blog post from R2
 export async function getBlogPostFromS3(slug: string) {
-  if (!isR2Configured()) {
-    console.warn('R2 not configured, returning empty post')
-    return {
-      content: '',
-      data: { title: 'R2 Not Configured', date: '', excerpt: 'Please configure Cloudflare R2 credentials', slug },
+  // Try R2 first if configured
+  if (isR2Configured()) {
+    try {
+      const command = new GetObjectCommand({
+        Bucket: BUCKET_NAME,
+        Key: `${BLOG_PREFIX}${slug}.mdx`,
+      })
+
+      const response = await s3Client.send(command)
+      
+      if (response.Body) {
+        const content = await response.Body.transformToString()
+        const { content: mdxContent, data } = matter(content)
+        const formattedDate = data.date ? convertDateFormat(data.date) : convertDateFormat(new Date().toISOString())
+        return {
+          content: mdxContent,
+          data: { ...data, date: formattedDate, slug } as BlogPostData,
+        }
+      }
+    } catch (error) {
+      console.warn('Post not found in R2, checking local files...')
     }
   }
 
+  // If not found in R2 or R2 not configured, try local files
   try {
-    const command = new GetObjectCommand({
-      Bucket: BUCKET_NAME,
-      Key: `${BLOG_PREFIX}${slug}.mdx`,
-    })
-
-    const response = await s3Client.send(command)
-    
-    if (!response.Body) {
-      throw new Error('No content found')
-    }
-
-    const content = await response.Body.transformToString()
+    const fs = require('fs').promises
+    const path = require('path')
+    const filePath = path.join(process.cwd(), 'app', 'blogs', 'posts', `${slug}.mdx`)
+    const content = await fs.readFile(filePath, 'utf8')
     const { content: mdxContent, data } = matter(content)
-
-    // Convert and format the date
     const formattedDate = data.date ? convertDateFormat(data.date) : convertDateFormat(new Date().toISOString())
 
     return {
@@ -118,7 +125,7 @@ export async function getBlogPostFromS3(slug: string) {
       data: { ...data, date: formattedDate, slug } as BlogPostData,
     }
   } catch (error) {
-    console.error('Error fetching blog post from R2:', error)
+    console.error('Error fetching blog post:', error)
     return {
       content: '',
       data: { title: 'Post Not Found', date: '', excerpt: '', slug },
@@ -165,39 +172,82 @@ export async function getBlogSlugsFromS3() {
   }
 }
 
-// Get all blog posts metadata from R2
-export async function getAllBlogPostsFromS3() {
-  if (!isR2Configured()) {
-    console.warn('R2 not configured, returning empty posts')
+// Add function to read local posts
+async function getLocalBlogPosts(): Promise<BlogPostData[]> {
+  try {
+    const fs = require('fs').promises
+    const path = require('path')
+    const matter = require('gray-matter')
+
+    const postsDirectory = path.join(process.cwd(), 'app', 'blogs', 'posts')
+    const files = await fs.readdir(postsDirectory)
+
+    const posts = await Promise.all(
+      files
+        .filter((file: string) => file.endsWith('.mdx'))
+        .map(async (file: string) => {
+          const filePath = path.join(postsDirectory, file)
+          const content = await fs.readFile(filePath, 'utf8')
+          const { data } = matter(content)
+          const slug = file.replace(/\.mdx$/, '')
+
+          return {
+            title: data.title,
+            excerpt: data.excerpt,
+            date: convertDateFormat(data.date),
+            slug,
+            type: data.type,
+          } as BlogPostData
+        })
+    )
+
+    return posts
+  } catch (error) {
+    console.warn('Error reading local posts:', error)
     return []
+  }
+}
+
+// Modify getAllBlogPostsFromS3 to include local posts
+export async function getAllBlogPostsFromS3(): Promise<BlogPostData[]> {
+  let r2Posts: BlogPostData[] = []
+  let localPosts: BlogPostData[] = []
+
+  // Fetch from R2 if configured
+  if (isR2Configured()) {
+    try {
+      const slugs = await getBlogSlugsFromS3()
+      r2Posts = await Promise.all(
+        slugs.map(async ({ slug }) => {
+          const { data } = await getBlogPostFromS3(slug)
+          return data
+        })
+      )
+      r2Posts = r2Posts.filter(post => post.title !== 'Post Not Found')
+    } catch (error) {
+      console.error('Error fetching R2 posts:', error)
+    }
   }
 
-  try {
-    const slugs = await getBlogSlugsFromS3()
-    const posts = await Promise.all(
-      slugs.map(async ({ slug }) => {
-        const { data } = await getBlogPostFromS3(slug)
-        return data
-      })
-    )
+  // Fetch local posts
+  localPosts = await getLocalBlogPosts()
+
+  // Merge posts, giving precedence to R2 posts
+  const r2Slugs = new Set(r2Posts.map(post => post.slug))
+  const mergedPosts = [
+    ...r2Posts,
+    ...localPosts.filter(post => !r2Slugs.has(post.slug))
+  ]
+
+  // Sort all posts by date
+  return mergedPosts.sort((a, b) => {
+    const dateA = new Date(a.date.replace(/(\d+) (\w+) (\d+)/, '$2 $1, $3'))
+    const dateB = new Date(b.date.replace(/(\d+) (\w+) (\d+)/, '$2 $1, $3'))
     
-    // Sort posts by date (newest first)
-    return posts
-      .filter(post => post.title !== 'Post Not Found')
-      .sort((a, b) => {
-        // Convert formatted dates back to Date objects for comparison
-        const dateA = new Date(a.date.replace(/(\d+) (\w+) (\d+)/, '$2 $1, $3'))
-        const dateB = new Date(b.date.replace(/(\d+) (\w+) (\d+)/, '$2 $1, $3'))
-        
-        // If date parsing fails, fallback to string comparison
-        if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
-          return b.date.localeCompare(a.date)
-        }
-        
-        return dateB.getTime() - dateA.getTime()
-      })
-  } catch (error) {
-    console.error('Error fetching all blog posts from R2:', error)
-    return []
-  }
+    if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+      return b.date.localeCompare(a.date)
+    }
+    
+    return dateB.getTime() - dateA.getTime()
+  })
 }
