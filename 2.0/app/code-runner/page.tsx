@@ -286,21 +286,23 @@ export default function CodeRunner() {
 
   if (!name) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4 px-4">
-        <h1 className="text-2xl font-bold text-center">Code Runner - Enter Your Name</h1>
-        <input
-          type="text"
-          value={inputName}
-          onChange={(e) => setInputName(e.target.value)}
-          className="border rounded px-4 py-2 w-full max-w-xs"
-          placeholder="Your coder alias"
-        />
-        <button
-          onClick={handleNameSubmit}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Start Coding
-        </button>
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4 px-4 bg-background">
+        <div className="bg-card p-8 rounded-lg shadow-lg shadow-primary/15 border border-border text-center space-y-4">
+          <h1 className="text-2xl font-bold text-foreground  text-tracking-tight">Code Runner - Enter Your Name</h1>
+          <input
+            type="text"
+            value={inputName}
+            onChange={(e) => setInputName(e.target.value)}
+            className="border border-border rounded-lg shadow-sm shadow-primary/15 px-4 py-2 w-full max-w-sm bg-background dark:bg-background text-foreground placeholder:text-muted-foreground focus-ring transition-colors" 
+            placeholder="Your coder alias"
+          />
+          <button
+            onClick={handleNameSubmit}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors focus-ring font-medium shadow-sm shadow-primary/15"
+          >
+            Start Coding
+          </button>
+        </div>
       </div>
     );
   }
@@ -337,21 +339,28 @@ export default function CodeRunner() {
       <meta name="theme-color" content="#1a1a1a" />
 
       <div className="flex items-center justify-between">
-        <Link href="/projects" className="flex items-center text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600">
+        <Link 
+          href="/projects" 
+          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-lg"
+        >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Projects
         </Link>
-        <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+        <div className="flex items-center text-sm text-muted-foreground">
           <ViewCounter slug="code-runner" readOnly={false} />
         </div>
       </div>
 
       <div className="flex flex-col items-center gap-4 w-full">
-        <h1 className="text-3xl font-bold">Code Runner</h1>
-        <p className="text-sm text-gray-500">Welcome, {name}!</p>
-        <div className="flex gap-4">
-          <p>Score: {score}</p>
-          <p>High Score: {highScore}</p>
+        <h1 className="text-3xl font-bold text-foreground  text-tracking-tight">Code Runner</h1>
+        <p className="text-sm text-muted-foreground">Welcome, <span className="text-primary font-medium">{name}</span>!</p>
+        <div className="flex gap-4 text-foreground">
+          <p className="bg-secondary text-secondary-foreground px-3 py-1 rounded-lg border border-border">
+            Score: <span className="font-bold text-primary">{score}</span>
+          </p>
+          <p className="bg-secondary text-secondary-foreground px-3 py-1 rounded-lg border border-border">
+            High Score: <span className="font-bold text-chart-1">{highScore}</span>
+          </p>
         </div>
         <div
           ref={containerRef}
@@ -364,12 +373,12 @@ export default function CodeRunner() {
             ref={canvasRef}
             width={GAME_WIDTH}
             height={GAME_HEIGHT}
-            className="border border-gray-300 rounded-lg w-full h-full touch-none"
+            className="border border-border rounded-lg w-full h-full touch-none shadow-lg shadow-primary/15"
           />
         </div>
         {gameOver && (
-          <div className="space-y-4">
-            <p className="text-xl font-bold text-center">Game Over!</p>
+          <div className="space-y-4 bg-card p-6 rounded-lg border border-border shadow-md shadow-primary/15 text-center">
+            <p className="text-xl font-bold text-foreground">Game Over!</p>
             <div className="flex gap-4 justify-center">
               <button
                 onClick={() => {
@@ -378,24 +387,40 @@ export default function CodeRunner() {
                   scoreRef.current = 0;
                   startGame();
                 }}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors focus-ring font-medium shadow-sm shadow-primary/15"
               >
                 Run Again
               </button>
             </div>
           </div>
         )}
-        <div className="text-sm text-gray-500 text-center">
+        <div className="text-sm text-muted-foreground text-center px-4 py-2 rounded-lg border border-border">
           Use arrow keys or touch to dodge bugs
         </div>
 
-        <div className="w-full max-w-md mt-8">
-          <h2 className="text-xl font-bold mb-2">🏆 Leaderboard (Top 10)</h2>
-          <ul className="space-y-1 text-sm">
+        <div className="w-full max-w-md mt-8 bg-card p-6 rounded-lg border border-border shadow-md shadow-primary/15">
+          <h2 className="text-xl font-bold mb-4 text-foreground  text-tracking-normal">🏆 Leaderboard (Top 10)</h2>
+          <ul className="space-y-2 text-sm">
             {leaderboard.map((entry, index) => (
-              <li key={entry.id} className="flex justify-between">
-                <span>{index + 1}. {entry.name}</span>
-                <span>{entry.score}</span>
+              <li 
+                key={entry.id} 
+                className={`flex justify-between p-2 rounded-lg transition-colors ${
+                  index === 0 
+                    ? 'bg-chart-1/10 text-chart-1 border border-chart-1/20' 
+                    : index === 1 
+                      ? 'bg-chart-2/10 text-chart-2 border border-chart-2/20'
+                      : index === 2
+                        ? 'bg-chart-3/10 text-chart-6 border border-chart-6/20'
+                        : 'bg-secondary dark:bg-secondary/80 text-secondary-foreground border border-border'
+                }`}
+              >
+                <span className="font-medium">
+                  {index + 1}. {entry.name}
+                  {index === 0 && ' 👑'}
+                  {index === 1 && ' 🥈'}
+                  {index === 2 && ' 🥉'}
+                </span>
+                <span className="font-bold">{entry.score}</span>
               </li>
             ))}
           </ul>

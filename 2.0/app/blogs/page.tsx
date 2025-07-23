@@ -24,35 +24,54 @@ export default async function BlogPage() {
 
       <AdScript/>
 
-      <Link href="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
+      <Link 
+        href="/" 
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring px-2 py-1 rounded-lg"
+      >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to Home
       </Link>
 
       <header className="space-y-2">
-        <h1 className="text-4xl font-bold">Blogs </h1>
-        <p className="text-muted-foreground">Latest articles and tutorials </p>
+        <h1 className="text-4xl font-bold text-foreground text-tracking-tight">Blogs</h1>
+        <p className="text-muted-foreground leading-relaxed">Latest articles and tutorials</p>
       </header>
 
       <Tabs defaultValue="technical" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-6">
-          <TabsTrigger value="technical" className="bg-transparent text-muted-foreground hover:text-foreground transition-colors duration-300 ease-in-out rounded-lg">Technical</TabsTrigger>
-          <TabsTrigger value="personal" className="bg-transparent text-muted-foreground hover:text-foreground transition-colors duration-300 ease-in-out rounded-lg">Personal</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 mb-6 bg-muted border border-border rounded-lg p-1">
+          <TabsTrigger 
+            value="technical" 
+            className="bg-transparent text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-all duration-300 ease-in-out rounded-lg focus-ring"
+          >
+            Technical
+          </TabsTrigger>
+          <TabsTrigger 
+            value="personal" 
+            className="bg-transparent text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-all duration-300 ease-in-out rounded-lg focus-ring"
+          >
+            Personal
+          </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="technical">
+        <TabsContent value="technical" className="animate-fade-in">
           {technicalPosts.length > 0 ? (
             <BlogList blogPosts={technicalPosts} />
           ) : (
-            <p className="text-center text-muted-foreground italic py-4">No technical articles published yet.</p>
+            <div className="text-center py-12 bg-card rounded-lg border border-border">
+              <p className="text-muted-foreground italic text-lg">No technical articles published yet.</p>
+              <p className="text-muted-foreground text-sm mt-2">Check back soon for new content!</p>
+            </div>
           )}
         </TabsContent>
 
-        <TabsContent value="personal">
+        <TabsContent value="personal" className="animate-fade-in">
           {personalPosts.length > 0 ? (
             <BlogList blogPosts={personalPosts} />
           ) : (
-            <p className="text-center text-muted-foreground italic py-4">No personal blogs published yet.</p>
+            <div className="text-center py-12 bg-card rounded-lg border border-border">
+              <p className="text-muted-foreground italic text-lg">No personal blogs published yet.</p>
+              <p className="text-muted-foreground text-sm mt-2">Personal stories and thoughts coming soon!</p>
+            </div>
           )}
         </TabsContent>
       </Tabs>

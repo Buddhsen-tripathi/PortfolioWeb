@@ -106,9 +106,9 @@ const Navbar = memo(() => {
                   {/* Minimal switch handle */}
                   <div className={`absolute top-0.5 w-5 h-5 bg-background rounded-full shadow-md transition-all duration-300 flex items-center justify-center border border-border ${theme === 'dark' ? 'translate-x-5' : 'translate-x-0.5'
                     }`}>
-                    <Sun className={`h-3 w-3 text-yellow-500 transition-all duration-300 ${theme === 'dark' ? 'scale-0 rotate-180' : 'scale-100 rotate-0'
+                    <Sun className={`h-3 w-3 text-primary transition-all duration-300 ${theme === 'dark' ? 'scale-0 rotate-180' : 'scale-100 rotate-0'
                       }`} />
-                    <Moon className={`absolute h-3 w-3 text-foreground transition-all duration-300 ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 -rotate-180'
+                    <Moon className={`absolute h-3 w-3 text-secondary transition-all duration-300 ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 -rotate-180'
                       }`} />
                   </div>
                 </div>
@@ -228,9 +228,9 @@ const Navbar = memo(() => {
                 {/* Clean switch handle */}
                 <div className={`absolute top-0.5 w-5 h-5 bg-background rounded-full shadow-md transition-all duration-300 flex items-center justify-center border border-border ${theme === 'dark' ? 'translate-x-6' : 'translate-x-0.5'
                   }`}>
-                  <Sun className={`h-3 w-3 text-yellow-500 transition-all duration-300 ${theme === 'dark' ? 'scale-0 rotate-180' : 'scale-100 rotate-0'
+                  <Sun className={`h-3 w-3 text-primary transition-all duration-300 ${theme === 'dark' ? 'scale-0 rotate-180' : 'scale-100 rotate-0'
                     }`} />
-                  <Moon className={`absolute h-3 w-3 text-foreground transition-all duration-300 ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 -rotate-180'
+                  <Moon className={`absolute h-3 w-3 text-secondary transition-all duration-300 ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 -rotate-180'
                     }`} />
                 </div>
               </div>

@@ -104,7 +104,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
           placeholder="Search articles..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-all duration-300 motion-search-input"
+          className="w-full px-4 py-2 border rounded-lg shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-all duration-300 motion-search-input"
           whileFocus={{ 
             scale: 1.02
           }}
@@ -140,20 +140,20 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                   variants={itemVariants}
                   layout
                   whileHover={{ 
-                    backgroundColor: "rgba(0, 128, 0, 0.6)",
+                    scale: 1.02,
                     transition: { type: "spring", stiffness: 300, damping: 30 }
                   }}
                   whileTap={{ scale: 0.98 }}
                   className="h-full"
                 >
-                  <Link href={`/blogs/${post.slug}`} className="block h-full">
+                  <Link href={`/blogs/${post.slug}`} className="block h-full focus-ring rounded-lg">
                     <motion.article 
-                      className="motion-blog-card p-6 bg-card rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col h-full group relative overflow-hidden"
+                      className="p-6 bg-card rounded-lg shadow-sm shadow-primary/15 border border-border hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
                       transition={{ duration: 0.2 }}
                     >
                       {/* Subtle background animation on hover */}
                       <motion.div
-                        className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         initial={false}
                         animate={{ x: "-100%" }}
                         whileHover={{ x: "0%" }}
@@ -163,7 +163,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                       <div className="space-y-4 flex-grow relative z-10">
                         <div>
                           <motion.h2 
-                            className="text-xl font-semibold pb-1 motion-blog-title"
+                            className="text-xl font-semibold pb-1 text-foreground text-tracking-normal group-hover:text-accent-foreground transition-colors"
                             initial={{ opacity: 0.8 }}
                             whileHover={{ opacity: 1 }}
                           >
@@ -172,7 +172,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                           
                           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                             <motion.time
-                              className="motion-blog-meta"
+                              className="transition-opacity"
                               initial={{ opacity: 0.6 }}
                               whileHover={{ opacity: 1 }}
                             >
@@ -180,7 +180,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                             </motion.time>
                             <span>•</span>
                             <motion.span
-                              className="motion-blog-meta"
+                              className="transition-opacity"
                               initial={{ opacity: 0.6 }}
                               whileHover={{ opacity: 1 }}
                             >
@@ -190,7 +190,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                         </div>
                         
                         <motion.p 
-                          className="text-muted-foreground motion-blog-excerpt"
+                          className="text-muted-foreground leading-relaxed"
                           initial={{ opacity: 0.8 }}
                           whileHover={{ opacity: 1 }}
                         >
@@ -201,7 +201,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                       </div>
                       
                       <motion.span 
-                        className="text-primary self-start pt-1 relative z-10 inline-flex items-center motion-read-more"
+                        className="text-primary self-start pt-1 relative z-10 inline-flex items-center group-hover:text-primary/80 transition-colors"
                         whileHover={{ x: 5 }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       >
@@ -231,7 +231,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="text-center py-12"
+            className="text-center py-12 bg-card rounded-lg border border-border"
           >
             <motion.div
               animate={{ 

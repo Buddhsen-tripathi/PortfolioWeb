@@ -19,26 +19,28 @@ export const metadata: Metadata = {
     },
 };
 
-
 export default function NewsletterPage() {
     return (
         <div className="container max-w-4xl items-center space-y-8">
-            <Link href="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
+            <Link 
+                href="/" 
+                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-lg"
+            >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Home
             </Link>
             <div className="mx-auto px-4 py-8 md:py-12 lg:py-20">
                 <div className="max-w-2xl mx-auto text-center">
-                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-tracking-tight mb-4">
                         Join My Newsletter
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
                         Personal stories. Tech updates. No spam, just value.
                     </p>
 
                     <NewsletterSubscription />
 
-                    <p className="mt-8 text-sm text-gray-500 dark:text-gray-400">
+                    <p className="mt-8 text-sm text-muted-foreground">
                         You can unsubscribe at any time. Your privacy is respected.
                     </p>
                 </div>

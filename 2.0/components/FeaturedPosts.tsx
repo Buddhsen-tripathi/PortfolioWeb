@@ -13,19 +13,21 @@ export default async function FeaturedPosts() {
 
   return (
     <section>
-      <h2 className="text-3xl font-bold mb-4">Recent Blogs</h2>
+      <h2 className="text-3xl font-bold mb-4 text-foreground text-tracking-tight">Recent Blogs</h2>
       <div className="space-y-4">
         {blogPosts.slice(0, 2).map((post) => {
           return (
             <Link
               key={post.slug}
               href={`/blogs/${post.slug}`}
-              className="block group"
+              className="block group focus-ring rounded-lg"
             >
-              <div className="bg-card rounded-lg overflow-hidden shadow-md group-hover:bg-primary/5  border hover:shadow-lg dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800 transition-all">
+              <div className="bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 group-hover:bg-accent/30 border border-border hover:shadow-lg transition-all">
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-                  <p className="text-muted-foreground">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground text-tracking-normal group-hover:text-accent-foreground transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
                     {post.excerpt && post.excerpt.length > 200
                       ? `${post.excerpt.substring(0, 200)}...`
                       : post.excerpt || ''}
@@ -38,7 +40,7 @@ export default async function FeaturedPosts() {
                         <ViewCounter slug={post.slug} readOnly={true} />
                       </span>
                     </div>
-                    <span className="text-primary group-hover:underline ml-4">
+                    <span className="text-primary group-hover:text-primary/80 group-hover:underline ml-4 transition-colors">
                       Read more →
                     </span>
                   </div>
@@ -49,8 +51,8 @@ export default async function FeaturedPosts() {
         })}
       </div>
       <div className="mt-4 flex justify-center w-full">
-        <Link href="/blogs" className="w-full">
-          <div className="w-full bg-card text-card-foreground rounded-lg shadow-md hover:shadow-lg border dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800 transition-all py-3 flex items-center justify-center gap-2 group-hover:bg-primary/5 dark:hover:text-primary">
+        <Link href="/blogs" className="w-full focus-ring rounded-lg">
+          <div className="w-full bg-card text-card-foreground rounded-lg shadow-md shadow-primary/15 hover:shadow-lg border border-border transition-all py-3 flex items-center justify-center gap-2 hover:bg-accent/10 hover:text-primary/80">
             <span>View more</span>
             <BsArrowRight className="inline-block" />
           </div>
