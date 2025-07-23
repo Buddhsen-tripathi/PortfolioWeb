@@ -31,21 +31,21 @@ export default async function RelatedBlogs({ currentSlug, currentTitle }: Relate
 
   return (
     <div className="mt-16">
-      <h2 className="text-2xl font-bold mb-6">Related Posts</h2>
+      <h2 className="text-2xl font-bold mb-6 text-foreground text-tracking-tight">Related Posts</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {relatedPosts.map((post) => (
           <Link
             key={post.slug}
             href={`/blogs/${post.slug}`}
-            className="group block p-6 border rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white dark:bg-black dark:border-gray-700 shadow-gray-200 dark:shadow-gray-800"
+            className="group block p-6 border border-border rounded-lg shadow-lg shadow-primary/15 hover:shadow-xl transition-all bg-card focus-ring hover:bg-accent/10"
           >
-            <h3 className="font-semibold text-lg group-hover:text-primary transition-colors dark:text-white">
+            <h3 className="font-semibold text-lg text-foreground group-hover:text-accent-foreground transition-colors text-tracking-normal">
               {post.title}
             </h3>
-            <p className="mt-2 text-sm text-muted-foreground line-clamp-2 dark:text-gray-400">
+            <p className="mt-2 text-sm text-muted-foreground line-clamp-2 leading-relaxed">
               {post.excerpt}
             </p>
-            <p className="mt-2 text-xs text-muted-foreground dark:text-gray-500">
+            <p className="mt-2 text-xs text-muted-foreground">
               {post.date}
             </p>
           </Link>

@@ -9,7 +9,7 @@ export default function Hero() {
           src="/profpic.webp"
           alt="Buddhsen Tripathi"
           fill
-          className="object-cover border-4 border-transparent rounded-full hover:border-[#4299e1] transition-all duration-300"
+          className="object-cover border-4 border-transparent rounded-full hover:border-primary/30 dark:hover:border-primary/70 transition-all duration-300"
         />
       </div>
       <div className="flex flex-col items-center md:items-start space-y-2 md:space-y-4">

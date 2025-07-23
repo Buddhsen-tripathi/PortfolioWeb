@@ -82,12 +82,12 @@ export default async function BlogPost({ params }: { params: paramsType }) {
         title={data.title}
       />
 
-      <hr className="my-8 border-t border-gray-300 dark:border-gray-700" />
+      <hr className="my-8 border-t" />
 
       {/* Newsletter subscription component */}
       <NewsletterSubscription />
 
-      <hr className="my-8 border-t border-gray-300 dark:border-gray-700" />
+      <hr className="my-8 border-t" />
 
       {/* Related Blogs component */}
       <RelatedBlogs currentSlug={(await params).slug} currentTitle={data.title} />

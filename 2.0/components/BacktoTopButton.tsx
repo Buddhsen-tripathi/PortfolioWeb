@@ -32,7 +32,7 @@ export default function BackToTopButton() {
       onClick={scrollToTop}
       className={`fixed bottom-32 md:bottom-20 right-8 p-3 w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0'
-      } bg-primary text-white dark:bg-white dark:text-black`}
+      } bg-primary text-white`}
       aria-label="Back to Top"
     >
       <ChevronUp className="w-6 h-6" />
