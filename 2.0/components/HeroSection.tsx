@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode } from "react-icons/si";
+import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode, SiGmail, SiTryhackme } from "react-icons/si";
 
 export default function Hero() {
   return (
@@ -31,11 +31,17 @@ export default function Hero() {
           <a href="https://leetcode.com/u/buddhsen" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <SiLeetcode className="w-6 h-6" />
           </a>
+          <a href="https://tryhackme.com/p/btripathi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <SiTryhackme className="w-6 h-6" /> 
+          </a>  
           <a href="https://www.youtube.com/@64TechBits" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <SiYoutube className="w-6 h-6" />
           </a>
           <a href="https://buymeacoffee.com/buddhsentripathi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <SiBuymeacoffee className="w-6 h-6" />
+          </a>
+          <a href="mailto:buddhsen.work@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <SiGmail className="w-6 h-6" /> 
           </a>
         </div>
       </div>
