@@ -3,7 +3,6 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import ScrollProgress from '@/components/ScrollProgress'
-import { PostHogProvider } from './providers/PostHogProvider'
 
 const geist = Geist({ subsets: ['latin'] })
 
@@ -62,7 +61,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         > 
-        <PostHogProvider>
           <ScrollProgress />
           <Navbar />
           <main className="flex-grow">
@@ -70,7 +68,6 @@ export default function RootLayout({
                 {children}
             </div>
           </main>
-        </PostHogProvider>
         </ThemeProvider>
         <div className='mb-32 md:mb-16'></div>
       </body>
