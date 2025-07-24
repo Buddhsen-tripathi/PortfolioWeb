@@ -26,7 +26,7 @@ export default async function BlogPage() {
 
       <Link 
         href="/" 
-        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring px-2 py-1 rounded-lg"
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-lg"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to Home
