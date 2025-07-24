@@ -97,22 +97,18 @@ const Navbar = memo(() => {
                 <UserPen size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
               </Link>
 
-              {/* Ultra-minimal Theme Switch */}
-              <div className="flex flex-col items-center space-y-1.5">
-                <div
-                  onClick={toggleTheme}
-                  className="relative w-11 h-7 bg-secondary hover:bg-secondary/80 rounded-full cursor-pointer transition-all duration-300 shadow-inner hover:scale-110 border border-border"
-                >
-                  {/* Minimal switch handle */}
-                  <div className={`absolute top-0.5 w-5 h-5 bg-background rounded-full shadow-md transition-all duration-300 flex items-center justify-center border border-border ${theme === 'dark' ? 'translate-x-5' : 'translate-x-0.5'
-                    }`}>
-                    <Sun className={`h-3 w-3 text-primary transition-all duration-300 ${theme === 'dark' ? 'scale-0 rotate-180' : 'scale-100 rotate-0'
-                      }`} />
-                    <Moon className={`absolute h-3 w-3 text-secondary transition-all duration-300 ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 -rotate-180'
-                      }`} />
-                  </div>
-                </div>
-              </div>
+              {/* Simple Theme Toggle Icon */}
+              <button
+                onClick={toggleTheme}
+                className="group flex flex-col items-center space-y-1.5 p-2 rounded-xl transition-all duration-200 transform focus-ring text-foreground hover:text-primary-foreground hover:bg-primary/80"
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+              >
+                {theme === 'dark' ? (
+                  <Sun size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
+                ) : (
+                  <Moon size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
+                )}
+              </button>
             </div>
 
             {/* Compact footer */}
