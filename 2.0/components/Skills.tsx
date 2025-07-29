@@ -1,6 +1,6 @@
 'use client'
 import Marquee from 'react-fast-marquee'
-import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiAngular, SiCplusplus, SiDocker, SiFlask, SiGooglecloud, SiJenkins, SiKubernetes, SiMysql, SiNestjs, SiPostgresql, SiPython, SiSupabase, SiGithubactions, SiMocha, SiTensorflow, SiVuedotjs, SiPrometheus, SiFastapi, SiScikitlearn, SiRedux} from 'react-icons/si'
+import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiAngular, SiCplusplus, SiDocker, SiFlask, SiGooglecloud, SiJenkins, SiKubernetes, SiMysql, SiNestjs, SiPostgresql, SiPython, SiSupabase, SiGithubactions, SiMocha, SiTensorflow, SiVuedotjs, SiPrometheus, SiFastapi, SiScikitlearn, SiRedux, SiRuby, SiRubyonrails} from 'react-icons/si'
 import { FaAws, FaJava } from "react-icons/fa"
 import { VscAzure } from "react-icons/vsc"
 
@@ -39,6 +39,8 @@ const BACKEND_DEVOPS_SKILLS = [
   { Icon: SiJenkins, name: "Jenkins" },
   { Icon: FaJava, name: "Java" },
   { Icon: SiPython, name: "Python" },
+  { Icon: SiRuby, name: "Ruby" },
+  { Icon: SiRubyonrails, name: "Ruby on Rails" },
   { Icon: SiCplusplus, name: "C++" }
 ]
 
