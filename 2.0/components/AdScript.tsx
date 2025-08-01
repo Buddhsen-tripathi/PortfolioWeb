@@ -1,7 +1,16 @@
+'use client'
+
+import Script from 'next/script'
+
 export function AdScript() {
-    return (
-        <script async src={process.env.AD_SCRIPT_URL}
-            crossOrigin="anonymous">
-        </script>
-    );
+  if (!process.env.AD_SCRIPT_URL) return null
+
+  return (
+    <Script
+      id="adsense-script"
+      src={process.env.AD_SCRIPT_URL}
+      strategy="lazyOnload" 
+      async
+    />
+  )
 }
