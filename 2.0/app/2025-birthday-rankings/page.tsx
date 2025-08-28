@@ -5,7 +5,6 @@ import { birthdayRankings, defaultRanking } from "./rankings";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import ViewCounter from "@/components/ViewCounter";
-import { AdScript } from "@/components/AdScript";
 
 interface Ranking {
     date: string;
@@ -51,7 +50,7 @@ const BirthdayRankings = () => {
 
     return (
         <div className="container max-w-4xl">
-            <AdScript />
+            
             <div className="w-full flex items-center justify-between mb-6">
                 <Link 
                     href="/projects" 

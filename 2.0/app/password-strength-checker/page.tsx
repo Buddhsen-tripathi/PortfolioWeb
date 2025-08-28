@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Lock, AlertCircle, CheckCircle, Eye, EyeOff, ShieldCheck, ShieldQuestion, Clock, ShieldAlert } from 'lucide-react'
 import ViewCounter from '@/components/ViewCounter'
-import { AdScript } from '@/components/AdScript'
 import zxcvbn, { ZXCVBNResult } from 'zxcvbn'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -70,7 +69,7 @@ export default function PasswordStrengthCheckerPage() {
 
   return (
     <main className="container max-w-4xl">
-      <AdScript />
+      
       <div className="flex items-center justify-between">
         <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />

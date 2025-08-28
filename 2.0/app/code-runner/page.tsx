@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import ViewCounter from '@/components/ViewCounter';
-import { AdScript } from '@/components/AdScript';
 
 const GAME_WIDTH = 375;
 const GAME_HEIGHT = 580;
@@ -309,7 +308,7 @@ export default function CodeRunner() {
 
   return (
     <div className="container mx-auto space-y-4">
-      <AdScript />
+      
 
       {/* Meta tags for SEO */}
       <title>Code Runner - Dodge the Bugs Game | Buddhsen Tripathi</title>

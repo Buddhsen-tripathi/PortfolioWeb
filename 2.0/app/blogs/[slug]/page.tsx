@@ -11,7 +11,6 @@ import ViewCounter from '@/components/ViewCounter'
 import { getReadingTime } from '@/lib/utils'
 import NewsletterSubscription from '@/components/NewsletterSubscription'
 import SocialShare from '../SocialShare'
-import { AdScript } from '@/components/AdScript'
 import { mdxComponents } from '@/components/MdxComponents'
 import TableOfContents from '@/components/TableOfContents'
 import { getBlogPostFromS3, getBlogSlugsFromS3 } from '@/lib/r2Client'
@@ -37,7 +36,7 @@ export default async function BlogPost({ params }: { params: paramsType }) {
       <meta property="og:image" content="https://buddhsentripathi.com/default-image-blogs.webp" />
       <title>{`${data.title} - Buddhsen Tripathi`}</title>
 
-      <AdScript />
+      
 
       <div className="flex justify-between items-center">
         <Link href="/blogs" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
