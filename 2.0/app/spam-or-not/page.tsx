@@ -11,7 +11,6 @@ import ViewCounter from '@/components/ViewCounter';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from "@/components/ui/progress";
-import { AdScript } from '@/components/AdScript';
 
 interface SpamAnalysisResult {
     isSpam: boolean;
@@ -77,7 +76,7 @@ export default function SpamOrNotPage() {
 
     return (
         <main className="container mx-auto">
-            <AdScript/>
+            
             <div className="flex items-center justify-between mb-8">
                 <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" />
