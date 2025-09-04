@@ -55,17 +55,16 @@ const Navbar = memo(() => {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50">
       <div className="max-w-[1200px] mx-auto px-6 py-4">
-        {/* Ultra-Sleek Mobile Navigation */}
+
         <div className="md:hidden relative">
-          {/* Crispy glass container */}
+
           <div className={`relative mx-2 mb-2 p-2 rounded-2xl border border-border shadow-2xl backdrop-blur-xl transition-all duration-300 ${scrolled
               ? 'bg-background/95 border-border/60'
               : 'bg-background/90 border-border/30'
             }`}>
-            {/* Subtle glow effect */}
+
             <div className="absolute inset-0 rounded-2xl bg-primary/5 blur-lg"></div>
-            
-            {/* Navigation items - horizontal layout */}
+
             <div className="relative flex justify-center items-center space-x-4 mb-2">
               <Link
                 href="/"
@@ -97,7 +96,6 @@ const Navbar = memo(() => {
                 <UserPen size={17} className="drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
               </Link>
 
-              {/* Simple Theme Toggle Icon */}
               <button
                 onClick={toggleTheme}
                 className="group flex flex-col items-center space-y-1.5 p-2 rounded-xl transition-all duration-200 transform focus-ring text-foreground hover:text-primary-foreground hover:bg-primary/80"
@@ -111,7 +109,6 @@ const Navbar = memo(() => {
               </button>
             </div>
 
-            {/* Compact footer */}
             <div className="relative border-t border-border pt-2">
               <div className="flex justify-between items-center text-xs">
                 <div className="text-muted-foreground font-medium">
@@ -140,15 +137,13 @@ const Navbar = memo(() => {
           </div>
         </div>
 
-        {/* Ultra-Sleek Desktop Navigation */}
         <div className={`hidden md:flex justify-between items-center rounded-xl shadow-2xl px-6 py-3 relative border border-border backdrop-blur-xl transition-all duration-300 ${scrolled
             ? 'bg-background/95 border-border/60'
             : 'bg-background/90 border-border/30'
           }`}>
-          {/* Subtle glow effect for desktop */}
+
           <div className="absolute inset-0 rounded-xl bg-primary/5 blur-sm pointer-events-none"></div>
-          
-          {/* Left section with time and footer info */}
+
           <div className="relative flex items-center space-x-6">
             <div className="flex items-center space-x-2 text-sm text-foreground">
               <Clock size={16} className="drop-shadow-sm" />
@@ -183,7 +178,6 @@ const Navbar = memo(() => {
             </div>
           </div>
           
-          {/* Right section with navigation */}
           <div className="relative flex items-center space-x-4">
             <Link
               href="/"
@@ -214,23 +208,29 @@ const Navbar = memo(() => {
             >
               <span className="font-semibold text-sm">Blogs</span>
             </Link>
-            
-            {/* Minimal Desktop Theme Switch */}
-            <div className="flex items-center space-x-3">
-              <div
-                onClick={toggleTheme}
-                className="relative w-12 h-6 bg-secondary hover:bg-secondary/80 rounded-full cursor-pointer transition-all duration-300 shadow-inner border border-border"
-              >
-                {/* Clean switch handle */}
-                <div className={`absolute top-0.5 w-5 h-5 bg-background rounded-full shadow-md transition-all duration-300 flex items-center justify-center border border-border ${theme === 'dark' ? 'translate-x-6' : 'translate-x-0.5'
-                  }`}>
-                  <Sun className={`h-3 w-3 text-primary transition-all duration-300 ${theme === 'dark' ? 'scale-0 rotate-180' : 'scale-100 rotate-0'
-                    }`} />
-                  <Moon className={`absolute h-3 w-3 text-secondary transition-all duration-300 ${theme === 'dark' ? 'scale-100 rotate-0' : 'scale-0 -rotate-180'
-                    }`} />
-                </div>
-              </div>
-            </div>
+
+            <button
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+              className="relative flex items-center justify-center w-10 h-10 rounded-lg text-foreground hover:text-primary-foreground hover:bg-primary/80 transition-all duration-300 focus-ring overflow-hidden"
+            >
+              <Sun
+                className={`absolute transition-all duration-500 transform ${
+                  theme === 'dark'
+                    ? 'rotate-90 scale-0 opacity-0'
+                    : 'rotate-0 scale-100 opacity-100'
+                }`}
+                size={18}
+              />
+              <Moon
+                className={`absolute transition-all duration-500 transform ${
+                  theme === 'dark'
+                    ? 'rotate-0 scale-100 opacity-100'
+                    : '-rotate-90 scale-0 opacity-0'
+                }`}
+                size={18}
+              />
+            </button>
           </div>
         </div>
       </div>
