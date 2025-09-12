@@ -36,15 +36,6 @@ const projects = [
 
 const funProjects = [
   {
-    title: "Password Strength Checker",
-    image: "/ps-checker.avif",
-    description: "A tool to analyze the strength of your passwords and provide a genuine feedback.",
-    github: "null",
-    demo: "https://www.buddhsentripathi.com/password-strength-checker",
-    technologies: [],  
-    path: "password-strength-checker"
-  },
-  {
     title: "Twitter/X Spam Check",
     image: "/spam-or-not.webp",
     description: "Enter a Twitter/X username to analyze their recent activity for potential spam-like behavior using AI.",
@@ -61,16 +52,7 @@ const funProjects = [
     demo: "https://www.buddhsentripathi.com/code-runner",
     technologies: [],
     path: "code-runner"
-  },
-  {
-    title: "Japanese Lucky Birthday Rankings 2025",
-    image: "/2025b.webp",
-    description: "Simple tool which ranks your birthday based on the Japanese Luck Calendar 2025.",
-    github: null,
-    demo: "https://www.buddhsentripathi.com/2025-birthday-rankings",
-    technologies: [],
-    path: "2025-birthday-rankings"
-  },
+  }
 ];
 
 import Image from 'next/image'
