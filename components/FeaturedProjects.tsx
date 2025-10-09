@@ -110,7 +110,7 @@ export default function FeaturedProjects() {
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
-                  <span key={tech} className="bg-secondary dark:bg-primary/90 text-secondary-foreground px-2 py-1 rounded text-sm">
+                  <span key={tech} className="bg-secondary dark:bg-primary/90 text-primary-foreground px-2 py-1 rounded text-sm">
                     {tech}
                   </span>
                 ))}

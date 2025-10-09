@@ -91,7 +91,7 @@ const SkillsList = ({ skills }: { skills: Skill[] }) => {
       {skills.map(({ Icon, name }, index) => (
         <div
           key={index}
-          className="flex items-center gap-2 px-5 py-3 rounded-full border border-primary/60 dark:border-secondary/60 bg-secondary dark:bg-primary/80 text-secondary-foreground text-sm shadow-sm transition-colors duration-300 hover:bg-primary/30 dark:hover:bg-primary/60"
+          className="flex items-center gap-2 px-5 py-3 rounded-full border border-primary/60 dark:border-secondary/60 bg-secondary dark:bg-primary/80 text-primary-foreground text-sm shadow-sm transition-colors duration-300 hover:bg-primary/30 dark:hover:bg-primary/60"
         >
           <Icon className="w-5 h-5" aria-label={name} />
           <span className="whitespace-nowrap">{name}</span>
