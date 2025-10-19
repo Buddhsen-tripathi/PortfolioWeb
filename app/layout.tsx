@@ -50,11 +50,11 @@ export default function RootLayout({
         {/* Preload critical resources */}
         <link rel="preload" href="/profpic.webp" as="image" />
         <link rel="preload" href="/dfme.webp" as="image" />
-        <link rel="preload" href="/clonvo.avif" as="image" />
+        <link rel="preload" href="/clonvo.webp" as="image" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
-      <body className={`${geist.className} bg-background text-foreground flex flex-col min-h-screen antialiased`}>
+      <body className={`${geist.className} bg-background text-foreground max-w-[1200px] mx-auto flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

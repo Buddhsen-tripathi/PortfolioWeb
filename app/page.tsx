@@ -7,13 +7,15 @@ import NewsletterSubscription from '@/components/NewsletterSubscription'
 
 export default function Home() {
   return (
-    <div className="space-y-12">
-      <Hero />
-      <Skills />
-      <FeaturedProjects />
-      <FeaturedPosts />
-      <NewsletterSubscription />
-      <Contact />
-      </div>
+    <main className="flex-1">
+      <section className="px-6 py-12 space-y-16">
+        <Hero />
+        <Skills />
+        <FeaturedProjects />
+        <FeaturedPosts />
+        <NewsletterSubscription />
+        <Contact />
+      </section>
+    </main>
   )
 }

@@ -35,19 +35,13 @@ export default function Hero() {
           <h1 className="text-2xl md:text-4xl font-bold text-foreground">
             Buddhsen Tripathi
           </h1>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 text-md">
-            <div className="flex items-center gap-2 text-primary">
-              <span>Full-Stack Developer</span>
-            </div>
-            <span className="hidden md:inline text-foreground">•</span>
-            <div className="flex items-center gap-2 text-primary">
-              <span>MS CS @ NYU</span>
-            </div>
-            <span className="hidden md:inline text-foreground">•</span>
-            <div className="flex items-center gap-2 text-primary">
-              <span>New York, USA</span>
-            </div>
-            </div>
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm md:text-base">
+            <span className="text-primary">Full-Stack Developer</span>
+            <span className="text-foreground">•</span>
+            <span className="text-primary">MS CS @ NYU</span>
+            <span className="text-foreground">•</span>
+            <span className="text-primary">New York, USA</span>
+          </div>
         </div>
 
         <p className="max-w-2xl text-center md:text-left text-muted-foreground leading-relaxed">
