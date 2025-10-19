@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { getAllBlogPosts } from '@/app/blogs/utils';
 import { BsArrowRight } from 'react-icons/bs';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabaseServer';
 import ViewCounter from './ViewCounter';
 
 export default async function FeaturedPosts() {
   const blogPosts = await getAllBlogPosts();
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = await createClient();
 
   const { data: viewsData } = await supabase.from('views').select('slug, count');
 

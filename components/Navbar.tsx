@@ -48,7 +48,7 @@ const Navbar = memo(() => {
     return null
   }
 
-  const timeZone = 'Asia/Kolkata'
+  const timeZone = 'America/New_York'
   const zonedTime = toZonedTime(currentTime, timeZone)
   const formattedTime = formatTz(zonedTime, 'HH:mm')
 
@@ -57,13 +57,10 @@ const Navbar = memo(() => {
       <div className="max-w-[1200px] mx-auto px-6 py-4">
 
         <div className="md:hidden relative">
-
           <div className={`relative mx-2 mb-2 p-2 rounded-2xl border border-border shadow-2xl backdrop-blur-xl transition-all duration-300 ${scrolled
               ? 'bg-background/95 border-border/60'
               : 'bg-background/90 border-border/30'
             }`}>
-
-            <div className="absolute inset-0 rounded-2xl bg-primary/5 blur-lg"></div>
 
             <div className="relative flex justify-center items-center space-x-4 mb-2">
               <Link
@@ -123,14 +120,6 @@ const Navbar = memo(() => {
                   >
                     Twitter
                   </a>
-                  <a
-                    href="https://topmate.io/buddhsentripathi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-                  >
-                    Topmate
-                  </a>
                 </div>
               </div>
             </div>
@@ -141,8 +130,6 @@ const Navbar = memo(() => {
             ? 'bg-background/95 border-border/60'
             : 'bg-background/90 border-border/30'
           }`}>
-
-          <div className="absolute inset-0 rounded-xl bg-primary/5 blur-sm pointer-events-none"></div>
 
           <div className="relative flex items-center space-x-6">
             <div className="flex items-center space-x-2 text-sm text-foreground">
@@ -156,7 +143,6 @@ const Navbar = memo(() => {
               </a>
             </div>
             
-            {/* Footer content */}
             <div className="flex items-center space-x-4 text-xs text-muted-foreground border-l border-border pl-4">
               <span className="font-medium">© 2025 Buddhsen Tripathi</span>
               <a
@@ -166,14 +152,6 @@ const Navbar = memo(() => {
                 className="hover:text-foreground transition-colors font-medium"
               >
                 Twitter
-              </a>
-              <a
-                href="https://topmate.io/buddhsentripathi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors font-medium"
-              >
-                Topmate
               </a>
             </div>
           </div>
