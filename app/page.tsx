@@ -1,5 +1,5 @@
 import Hero from '@/components/HeroSection'
-import Skills from '@/components/Skills'
+import Skills from '@/components/Experience'
 import FeaturedProjects from '@/components/FeaturedProjects'
 import FeaturedPosts from '@/components/FeaturedPosts'
 import Contact from '@/components/Contact'
