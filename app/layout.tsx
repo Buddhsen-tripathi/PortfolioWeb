@@ -1,5 +1,5 @@
 import { Geist } from 'next/font/google'
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from 'next-themes'
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import ScrollProgress from '@/components/ScrollProgress'
@@ -57,9 +57,9 @@ export default function RootLayout({
       <body className={`${geist.className} bg-background text-foreground flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+          defaultTheme="dark"
+          enableSystem={true}
+          storageKey="theme"
         > 
           <ScrollProgress />
           <Navbar />

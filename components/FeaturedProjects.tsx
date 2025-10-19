@@ -57,7 +57,6 @@ const funProjects = [
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { SiGithub } from "react-icons/si";
 import { BsArrowUpRight, BsArrowRight } from "react-icons/bs";
 import { usePathname } from 'next/navigation'
 import ViewCounter from './ViewCounter';
@@ -71,7 +70,7 @@ export default function FeaturedProjects() {
       <h1 className="text-3xl font-bold mb-6 text-foreground text-tracking-tight">Projects</h1>
       <div className="space-y-4">
         {projects.slice(0, isHomePage ? 2 : projects.length).map((project, index) => (
-          <div key={project.title} className="flex flex-col md:flex-row gap-6 bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all hover:shadow-lg hover:bg-accent/30 border border-border">
+          <div key={project.title} className="flex flex-col md:flex-row gap-6 bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all hover:shadow-lg border border-border">
             <div className="md:w-2/5 w-full h-full relative">
               <Image
                 src={project.image}
@@ -94,9 +93,9 @@ export default function FeaturedProjects() {
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-primary hover:text-primary/80 hover:underline focus-ring rounded transition-colors"
-                  >
-                    <SiGithub className="inline-block mr-1" /> GitHub
+                    className="inline-flex items-center gap-1 text-primary/80 hover:text-primary hover:gap-2 focus-ring rounded transition-all"
+                  > 
+                  Github <BsArrowUpRight className="inline-block" />
                   </a>
                 )}
                 <a 
@@ -151,7 +150,7 @@ export default function FeaturedProjects() {
           </h3>
           <div className="space-y-4">
             {funProjects.map((project) => (
-              <div key={project.title} className="flex flex-col md:flex-row gap-6 bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all hover:shadow-lg hover:bg-accent/30 border border-border">
+              <div key={project.title} className="flex flex-col md:flex-row gap-6 bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all hover:shadow-lg border border-border">
                 <div className="md:w-2/5 w-full h-full relative">
                   <Image
                     src={project.image}
