@@ -103,9 +103,9 @@ export default function FeaturedProjects() {
                   href={project.demo} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-primary/80 hover:text-primary hover:underline focus-ring rounded transition-colors"
+                  className="inline-flex items-center gap-1 text-primary/80 hover:text-primary hover:gap-2 focus-ring rounded transition-all"
                 >
-                  <BsArrowUpRight className="inline-block mr-1" /> Live
+                  Live <BsArrowUpRight className="inline-block" />
                 </a>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">

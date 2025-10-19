@@ -1,48 +1,95 @@
 import Image from 'next/image'
 import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode, SiGmail, SiTryhackme } from "react-icons/si";
+import { Download} from 'lucide-react';
+
+const socialLinks = [
+  { href: "https://github.com/buddhsen-tripathi", icon: SiGithub, label: "GitHub" },
+  { href: "https://linkedin.com/in/buddhsen-tripathi", icon: SiLinkedin, label: "LinkedIn" },
+  { href: "https://twitter.com/btr1pathi", icon: SiX, label: "Twitter/X" },
+  { href: "https://leetcode.com/u/buddhsen", icon: SiLeetcode, label: "LeetCode" },
+  { href: "https://tryhackme.com/p/btripathi", icon: SiTryhackme, label: "TryHackMe" },
+  { href: "https://www.youtube.com/@64TechBits", icon: SiYoutube, label: "YouTube" },
+  { href: "https://buymeacoffee.com/buddhsentripathi", icon: SiBuymeacoffee, label: "Buy Me a Coffee" },
+  { href: "mailto:buddhsen.work@gmail.com", icon: SiGmail, label: "Email" },
+];
 
 export default function Hero() {
   return (
-    <section className="flex flex-col md:flex-row items-center md:items-start gap-12 mb-12 md:mb-16">
-      <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-lg">
-        <Image
-          src="/profpic.webp"
-          alt="Buddhsen Tripathi"
-          fill
-          className="object-cover border-4 border-transparent rounded-full hover:border-primary/30 dark:hover:border-primary/70 transition-all duration-300"
-        />
+    <section className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 mb-12 md:mb-16">
+      {/* Profile Image */}
+      <div className="relative group">
+        <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-lg ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
+          <Image
+            src="/profpic.webp"
+            alt="Buddhsen Tripathi"
+            fill
+            className="object-cover transition-transform duration-300"
+            priority
+          />
+        </div>
       </div>
-      <div className="flex flex-col items-center md:items-start space-y-2 md:space-y-4">
-        <h1 className="text-4xl font-bold">Buddhsen Tripathi</h1>
-        <p className="max-w-2xl text-center md:text-left text-muted-foreground">
-          Hello! I'm a passionate full-stack web developer with expertise in React, Next.js, Java and TypeScript.<br/>
-          I build responsive, user-friendly web apps with a focus on clean design and solid performance. My goal is to create smart, reliable solutions that work beautifully for users and businesses alike.
+
+      {/* Content */}
+      <div className="flex flex-col items-center md:items-start space-y-4 flex-1">
+        <div className="space-y-2 text-center md:text-left">
+          <h1 className="text-2xl md:text-4xl font-bold text-foreground">
+            Buddhsen Tripathi
+          </h1>
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-2 text-md">
+            <div className="flex items-center gap-2 text-primary">
+              <span>Full-Stack Developer</span>
+            </div>
+            <span className="hidden md:inline text-foreground">•</span>
+            <div className="flex items-center gap-2 text-primary">
+              <span>MS CS @ NYU</span>
+            </div>
+            <span className="hidden md:inline text-foreground">•</span>
+            <div className="flex items-center gap-2 text-primary">
+              <span>New York, USA</span>
+            </div>
+            </div>
+        </div>
+
+        <p className="max-w-2xl text-center md:text-left text-muted-foreground leading-relaxed">
+          MS Computer Science student at NYU and full-stack developer with 2+ years of experience building 
+          scalable enterprise applications. Skilled in{' '}
+          <span className="text-foreground font-medium">Java, C++, and TypeScript</span>{' '}
+          with expertise in cloud infrastructure and microservices architecture.
         </p>
-        <div className="flex space-x-4">
-          <a href="https://github.com/buddhsen-tripathi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiGithub className="w-6 h-6" />
+
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+          <a
+            href="mailto:buddhsen.work@gmail.com"
+            className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
+          >
+            Get in Touch
           </a>
-          <a href="https://linkedin.com/in/buddhsen-tripathi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiLinkedin className="w-6 h-6" />
+          <a
+            href="/resume.pdf"
+            download
+            className="px-6 py-2.5 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
+          >
+            <Download size={16} />
+            Resume
           </a>
-          <a href="https://twitter.com/btr1pathi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiX className="w-6 h-6" />
-          </a>
-          <a href="https://leetcode.com/u/buddhsen" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiLeetcode className="w-6 h-6" />
-          </a>
-          <a href="https://tryhackme.com/p/btripathi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiTryhackme className="w-6 h-6" /> 
-          </a>  
-          <a href="https://www.youtube.com/@64TechBits" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiYoutube className="w-6 h-6" />
-          </a>
-          <a href="https://buymeacoffee.com/buddhsentripathi" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiBuymeacoffee className="w-6 h-6" />
-          </a>
-          <a href="mailto:buddhsen.work@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-            <SiGmail className="w-6 h-6" /> 
-          </a>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex flex-wrap gap-3 justify-center md:justify-start pt-2">
+          {socialLinks.map(({ href, icon: Icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 focus-ring rounded-lg p-1"
+              aria-label={label}
+              title={label}
+            >
+              <Icon className="w-5 h-5" />
+            </a>
+          ))}
         </div>
       </div>
     </section>
