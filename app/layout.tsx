@@ -54,7 +54,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
-      <body className={`${geist.className} bg-background text-foreground max-w-[1200px] mx-auto flex flex-col min-h-screen antialiased`}>
+      <body className={`${geist.className} bg-background text-foreground max-w-[1200px] mx-auto pt-12 flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
