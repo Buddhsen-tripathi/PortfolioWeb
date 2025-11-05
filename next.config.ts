@@ -13,9 +13,6 @@ const nextConfig: NextConfig = withMDX({
   },
 })({
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   experimental: {
     optimizePackageImports: ['lucide-react', 'react-icons'],
   },
