@@ -1,5 +1,3 @@
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 import { getAllBlogPosts, type BlogPost } from './utils'
 import BlogList from './BlogList'
 import BackToTopButton from '@/components/BacktoTopButton'
@@ -20,16 +18,6 @@ export default async function BlogPage() {
       <meta property="og:url" content="https://buddhsentripathi.com/blogs" />
       <meta property="og:image" content="https://buddhsentripathi.com/default-image-blogs.webp" />
       <title>Blogs - Buddhsen Tripathi</title>
-
-      
-
-      <Link 
-        href="/" 
-        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-lg"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        Back to Home
-      </Link>
 
       <header className="space-y-2">
         <h1 className="text-4xl font-bold text-foreground text-tracking-tight">Blogs</h1>

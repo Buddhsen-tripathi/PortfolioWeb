@@ -75,7 +75,7 @@ export default function FeaturedProjects() {
         {projects.slice(0, isHomePage ? 2 : projects.length).map((project, index) => (
           <div 
             key={project.title} 
-            className="flex flex-col bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 border border-border group"
+            className="flex flex-col bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
           >
             {/* Image with fixed aspect ratio */}
             <div className="relative w-full aspect-video overflow-hidden">
@@ -156,7 +156,7 @@ export default function FeaturedProjects() {
 
       {/* Fun X Projects Section */}
       {!isHomePage && (
-        <section className="mt-12">
+        <section className="mt-12 mb-8">
           <h2 className="text-3xl font-bold mb-6 text-foreground font-serif text-tracking-tight">𝕏 Projects</h2>
           <h3
             className="text-lg font-semibold mb-4 text-foreground text-tracking-normal"
@@ -179,7 +179,7 @@ export default function FeaturedProjects() {
             {funProjects.map((project) => (
               <div 
                 key={project.title} 
-                className="flex flex-col bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 border border-border group"
+                className="flex flex-col bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
               >
                 {/* Image with fixed aspect ratio */}
                 <div className="relative w-full aspect-video overflow-hidden">

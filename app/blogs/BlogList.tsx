@@ -139,10 +139,6 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                   key={post.slug}
                   variants={itemVariants}
                   layout
-                  whileHover={{ 
-                    scale: 1.02,
-                    transition: { type: "spring", stiffness: 300, damping: 30 }
-                  }}
                   whileTap={{ scale: 0.98 }}
                   className="h-full"
                 >

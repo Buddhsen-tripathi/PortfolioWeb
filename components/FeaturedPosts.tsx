@@ -21,7 +21,7 @@ export default async function FeaturedPosts() {
               href={`/blogs/${post.slug}`}
               className="block group focus-ring rounded-lg"
             >
-              <div className="bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 group-hover:bg-accent/30 border border-border hover:shadow-lg transition-all">
+              <div className="bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out group-hover:bg-accent/30 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30">
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-foreground text-tracking-normal group-hover:text-accent-foreground transition-colors">
                     {post.title}
@@ -51,7 +51,7 @@ export default async function FeaturedPosts() {
       </div>
       <div className="mt-4 flex justify-center w-full">
         <Link href="/blogs" className="w-full focus-ring rounded-lg">
-          <div className="w-full bg-card text-card-foreground rounded-lg shadow-md shadow-primary/15 hover:shadow-lg border border-border transition-all py-3 flex items-center justify-center gap-2 hover:bg-accent/10 hover:text-primary/80">
+          <div className="w-full bg-card text-card-foreground rounded-lg shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 py-3 flex items-center justify-center gap-2 hover:text-primary/80 hover:bg-accent/30">
             <span>View more</span>
             <BsArrowRight className="inline-block" />
           </div>
