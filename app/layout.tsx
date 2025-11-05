@@ -2,7 +2,7 @@ import { ThemeProvider } from 'next-themes'
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import ScrollProgress from '@/components/ScrollProgress'
-
+import Footer from '@/components/Footer'
  
 
 export const metadata = {
@@ -51,7 +51,7 @@ export default function RootLayout({
         <link rel="preload" href="/dfme.webp" as="image" />
         <link rel="preload" href="/clonvo.webp" as="image" />
       </head>
-      <body className={`font-sans bg-background text-foreground max-w-[1200px] mx-auto pt-12 flex flex-col min-h-screen antialiased`}>
+      <body className={`font-sans bg-background text-foreground max-w-[1000px] mx-auto pt-12 flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -65,6 +65,7 @@ export default function RootLayout({
                 {children}
             </div>
           </main>
+          <Footer />
         </ThemeProvider>
         <div className='mb-32 md:mb-16'></div>
       </body>

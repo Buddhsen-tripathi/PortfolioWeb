@@ -44,7 +44,7 @@ export default function Experience() {
 						{/* Timeline dot */}
 						<div className="absolute left-0 top-0 w-3 h-3 -translate-x-[3px] rounded-full bg-primary border-2 border-background ring-4 ring-background group-hover:scale-140 transition-transform duration-300 z-10" />
 
-						<div className="bg-card rounded-lg p-4 shadow-md shadow-primary/15 border border-border hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                        <div className="bg-card rounded-lg p-4 shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30">
 							{/* Header */}
 							<div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
 								<div>

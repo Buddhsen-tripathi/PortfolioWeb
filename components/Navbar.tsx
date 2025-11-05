@@ -67,7 +67,7 @@ const Navbar = memo(() => {
         ? 'bg-background/95 shadow-md border-b border-border'
         : 'bg-background/90 border-b border-transparent'
     }`}>
-      <div className="max-w-[1200px] mx-auto px-6 py-4">
+      <div className="max-w-[1000px] mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Time Display - Left */}
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">

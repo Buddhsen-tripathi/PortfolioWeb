@@ -3,7 +3,7 @@ import { SiX} from "react-icons/si";
 
 export default function Contact() {
   return (
-    <section className="mb-16">
+    <section className="mb-8">
       <h2 className="text-3xl font-bold mb-6 text-foreground text-tracking-tight">Reach Out</h2>
       <div className="bg-card rounded-lg shadow-md shadow-primary/15 p-6 border border-border w-full text-card-foreground hover:shadow-lg transition-all">
         <p className="mb-6 text-muted-foreground leading-relaxed">
