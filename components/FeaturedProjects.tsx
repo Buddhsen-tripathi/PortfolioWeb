@@ -13,7 +13,8 @@ const projects = [
     description: "Deepfind.me is an educational OSINT platform offering tools and resources to help users understand and manage their digital footprint.",
     github: null,
     demo: "https://deepfind.me",
-    technologies: ["Next.Js", "NestJs", "Supabase", "Web Crypto API", "OpenAI API"],
+    technologies: ["Next.Js", "NestJs", "MySQL","AWS", "Web Crypto API", "OpenAI API"],
+    active: true,
   },
   {
     title: "Clonvo",
@@ -22,6 +23,25 @@ const projects = [
     github: null,
     demo: "https://clonvo.com",
     technologies: ["Next.Js", "TypeScript", "Tailwind CSS"],
+    active: false,
+  },
+  {
+    title: "OpenVScan",
+    image: "/openvscan.avif",
+    description: "OpenVScan is a web-based vulnerability scanner that integrates open-source tools with AI to deliver smarter, faster and more reliable pre-production security testing.",
+    github: "https://github.com/Buddhsen-tripathi/openvscan",
+    demo: "https://www.openvscan.com",
+    technologies: ["Next.Js", "TypeScript", "Tailwind CSS"],
+    active: true,
+  },
+  {
+    title: "Bucket0",
+    image: "/bucket0.avif",
+    description: "Unified platform to manage multiple s3 compatible storage services from a single interface.",
+    github: null,
+    demo: "https://www.bucket0.com",
+    technologies: ["Next.Js", "TypeScript", "Tailwind CSS"],
+    active: true,
   },
   {
     title: "openai-api-helper",
@@ -30,6 +50,7 @@ const projects = [
     github: "https://github.com/Buddhsen-tripathi/openai-api-helper",
     demo: "https://www.npmjs.com/package/openai-api-helper",
     technologies: ["JavaScript", "TypeScript"],
+    active: false,
   },
   {
     title: "SmartText Enhancer",
@@ -38,6 +59,7 @@ const projects = [
     github: null,
     demo: "https://chromewebstore.google.com/detail/smarttext-enhancer/chmpfoicecijpgmgcpnfhakmeaofmipm",
     technologies: ["JavaScript", "HTML", "CSS", "Express", "OpenAI API"],
+    active: false,
   }
 ];
 
@@ -93,9 +115,22 @@ export default function FeaturedProjects() {
 
             {/* Content */}
             <div className="flex flex-col flex-1 p-5">
-              <h3 className="text-xl font-semibold mb-2 text-foreground text-tracking-normal group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
+              <div className="flex items-start justify-between mb-2 gap-2">
+                <h3 className="text-xl font-semibold text-foreground text-tracking-normal group-hover:text-primary transition-colors flex-1">
+                  {project.title}
+                </h3>
+                {project.active ? (
+                  <span className="inline-flex items-center gap-1 bg-green-500/20 text-green-700 dark:text-green-400 px-2 py-0.5 rounded text-xs font-medium whitespace-nowrap">
+                    <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+                    Active
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1 bg-slate-500/20 text-slate-700 dark:text-slate-400 px-2 py-0.5 rounded text-xs font-medium whitespace-nowrap">
+                    <span className="inline-block w-2 h-2 bg-slate-500 rounded-full"></span>
+                    Inactive
+                  </span>
+                )}
+              </div>
               <p className="mb-4 text-muted-foreground leading-relaxed text-sm flex-1">
                 {project.description}
               </p>
