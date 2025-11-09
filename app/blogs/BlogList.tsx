@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
@@ -16,9 +16,57 @@ export interface BlogPost {
 
 export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortType, setSortType] = useState<'newest' | 'oldest' | 'mostread'>('newest');
+  const [viewsData, setViewsData] = useState<Record<string, number>>({});
+
+  // Initialize and sync views from localStorage
+  useEffect(() => {
+    const initializeViews = () => {
+      const viewsMap: Record<string, number> = {};
+      const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+      const now = Date.now();
+      
+      // Iterate through localStorage and extract all views-cache entries
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key?.startsWith('views-cache-')) {
+          const slug = key.replace('views-cache-', '');
+          const cached = localStorage.getItem(key);
+          if (cached) {
+            try {
+              const data = JSON.parse(cached);
+              // Check if cache is still valid
+              if (now - data.timestamp < CACHE_DURATION) {
+                viewsMap[slug] = data.views || 0;
+              }
+            } catch (e) {
+              console.error(`Failed to parse views cache for ${slug}:`, e);
+            }
+          }
+        }
+      }
+      
+      setViewsData(viewsMap);
+    };
+
+    initializeViews();
+  }, []);
+
+  // Sort posts based on sortType
+  const sortedPosts = [...blogPosts].sort((a, b) => {
+    switch (sortType) {
+      case 'oldest':
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
+      case 'mostread':
+        return (viewsData[b.slug] || 0) - (viewsData[a.slug] || 0);
+      case 'newest':
+      default:
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+    }
+  });
 
   // Update filter type to use BlogPost
-  const filteredPosts = blogPosts.filter((post: BlogPost) =>
+  const filteredPosts = sortedPosts.filter((post: BlogPost) =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -94,32 +142,44 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
       animate="visible"
       variants={containerVariants}
     >
-      {/* Search Bar */}
+      {/* Search and Sort Bar */}
       <motion.div 
-        className="relative"
+        className="flex gap-4"
         variants={searchVariants}
       >
-        <motion.input
-          type="text"
-          placeholder="Search articles..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-4 py-2 border rounded-lg shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-all duration-300 motion-search-input"
-          whileFocus={{ 
-            scale: 1.02
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        />
-        <motion.div
-          className="absolute right-3 top-3"
-          animate={{ 
-            rotate: searchQuery ? 15 : 0,
-            scale: searchQuery ? 1.1 : 1
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        {/* Search Bar */}
+        <motion.div 
+          className="relative flex-1"
         >
-          <Search className="w-5 h-5 text-muted-foreground" />
+          <motion.input
+            type="text"
+            placeholder="Search articles..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-4 py-2 border rounded-lg shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-all duration-300"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          />
+          <motion.div
+            className="absolute right-3 top-2.5"
+            animate={{ 
+              rotate: searchQuery ? 15 : 0
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <Search className="w-5 h-5 text-muted-foreground" />
+          </motion.div>
         </motion.div>
+
+        {/* Sort Dropdown */}
+        <motion.select
+          value={sortType}
+          onChange={(e) => setSortType(e.target.value as 'newest' | 'oldest' | 'mostread')}
+          className="px-4 py-2 border rounded-lg shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-all duration-300 cursor-pointer"
+        >
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="mostread">Most Read</option>
+        </motion.select>
       </motion.div>
 
       {/* Blog List */}

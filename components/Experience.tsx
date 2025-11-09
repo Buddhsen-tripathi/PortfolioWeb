@@ -2,7 +2,7 @@
 
 const experiences = [
 	{
-		company: 'Amadeus IT Group',
+		company: 'Amadeus',
 		companyUrl: 'https://amadeus.com',
 		role: 'Software Development Engineer 1',
 		location: 'Bengaluru, India',
@@ -12,7 +12,7 @@ const experiences = [
 		technologies: ['C++', 'Java', 'Angular', 'Azure', 'MongoDB'],
 	},
 	{
-		company: 'Amadeus IT Group',
+		company: 'Amadeus',
 		companyUrl: 'https://amadeus.com',
 		role: 'SDE Intern',
 		location: 'Bengaluru, India',
