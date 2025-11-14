@@ -35,15 +35,6 @@ const projects = [
     active: true,
   },
   {
-    title: "Bucket0",
-    image: "/bucket0.avif",
-    description: "Unified platform to manage multiple s3 compatible storage services from a single interface.",
-    github: null,
-    demo: "https://www.bucket0.com",
-    technologies: ["Next.Js", "TypeScript", "Tailwind CSS"],
-    active: true,
-  },
-  {
     title: "openai-api-helper",
     image: "/openai-helper.webp",
     description: "Straightforward npm package designed to simplify making calls to the OpenAI API for various text-based prompts and responses.",
