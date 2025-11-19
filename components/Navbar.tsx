@@ -69,8 +69,8 @@ const Navbar = memo(() => {
     }`}>
       <div className="max-w-[1000px] mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Time Display - Left */}
-          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+          {/* Time Display - Left (Desktop) */}
+          <div className="hidden md:flex items-center space-x-2 text-sm text-muted-foreground">
             <Clock size={16} className="text-primary" />
             <a
               href='https://www.google.com/search?q=time'
@@ -81,6 +81,14 @@ const Navbar = memo(() => {
               {formattedTime}
             </a>
           </div>
+
+          {/* Home Button - Left (Mobile) */}
+          <Link
+            href="/"
+            className="md:hidden flex items-center text-foreground hover:text-primary transition-colors font-medium"
+          >
+            Home
+          </Link>
 
           {/* Desktop Navigation - Right */}
           <div className="hidden md:flex items-center space-x-1">
@@ -142,31 +150,44 @@ const Navbar = memo(() => {
             </button>
           </div>
 
-          {/* Mobile Hamburger Menu - Right */}
-          <button
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-            className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring"
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Mobile Controls - Right */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+              className="flex items-center justify-center w-9 h-9 rounded-lg text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring overflow-hidden"
+            >
+              <Sun
+                className={`absolute transition-all duration-500 transform ${
+                  theme === 'dark'
+                    ? 'rotate-90 scale-0 opacity-0'
+                    : 'rotate-0 scale-100 opacity-100'
+                }`}
+                size={18}
+              />
+              <Moon
+                className={`absolute transition-all duration-500 transform ${
+                  theme === 'dark'
+                    ? 'rotate-0 scale-100 opacity-100'
+                    : '-rotate-90 scale-0 opacity-0'
+                }`}
+                size={18}
+              />
+            </button>
+
+            <button
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+              className="flex items-center justify-center w-9 h-9 rounded-lg text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-border space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
-            <Link
-              href="/"
-              onClick={closeMobileMenu}
-              className={`block px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
-                pathname === '/'
-                  ? 'text-primary-foreground bg-primary'
-                  : 'text-foreground hover:text-primary hover:bg-accent/50'
-              }`}
-            >
-              Home
-            </Link>
-            
             <Link
               href="/projects"
               onClick={closeMobileMenu}
@@ -190,33 +211,6 @@ const Navbar = memo(() => {
             >
               Blogs
             </Link>
-
-            <div className="pt-2 border-t border-border">
-              <button
-                onClick={toggleTheme}
-                className="w-full flex items-center justify-between px-4 py-2 rounded-lg text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-200 font-medium text-sm"
-              >
-                <span>Theme</span>
-                <div className="relative flex items-center justify-center w-5 h-5">
-                  <Sun
-                    className={`absolute transition-all duration-500 transform ${
-                      theme === 'dark'
-                        ? 'rotate-90 scale-0 opacity-0'
-                        : 'rotate-0 scale-100 opacity-100'
-                    }`}
-                    size={16}
-                  />
-                  <Moon
-                    className={`absolute transition-all duration-500 transform ${
-                      theme === 'dark'
-                        ? 'rotate-0 scale-100 opacity-100'
-                        : '-rotate-90 scale-0 opacity-0'
-                    }`}
-                    size={16}
-                  />
-                </div>
-              </button>
-            </div>
           </div>
         )}
       </div>
