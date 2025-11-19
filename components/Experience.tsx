@@ -10,20 +10,14 @@ const experiences = [
 		role: 'Software Development Engineer 1',
 		location: 'Bengaluru, India',
 		period: 'Jul 2023 - Aug 2025',
-		description:
-			'Developed and optimized enterprise web applications for the Format and Deliver team, ensuring system reliability across distributed services.',
-		technologies: ['C++', 'Java', 'Angular', 'Azure', 'MongoDB'],
 	},
 	{
 		company: 'Amadeus',
 		logo: '/amadeus.jpeg',
 		companyUrl: 'https://amadeus.com',
-		role: 'SDE Intern',
+		role: 'Software Development Engineer Intern',
 		location: 'Bengaluru, India',
-		period: 'Jan 2023 - Jun 2023',
-		description:
-			'Built a full-stack web app to modernize workflows, enhancing security, compliance, and user experience.',
-		technologies: ['Java', 'Angular', 'MySQL', 'Azure'],
+		period: 'Jan 2023 - Jun 2023'
 	},
 ]
 
@@ -51,7 +45,7 @@ export default function Experience() {
 
 						{/* Content Column */}
 						<div className="flex-grow">
-							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
+							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1 mt-1">
 								<div className="flex flex-col">
 									<a 
 										href={exp.companyUrl}
@@ -68,22 +62,6 @@ export default function Experience() {
 								<span className="text-sm text-muted-foreground tabular-nums">
 									{exp.period}
 								</span>
-							</div>
-
-							<p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
-								{exp.description}
-							</p>
-
-							{/* Minimal Tags */}
-							<div className="flex flex-wrap gap-2 mt-3">
-								{exp.technologies.map((tech) => (
-									<span 
-										key={tech} 
-										className="text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded border border-border/50"
-									>
-										{tech}
-									</span>
-								))}
 							</div>
 						</div>
 					</div>
