@@ -21,9 +21,9 @@ export default async function FeaturedPosts() {
               href={`/blogs/${post.slug}`}
               className="block group focus-ring rounded-lg"
             >
-              <div className="bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out group-hover:bg-accent/30 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30">
+              <div className="bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30">
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-foreground text-tracking-normal group-hover:text-accent-foreground transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground text-tracking-normal group-hover:text-primary transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">

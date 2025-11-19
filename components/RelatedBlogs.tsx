@@ -37,9 +37,9 @@ export default async function RelatedBlogs({ currentSlug, currentTitle }: Relate
           <Link
             key={post.slug}
             href={`/blogs/${post.slug}`}
-            className="group block p-6 border border-border rounded-lg shadow-lg shadow-primary/15 hover:shadow-xl transition-all bg-card focus-ring hover:bg-accent/10"
+            className="group block p-6 border border-border rounded-lg shadow-md shadow-primary/15 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 transition-all bg-card focus-ring"
           >
-            <h3 className="font-semibold text-lg text-foreground group-hover:text-accent-foreground transition-colors text-tracking-normal">
+            <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors text-tracking-normal">
               {post.title}
             </h3>
             <p className="mt-2 text-sm text-muted-foreground line-clamp-2 leading-relaxed">

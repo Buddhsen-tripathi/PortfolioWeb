@@ -204,22 +204,14 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                 >
                   <Link href={`/blogs/${post.slug}`} className="block h-full focus-ring rounded-lg">
                     <motion.article 
-                      className="p-6 bg-card rounded-lg shadow-sm shadow-primary/15 border border-border hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
+                      className="p-6 bg-card rounded-lg shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
                       transition={{ duration: 0.2 }}
                     >
-                      {/* Subtle background animation on hover */}
-                      <motion.div
-                        className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        initial={false}
-                        animate={{ x: "-100%" }}
-                        whileHover={{ x: "0%" }}
-                        transition={{ duration: 0.3 }}
-                      />
                       
                       <div className="space-y-4 flex-grow relative z-10">
                         <div>
                           <motion.h2 
-                            className="text-xl font-semibold pb-1 text-foreground text-tracking-normal group-hover:text-accent-foreground transition-colors"
+                            className="text-xl font-semibold pb-1 text-foreground text-tracking-normal group-hover:text-primary transition-colors"
                             initial={{ opacity: 0.8 }}
                             whileHover={{ opacity: 1 }}
                           >
