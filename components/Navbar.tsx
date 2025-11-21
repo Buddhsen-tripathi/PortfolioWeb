@@ -39,10 +39,41 @@ const Navbar = memo(() => {
     }
   }, [])
 
-  const toggleTheme = useCallback(() => {
-    if (setTheme && theme) {
+  const toggleTheme = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    // @ts-ignore - View Transitions API is not yet in all TS definitions
+    if (!document.startViewTransition) {
       setTheme(theme === 'dark' ? 'light' : 'dark')
+      return
     }
+
+    const x = e.clientX
+    const y = e.clientY
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    )
+
+    // @ts-ignore
+    const transition = document.startViewTransition(() => {
+      setTheme(theme === 'dark' ? 'light' : 'dark')
+    })
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ]
+      document.documentElement.animate(
+        {
+          clipPath: clipPath,
+        },
+        {
+          duration: 500,
+          easing: 'ease-in',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      )
+    })
   }, [theme, setTheme])
 
   const toggleMobileMenu = useCallback(() => {
