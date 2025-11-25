@@ -3,6 +3,34 @@ import BlogList from './BlogList'
 import BackToTopButton from '@/components/BacktoTopButton'
 import NewsletterSubscription from '@/components/NewsletterSubscription'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blogs - Buddhsen Tripathi',
+  description: 'Read the latest articles, tutorials, and personal thoughts on technology, programming, and more.',
+  openGraph: {
+    title: 'Blogs - Buddhsen Tripathi',
+    description: 'Read the latest articles, tutorials, and personal thoughts on technology, programming, and more.',
+    url: 'https://buddhsentripathi.com/blogs',
+    siteName: 'Buddhsen Tripathi',
+    images: [
+      {
+        url: 'https://buddhsentripathi.com/default-image-blogs.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Blogs - Buddhsen Tripathi',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blogs - Buddhsen Tripathi',
+    description: 'Read the latest articles, tutorials, and personal thoughts on technology, programming, and more.',
+    images: ['https://buddhsentripathi.com/default-image-blogs.webp'],
+  },
+}
 
 export default async function BlogPage() {
   const allPosts: BlogPost[] = await getAllBlogPosts()
@@ -13,12 +41,6 @@ export default async function BlogPage() {
 
   return (
     <div className="container max-w-4xl space-y-8">
-      <meta name="title" content="Blogs - Buddhsen Tripathi" />
-      <meta name="description" content="Read the latest articles, tutorials, and personal thoughts on technology, programming, and more." />
-      <meta property="og:url" content="https://buddhsentripathi.com/blogs" />
-      <meta property="og:image" content="https://buddhsentripathi.com/default-image-blogs.webp" />
-      <title>Blogs - Buddhsen Tripathi</title>
-
       <header className="space-y-2">
         <h1 className="text-4xl font-bold text-foreground text-tracking-tight">Blogs</h1>
         <p className="text-muted-foreground leading-relaxed">Latest articles and tutorials</p>

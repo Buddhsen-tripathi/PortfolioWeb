@@ -14,6 +14,7 @@ import SocialShare from '../SocialShare'
 import { mdxComponents } from '@/components/MdxComponents'
 import TableOfContents from '@/components/TableOfContents'
 import { getBlogPostFromS3, getBlogSlugsFromS3 } from '@/lib/r2Client'
+import { Metadata } from 'next'
 
 // Fetch the list of slugs (paths to blog posts) from S3
 export async function generateStaticParams() {
@@ -23,6 +24,38 @@ export async function generateStaticParams() {
 
 export type paramsType = Promise<{ slug: string }>;
 
+export async function generateMetadata({ params }: { params: paramsType }): Promise<Metadata> {
+  const { slug } = await params
+  const { data } = await getBlogPostFromS3(slug)
+
+  return {
+    title: `${data.title} - Buddhsen Tripathi`,
+    description: data.excerpt,
+    openGraph: {
+      title: `${data.title} - Buddhsen Tripathi`,
+      description: data.excerpt,
+      url: `https://buddhsentripathi.com/blogs/${data.slug}`,
+      type: 'article',
+      publishedTime: data.date,
+      authors: ['Buddhsen Tripathi'],
+      images: [
+        {
+          url: 'https://buddhsentripathi.com/default-image-blogs.webp',
+          width: 1200,
+          height: 630,
+          alt: data.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${data.title} - Buddhsen Tripathi`,
+      description: data.excerpt,
+      images: ['https://buddhsentripathi.com/default-image-blogs.webp'],
+    },
+  }
+}
+
 // Blog Post component that renders the content
 export default async function BlogPost({ params }: { params: paramsType }) {
   // Fetch the blog content and data from S3
@@ -30,14 +63,6 @@ export default async function BlogPost({ params }: { params: paramsType }) {
 
   return (
     <div className="space-y-8">
-      <meta name="title" content={`${data.title} - Buddhsen Tripathi`} />
-      <meta name="description" content={`${data.excerpt}`} />
-      <meta property="og:url" content={`https://buddhsentripathi.com/blogs/${data.slug}`} />
-      <meta property="og:image" content="https://buddhsentripathi.com/default-image-blogs.webp" />
-      <title>{`${data.title} - Buddhsen Tripathi`}</title>
-
-      
-
       <div className="flex justify-between items-center">
         <Link href="/blogs" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
           <ArrowLeft className="w-4 h-4 mr-2" />

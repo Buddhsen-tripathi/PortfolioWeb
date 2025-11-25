@@ -1,13 +1,36 @@
 import FeaturedProjects from '@/components/FeaturedProjects'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Projects - Buddhsen Tripathi',
+  description: 'Explore my latest projects, including web applications, open-source tools, and experiments in technology and programming.',
+  openGraph: {
+    title: 'Projects - Buddhsen Tripathi',
+    description: 'Explore my latest projects, including web applications, open-source tools, and experiments in technology and programming.',
+    url: 'https://buddhsentripathi.com/projects',
+    siteName: 'Buddhsen Tripathi',
+    images: [
+      {
+        url: 'https://buddhsentripathi.com/default-image-project.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Projects - Buddhsen Tripathi',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projects - Buddhsen Tripathi',
+    description: 'Explore my latest projects, including web applications, open-source tools, and experiments in technology and programming.',
+    images: ['https://buddhsentripathi.com/default-image-project.webp'],
+  },
+}
 
 export default function ProjectsPage() {
   return (
     <div className="space-y-8">
-      <meta name="title" content="Projects - Buddhsen Tripathi" />
-      <meta name="description" content="Read the latest articles and tutorials on technology, programming, and more." />
-      <meta property="og:url" content="https://buddhsentripathi.com/projects" />
-      <meta property="og:image" content="https://buddhsentripathi.com/default-image-project.webp" />
-      <title>Projects - Buddhsen Tripathi</title>
       <FeaturedProjects />
       {/* Add more projects here if needed */}
     </div>
