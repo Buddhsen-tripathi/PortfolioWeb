@@ -20,7 +20,7 @@ This is my personal portfolio website, built with Next.js (App Router), Tailwind
 
 ## Tech Stack
 
--   **Framework:** [Next.js](https://nextjs.org/) (v14+ with App Router)
+-   **Framework:** [Next.js](https://nextjs.org/) (v15+ with App Router)
 -   **Language:** [TypeScript](https://www.typescriptlang.org/)
 -   **Styling:** [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/)
 -   **Backend/Database (for dynamic content like views):** [Supabase](https://supabase.io/)
