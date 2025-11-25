@@ -45,7 +45,7 @@ export default function Hero() {
         </div>
 
         <p className="max-w-2xl text-center md:text-left text-muted-foreground leading-relaxed">
-          MS Computer Science student at NYU and full-stack developer with 2+ years of experience building 
+          <span className="text-foreground font-medium">MS Computer Science student at NYU</span> and <span className="text-foreground font-medium">full-stack developer with 2+ years of experience</span> building 
           scalable enterprise applications. Skilled in{' '}
           <span className="text-foreground font-medium">Java, C++, and TypeScript</span>{' '}
           with expertise in cloud infrastructure and microservices architecture.

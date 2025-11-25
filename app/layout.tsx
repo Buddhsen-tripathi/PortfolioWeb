@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'Buddhsen Tripathi',
   description: 'Full Stack Web developer portfolio showcasing projects and skills in Next.js, React, TypeScript, and full-stack development and technical blogs',
+  keywords: ['Full Stack Developer', 'Next.js', 'React', 'TypeScript', 'Portfolio', 'Buddhsen Tripathi', 'Software Engineer', 'Web Developer', 'Java', 'Web Security'],
   authors: [{ name: 'Buddhsen Tripathi' }],
   creator: 'Buddhsen Tripathi',
   metadataBase: new URL('https://buddhsentripathi.com'),
@@ -48,8 +49,6 @@ export default function RootLayout({
       <head>
         {/* Preload critical resources */}
         <link rel="preload" href="/profpic.webp" as="image" />
-        <link rel="preload" href="/dfme.webp" as="image" />
-        <link rel="preload" href="/clonvo.webp" as="image" />
       </head>
       <body className={`font-sans bg-background text-foreground max-w-[1000px] mx-auto pt-12 flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
