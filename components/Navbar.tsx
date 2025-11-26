@@ -155,6 +155,17 @@ const Navbar = memo(() => {
             >
               Blogs
             </Link>
+            
+            <Link
+              href="/rate-my-project"
+              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+                pathname.startsWith('/rate-my-project')
+                  ? 'text-primary-foreground bg-primary'
+                  : 'text-foreground hover:text-primary hover:bg-accent/50'
+              }`}
+            >
+              Rate My Project
+            </Link>
 
             {/* Theme Toggle */}
             <button
@@ -241,6 +252,18 @@ const Navbar = memo(() => {
               }`}
             >
               Blogs
+            </Link>
+            
+            <Link
+              href="/rate-my-project"
+              onClick={closeMobileMenu}
+              className={`block px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+                pathname.startsWith('/rate-my-project')
+                  ? 'text-primary-foreground bg-primary'
+                  : 'text-foreground hover:text-primary hover:bg-accent/50'
+              }`}
+            >
+              Rate My Project
             </Link>
           </div>
         )}
