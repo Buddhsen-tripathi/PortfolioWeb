@@ -1,7 +1,6 @@
 import { getAllBlogPosts, type BlogPost } from './utils'
 import BlogList from './BlogList'
-import BackToTopButton from '@/components/BacktoTopButton'
-import NewsletterSubscription from '@/components/NewsletterSubscription'
+import { BackToTopButton, NewsletterSubscription } from '@/components/common'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Metadata } from 'next'
 

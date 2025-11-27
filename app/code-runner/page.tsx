@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import ViewCounter from '@/components/ViewCounter';
+import { ViewCounter } from '@/components/common';
 
 const GAME_WIDTH = 375;
 const GAME_HEIGHT = 580;

@@ -1,14 +1,11 @@
-import Hero from '@/components/HeroSection'
-import Experience from '@/components/Experience'
-import FeaturedProjects from '@/components/FeaturedProjects'
-import FeaturedPosts from '@/components/FeaturedPosts'
-import NewsletterSubscription from '@/components/NewsletterSubscription'
+import { HeroSection, Experience, FeaturedProjects, FeaturedPosts } from '@/components/landing'
+import { NewsletterSubscription } from '@/components/common'
 
 export default function Home() {
   return (
     <main className="flex-1">
       <section className="px-6 py-4 space-y-16">
-        <Hero />
+        <HeroSection />
         <Experience />
         <FeaturedProjects />
         <FeaturedPosts />

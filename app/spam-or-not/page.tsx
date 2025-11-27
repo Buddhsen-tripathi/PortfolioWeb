@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ArrowLeft, Loader2, AlertCircle, CheckCircle, Twitter } from 'lucide-react';
-import ViewCounter from '@/components/ViewCounter';
+import { ViewCounter } from '@/components/common';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from "@/components/ui/progress";
