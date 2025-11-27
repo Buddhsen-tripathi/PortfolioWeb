@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { BsArrowUpRight, BsArrowRight } from "react-icons/bs";
 import { usePathname } from 'next/navigation'
-import ViewCounter from './ViewCounter';
+import ViewCounter from '@/components/common/ViewCounter';
 
 const projects = [
   {

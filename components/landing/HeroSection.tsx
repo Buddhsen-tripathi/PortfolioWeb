@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode, SiGmail, SiTryhackme } from "react-icons/si";
-import { Download} from 'lucide-react';
+import { Download } from 'lucide-react';
+import Link from 'next/link';
 
 const socialLinks = [
   { href: "https://github.com/buddhsen-tripathi", icon: SiGithub, label: "GitHub" },
@@ -59,14 +60,13 @@ export default function Hero() {
           >
             Get in Touch
           </a>
-          <a
-            href="/resume.pdf"
-            download
+          <Link
+            href="/Resume.pdf"
             className="px-6 py-2.5 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
           >
             <Download size={16} />
             Resume
-          </a>
+          </Link>
         </div>
 
         {/* Social Links */}

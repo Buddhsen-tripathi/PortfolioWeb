@@ -1,4 +1,4 @@
-import FeaturedProjects from '@/components/FeaturedProjects'
+import { FeaturedProjects } from '@/components/landing'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

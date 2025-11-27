@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getAllBlogPosts } from '@/app/blogs/utils';
 import { BsArrowRight } from 'react-icons/bs';
 import { createClient } from '@/lib/supabaseServer';
-import ViewCounter from './ViewCounter';
+import ViewCounter from '@/components/common/ViewCounter';
 
 export default async function FeaturedPosts() {
   const blogPosts = await getAllBlogPosts();

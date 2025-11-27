@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
-import ViewCounter from '@/components/ViewCounter';
+import { ViewCounter } from '@/components/common';
 
 export interface BlogPost {
   title: string;

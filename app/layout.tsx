@@ -1,8 +1,6 @@
 import { ThemeProvider } from 'next-themes'
-import Navbar from '@/components/Navbar'
+import { Navbar, ScrollProgress, Footer } from '@/components/layout'
 import './globals.css'
-import ScrollProgress from '@/components/ScrollProgress'
-import Footer from '@/components/Footer'
  
 
 export const metadata = {
