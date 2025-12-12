@@ -62,6 +62,7 @@ export default function Hero() {
           </a>
           <Link
             href="/Resume.pdf"
+            target="_blank"
             className="px-6 py-2.5 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
           >
             <Download size={16} />
