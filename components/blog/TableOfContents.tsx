@@ -163,11 +163,11 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
                     fontSize: item.level === 2 ? '0.875rem' : item.level === 3 ? '0.8125rem' : '0.75rem'
                   }}
                 >
-                  <span className="block truncate">
-                    {item.level === 2 && '📄 '}
-                    {item.level === 3 && '🔸 '}
-                    {item.level === 4 && '▫️ '}
-                    {item.text}
+                  <span className="block truncate flex items-center gap-2">
+                    {item.level === 2 && <span aria-hidden="true">▶</span>}
+                    {item.level === 3 && <span aria-hidden="true">▹</span>}
+                    {item.level === 4 && <span aria-hidden="true">▸</span>}
+                    <span>{item.text}</span>
                   </span>
                 </motion.button>
               ))}
