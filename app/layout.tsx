@@ -1,7 +1,8 @@
 import { ThemeProvider } from 'next-themes'
 import { Navbar, ScrollProgress, Footer } from '@/components/layout'
+import Script from 'next/script'
 import './globals.css'
- 
+
 
 export const metadata = {
   title: 'Buddhsen Tripathi',
@@ -47,6 +48,16 @@ export default function RootLayout({
       <head>
         {/* Preload critical resources */}
         <link rel="preload" href="/profpic.webp" as="image" />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');`}
+        </Script>
       </head>
       <body className={`font-sans bg-background text-foreground max-w-[1000px] mx-auto pt-12 flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
@@ -54,12 +65,12 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={true}
           storageKey="theme"
-        > 
+        >
           <ScrollProgress />
           <Navbar />
           <main className="flex-grow">
             <div className="max-w-[1000px] mx-auto px-4 py-12">
-                {children}
+              {children}
             </div>
           </main>
           <Footer />
