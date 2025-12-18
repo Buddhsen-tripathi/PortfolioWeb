@@ -16,7 +16,7 @@ const socialLinks = [
 
 export default function Hero() {
   return (
-    <section className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 mb-12 md:mb-16">
+    <section className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
       {/* Profile Image */}
       <div className="relative group">
         <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-lg ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
@@ -56,14 +56,14 @@ export default function Hero() {
         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
           <a
             href="mailto:buddhsen.work@gmail.com"
-            className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
+            className="px-6 py-2.5 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
           >
             Get in Touch
           </a>
           <Link
             href="/Resume.pdf"
             target="_blank"
-            className="px-6 py-2.5 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
+            className="px-6 py-2.5 bg-secondary text-secondary-foreground rounded-sm hover:bg-secondary/80 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
           >
             <Download size={16} />
             Resume
@@ -78,7 +78,7 @@ export default function Hero() {
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 focus-ring rounded-lg p-1"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 focus-ring rounded-sm p-1"
               aria-label={label}
               title={label}
             >

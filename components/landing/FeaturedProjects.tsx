@@ -81,14 +81,14 @@ export default function FeaturedProjects() {
 
   return (
     <section>
-      <h1 className="text-3xl font-bold mb-6 text-foreground text-tracking-tight">Projects</h1>
+      <h1 className="text-2xl font-bold mb-5 text-tracking-tight">Projects</h1>
       
       {/* Grid Layout for Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.slice(0, isHomePage ? 2 : projects.length).map((project, index) => (
           <div 
             key={project.title} 
-            className="flex flex-col bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
+            className="flex flex-col bg-card rounded-sm overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
           >
             {/* Image with fixed aspect ratio */}
             <div className="relative w-full aspect-video overflow-hidden">
@@ -170,11 +170,11 @@ export default function FeaturedProjects() {
       </div>
 
       {isHomePage && (
-        <div className="mt-6 flex justify-center w-full">
-          <Link href="/projects" className="w-full focus-ring rounded-lg">
-            <div className="w-full bg-card text-card-foreground rounded-lg shadow-md hover:shadow-lg shadow-primary/15 transition-all py-3 border border-border flex items-center justify-center gap-2 hover:text-primary/80 hover:bg-accent/30">
-              <span>View more</span>
-              <BsArrowRight className="inline-block" />
+        <div className="mt-5">
+          <Link href="/projects" className="block focus-ring rounded-sm">
+            <div className="group w-full rounded-sm border border-border bg-background/40 text-muted-foreground hover:text-foreground hover:bg-accent/30 hover:border-primary/30 transition-colors px-4 py-3 flex items-center justify-center gap-2">
+              <span className="text-sm font-medium">View more</span>
+              <BsArrowRight className="inline-block transition-transform duration-200 group-hover:translate-x-0.5" />
             </div>
           </Link>
         </div>
@@ -205,7 +205,7 @@ export default function FeaturedProjects() {
             {funProjects.map((project) => (
               <div 
                 key={project.title} 
-                className="flex flex-col bg-card rounded-lg overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
+                className="flex flex-col bg-card rounded-sm overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
               >
                 {/* Image with fixed aspect ratio */}
                 <div className="relative w-full aspect-video overflow-hidden">

@@ -248,24 +248,12 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                         </motion.p>
                       </div>
                       
-                      <motion.span 
-                        className="text-primary self-start pt-1 relative z-10 inline-flex items-center group-hover:text-primary/80 transition-colors"
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      >
-                        Read more 
-                        <motion.span
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{ 
-                            duration: 1.5, 
-                            repeat: Infinity, 
-                            ease: "easeInOut" 
-                          }}
-                          className="ml-1"
-                        >
+                      <span className="text-primary self-start pt-1 relative z-10 inline-flex items-center group-hover:text-primary/80 transition-colors">
+                        Read more
+                        <span className="ml-1 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
                           →
-                        </motion.span>
-                      </motion.span>
+                        </span>
+                      </span>
                     </motion.article>
                   </Link>
                 </motion.div>

@@ -125,7 +125,7 @@ const Navbar = memo(() => {
           <div className="hidden md:flex items-center space-x-1">
             <Link
               href="/"
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
                 pathname === '/'
                   ? 'text-primary-foreground bg-primary'
                   : 'text-foreground hover:text-primary hover:bg-accent/50'
@@ -136,7 +136,7 @@ const Navbar = memo(() => {
             
             <Link
               href="/projects"
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
                 pathname === '/projects'
                   ? 'text-primary-foreground bg-primary'
                   : 'text-foreground hover:text-primary hover:bg-accent/50'
@@ -147,7 +147,7 @@ const Navbar = memo(() => {
             
             <Link
               href="/blogs"
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
                 pathname === '/blogs'
                   ? 'text-primary-foreground bg-primary'
                   : 'text-foreground hover:text-primary hover:bg-accent/50'
@@ -160,7 +160,7 @@ const Navbar = memo(() => {
             <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-              className="relative flex items-center justify-center w-9 h-9 rounded-lg text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring overflow-hidden ml-2"
+              className="relative flex items-center justify-center w-9 h-9 rounded-sm text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring overflow-hidden ml-2"
             >
               <Sun
                 className={`absolute transition-all duration-500 transform ${
@@ -186,7 +186,7 @@ const Navbar = memo(() => {
             <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-              className="flex items-center justify-center w-9 h-9 rounded-lg text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring overflow-hidden"
+              className="flex items-center justify-center w-9 h-9 rounded-sm text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring overflow-hidden"
             >
               <Sun
                 className={`absolute transition-all duration-500 transform ${
@@ -209,7 +209,7 @@ const Navbar = memo(() => {
             <button
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
-              className="flex items-center justify-center w-9 h-9 rounded-lg text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring"
+              className="flex items-center justify-center w-9 h-9 rounded-sm text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -222,7 +222,7 @@ const Navbar = memo(() => {
             <Link
               href="/projects"
               onClick={closeMobileMenu}
-              className={`block px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`block px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
                 pathname === '/projects'
                   ? 'text-primary-foreground bg-primary'
                   : 'text-foreground hover:text-primary hover:bg-accent/50'
@@ -234,7 +234,7 @@ const Navbar = memo(() => {
             <Link
               href="/blogs"
               onClick={closeMobileMenu}
-              className={`block px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`block px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
                 pathname === '/blogs'
                   ? 'text-primary-foreground bg-primary'
                   : 'text-foreground hover:text-primary hover:bg-accent/50'

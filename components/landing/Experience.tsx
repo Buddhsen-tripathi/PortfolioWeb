@@ -6,7 +6,7 @@ const experiences = [
 	{
 		company: 'Amadeus',
 		logo: '/amadeus.jpeg',
-		companyUrl: 'https://amadeus.com',
+		companyUrl: 'https://amadeus.com/en',
 		role: 'Software Development Engineer 1',
 		location: 'Bengaluru, India',
 		period: 'Jul 2023 - Aug 2025',
@@ -14,7 +14,7 @@ const experiences = [
 	{
 		company: 'Amadeus',
 		logo: '/amadeus.jpeg',
-		companyUrl: 'https://amadeus.com',
+		companyUrl: 'https://amadeus.com/en',
 		role: 'Software Development Engineer Intern',
 		location: 'Bengaluru, India',
 		period: 'Jan 2023 - Jun 2023'
@@ -23,12 +23,12 @@ const experiences = [
 
 export default function Experience() {
 	return (
-		<section className="my-12">
-			<h2 className="text-3xl font-bold mb-8 text-foreground text-tracking-tight">
+		<section>
+			<h2 className="text-2xl font-bold mb-5 text-tracking-tight">
 				Work Experience
 			</h2>
 
-			<div className="space-y-10">
+			<div className="space-y-6">
 				{experiences.map((exp, index) => (
 					<div key={index} className="flex gap-4 group">
 						{/* Logo / Icon Column */}
@@ -59,9 +59,14 @@ export default function Experience() {
 										{exp.role}
 									</span>
 								</div>
-								<span className="text-sm text-muted-foreground tabular-nums">
-									{exp.period}
-								</span>
+								<div className="flex flex-col items-end">
+									<span className="text-sm text-muted-foreground tabular-nums">
+										{exp.location}
+									</span>
+									<span className="text-sm text-muted-foreground tabular-nums">
+										{exp.period}
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>

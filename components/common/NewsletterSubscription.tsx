@@ -36,8 +36,8 @@ export default function NewsletterSubscription() {
     }
 
     return (
-        <div className="group block p-6 border border-border rounded-lg shadow-md shadow-primary/15 hover:shadow-lg transition-all bg-card">
-            <h2 className="text-2xl font-bold mb-2 text-foreground text-tracking-tight">
+        <div className="group block p-6 border border-border rounded-sm shadow-md shadow-primary/15 hover:shadow-lg transition-all bg-card">
+            <h2 className="text-2xl font-bold mb-2 text-tracking-tight">
                 Never Miss a <span className='text-destructive'>Blog</span>
             </h2>
             <p className="mb-4 text-md text-muted-foreground leading-relaxed">
@@ -49,7 +49,7 @@ export default function NewsletterSubscription() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
-                    className="w-full px-4 py-2 border rounded-lg shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background focus-ring transition-colors"
+                    className="w-full px-4 py-2 border rounded-sm shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background focus-ring transition-colors"
                     required
                 />
                 <div className="flex items-center gap-8 mt-4">
@@ -65,7 +65,7 @@ export default function NewsletterSubscription() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`ml-auto inline-flex items-center justify-center gap-2 px-6 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm transition-all duration-300 min-w-[140px] focus-ring ${
+                        className={`ml-auto inline-flex items-center justify-center gap-2 px-6 py-2 border border-transparent text-sm font-medium rounded-sm shadow-sm transition-all duration-300 min-w-[140px] focus-ring ${
                             success 
                                 ? 'text-chart-1 bg-chart-1/10 hover:bg-chart-1/20' 
                                 : 'text-primary-foreground bg-primary hover:bg-primary/90'
