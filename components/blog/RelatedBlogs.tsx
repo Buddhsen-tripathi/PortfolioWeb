@@ -1,3 +1,4 @@
+import 'server-only'
 import Link from 'next/link'
 import { getAllBlogPostsFromS3, BlogPostData } from '@/lib/r2Client'
 

@@ -1,3 +1,4 @@
+import 'server-only'
 import { S3Client, GetObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3'
 import matter from 'gray-matter'
 

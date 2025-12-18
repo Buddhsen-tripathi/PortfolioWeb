@@ -46,16 +46,16 @@ export default async function BlogPage() {
       </header>
 
       <Tabs defaultValue="technical" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-6 bg-muted border border-border rounded-lg p-1">
+        <TabsList className="grid w-full grid-cols-2 mb-6 bg-muted/50 border border-border rounded-sm p-1 h-11">
           <TabsTrigger 
             value="technical" 
-            className="bg-transparent text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-all duration-300 ease-in-out rounded-lg focus-ring"
+            className="h-9 rounded-sm bg-transparent text-sm font-medium text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-colors"
           >
             Technical
           </TabsTrigger>
           <TabsTrigger 
             value="personal" 
-            className="bg-transparent text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-all duration-300 ease-in-out rounded-lg focus-ring"
+            className="h-9 rounded-sm bg-transparent text-sm font-medium text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-colors"
           >
             Personal
           </TabsTrigger>
@@ -65,7 +65,7 @@ export default async function BlogPage() {
           {technicalPosts.length > 0 ? (
             <BlogList blogPosts={technicalPosts} />
           ) : (
-            <div className="text-center py-12 bg-card rounded-lg border border-border">
+            <div className="text-center py-12 bg-card rounded-sm border border-border">
               <p className="text-muted-foreground italic text-lg">No technical articles published yet.</p>
               <p className="text-muted-foreground text-sm mt-2">Check back soon for new content!</p>
             </div>
@@ -76,7 +76,7 @@ export default async function BlogPage() {
           {personalPosts.length > 0 ? (
             <BlogList blogPosts={personalPosts} />
           ) : (
-            <div className="text-center py-12 bg-card rounded-lg border border-border">
+            <div className="text-center py-12 bg-card rounded-sm border border-border">
               <p className="text-muted-foreground italic text-lg">No personal blogs published yet.</p>
               <p className="text-muted-foreground text-sm mt-2">Personal stories and thoughts coming soon!</p>
             </div>

@@ -156,11 +156,11 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
             placeholder="Search articles..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-all duration-300"
+            className="w-full h-11 px-4 pr-11 border border-border rounded-sm bg-background/40 text-foreground placeholder:text-muted-foreground focus-ring transition-colors"
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
           <motion.div
-            className="absolute right-3 top-2.5"
+            className="absolute right-3 top-1/2 -translate-y-1/2"
             animate={{ 
               rotate: searchQuery ? 15 : 0
             }}
@@ -174,7 +174,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
         <motion.select
           value={sortType}
           onChange={(e) => setSortType(e.target.value as 'newest' | 'oldest' | 'mostread')}
-          className="px-4 py-2 border rounded-lg shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-all duration-300 cursor-pointer"
+          className="h-11 px-4 border border-border rounded-sm bg-background/40 text-foreground focus-ring transition-colors cursor-pointer"
         >
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
@@ -202,9 +202,9 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                   whileTap={{ scale: 0.98 }}
                   className="h-full"
                 >
-                  <Link href={`/blogs/${post.slug}`} className="block h-full focus-ring rounded-lg">
+                  <Link href={`/blogs/${post.slug}`} className="block h-full focus-ring rounded-sm">
                     <motion.article 
-                      className="p-6 bg-card rounded-lg shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
+                      className="p-6 bg-card rounded-sm shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
                       transition={{ duration: 0.2 }}
                     >
                       
@@ -267,7 +267,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="text-center py-12 bg-card rounded-lg border border-border"
+            className="text-center py-12 bg-card rounded-sm border border-border"
           >
             <motion.div
               animate={{ 

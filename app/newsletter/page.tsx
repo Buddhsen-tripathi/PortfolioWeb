@@ -24,7 +24,7 @@ export default function NewsletterPage() {
         <div className="container max-w-4xl items-center space-y-8">
             <Link 
                 href="/" 
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-lg"
+                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-sm"
             >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Home
