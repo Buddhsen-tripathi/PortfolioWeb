@@ -45,7 +45,7 @@ export default function Experience() {
 
 						{/* Content Column */}
 						<div className="flex-grow">
-							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1 mt-1">
+							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-1 mb-1 mt-1">
 								<div className="flex flex-col">
 									<a 
 										href={exp.companyUrl}
@@ -59,7 +59,7 @@ export default function Experience() {
 										{exp.role}
 									</span>
 								</div>
-								<div className="flex flex-col items-end">
+								<div className="flex flex-col items-start sm:items-end">
 									<span className="text-sm text-muted-foreground tabular-nums">
 										{exp.location}
 									</span>
