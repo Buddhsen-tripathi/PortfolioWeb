@@ -1,33 +1,33 @@
 ## Project Overview
 
-This is my personal portfolio website, built with Next.js (App Router), Tailwind CSS, and TypeScript. It's designed to showcase my projects, skills, and host a technical blog, along with several interactive tools and applications. The focus is on performance, SEO, and a modern developer experience.
+This is my personal portfolio website built with Next.js (App Router), Tailwind CSS, and TypeScript. It showcases projects and experience, hosts a technical blog (MDX), and includes a couple of interactive tools. The focus is performance, SEO, and a clean developer experience.
 
 ## Features
 
--   **Next.js App Router:** Leverages Server-Side Rendering (SSR) and Static Site Generation (SSG) for optimal performance and SEO.
--   **Blog:** Self-hosted blog with posts written in MDX ([`app/blogs/`](app/blogs/page.tsx)).
-    -   View counters for blog posts ([`components/ViewCounter.tsx`](components/ViewCounter.tsx), [`app/api/views/route.ts`](app/api/views/route.ts)).
+-   **Next.js App Router:** Uses SSR/SSG where appropriate for performance and SEO.
+-   **Home / Projects:** Portfolio landing page + projects listing ([`app/page.tsx`](app/page.tsx), [`app/projects/page.tsx`](app/projects/page.tsx)).
+-   **Blog (MDX):** Self-hosted blog with posts written in MDX ([`app/blogs/`](app/blogs/page.tsx)).
+    -   View counters for blog posts ([`app/api/views/route.ts`](app/api/views/route.ts)).
     -   Read-aloud functionality for blog posts ([`app/blogs/[slug]/ReadAloudButton.tsx`](app/blogs/[slug]/ReadAloudButton.tsx)).
--   **Interactive Tools & Pages:**
-    -   **Code Runner:** A simple browser game ([`app/code-runner/page.tsx`](app/code-runner/page.tsx)).
-    -   **Twitter/X Spam Check:** Analyzes Twitter/X user activity for spam-like behavior using AI ([`app/spam-or-not/page.tsx`](app/spam-or-not/page.tsx)).
-    -   **Linkedinfy My Post:** Helps optimize posts for LinkedIn ([`app/linkedinfy-my-post/page.tsx`](app/linkedinfy-my-post/page.tsx)).
-    -   **Japanese Lucky Birthday Rankings:** A fun tool to check birthday luck ([`app/2025-birthday-rankings/page.tsx`](app/2025-birthday-rankings/page.tsx)).
--   **Styling:** Modern UI styled with Tailwind CSS ([`tailwind.config.ts`](tailwind.config.ts)) and shadcn/ui components ([`components/ui/`](components/ui/)).
--   **Dark Mode:** Theme toggling for light/dark mode support ([`components/theme-provider.tsx`](components/theme-provider.tsx)).
--   **Newsletter Subscription:** Integration for newsletter sign-ups ([`app/newsletter/page.tsx`](app/newsletter/page.tsx), [`components/NewsletterSubscription.tsx`](components/NewsletterSubscription.tsx)).
--   **RSS Feed:** Automatically generated RSS feed for blog posts ([`app/feed.xml/route.ts`](app/feed.xml/route.ts)).
+-   **Interactive Tools:**
+    -   **Code Runner:** Small browser game + leaderboard ([`app/code-runner/page.tsx`](app/code-runner/page.tsx), [`app/api/leaderboard/route.ts`](app/api/leaderboard/route.ts)).
+    -   **Twitter/X Spam Check:** Analyzes a Twitter/X account for spam-like behavior using AI ([`app/spam-or-not/page.tsx`](app/spam-or-not/page.tsx), [`app/api/spam-or-not/route.ts`](app/api/spam-or-not/route.ts)).
+-   **Styling:** Tailwind CSS + shadcn/ui components ([`components/ui/`](components/ui/)).
+-   **Dark Mode:** Theme toggling via `next-themes`.
+-   **Newsletter Subscription:** Newsletter sign-ups backed by Supabase ([`app/api/subscribe/route.ts`](app/api/subscribe/route.ts)).
+-   **SEO/Feeds:** RSS feed + sitemap ([`app/feed.xml/route.ts`](app/feed.xml/route.ts), [`app/sitemap.xml/route.ts`](app/sitemap.xml/route.ts)).
+-   **Analytics:** Google Analytics via `NEXT_PUBLIC_GA_ID` (see [`app/layout.tsx`](app/layout.tsx)).
 
 ## Tech Stack
 
--   **Framework:** [Next.js](https://nextjs.org/) (v15+ with App Router)
+-   **Framework:** [Next.js](https://nextjs.org/) (v16+ with App Router)
 -   **Language:** [TypeScript](https://www.typescriptlang.org/)
 -   **Styling:** [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/)
 -   **Backend/Database (for dynamic content like views):** [Supabase](https://supabase.io/)
 -   **Content:** [MDX](https://mdxjs.com/) for blog posts
 -   **External APIs:**
-    -   [Google Gemini API](https://ai.google.dev/): For AI-powered features in and Spam Check.
-    -   [Exa API](https://exa.ai/): For fetching Twitter/X data in the Spam Check tool.
+    -   [Google Gemini API](https://ai.google.dev/): Used for AI analysis in the Spam Check tool.
+    -   [Exa API](https://exa.ai/): Used to fetch Twitter/X content for analysis.
 -   **Deployment:** [Vercel](https://vercel.com/)
 
 ## Getting Started
@@ -46,6 +46,10 @@ Follow these steps to get the project running locally:
     ```bash
     pnpm install
     ```
+    or
+    ```bash
+    bun install
+    ```
 
 2.  **Set up Environment Variables:**
     Create a `.env.local` file in the root directory. You can copy the structure from `.env.example` if one is provided, or create it manually.
@@ -63,6 +67,10 @@ Follow these steps to get the project running locally:
     ```bash
     pnpm dev
     ```
+    or
+    ```bash
+    bun run dev
+    ```
     Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the main page by modifying [`app/page.tsx`](app/page.tsx). The page auto-updates as you edit the file.
@@ -71,19 +79,24 @@ You can start editing the main page by modifying [`app/page.tsx`](app/page.tsx).
 
 This project requires the following environment variables to be set in a `.env.local` file in the root directory for full functionality:
 
--   `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL.
--   `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase project public anon key.
--   `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase project service role key (used for admin tasks like incrementing view counts and newsletter subscriptions).
--   `GEMINI_API_KEY`: Your Google Gemini API key (used for AI features like resume suggestions in the Spam Check tool).
--   `EXA_API_KEY`: Your Exa API key (used for the Twitter/X Spam Check tool to retrieve tweets).
+-   `NEXT_PUBLIC_SUPABASE_URL`: Supabase project URL (client + server).
+-   `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Supabase anon key (client + server).
+-   `SUPABASE_URL`: Supabase project URL (admin client for server routes).
+-   `SUPABASE_SERVICE_ROLE_KEY`: Supabase service role key (server-only; used by API routes).
+-   `GEMINI_API_KEY`: Google Gemini API key (server-only; used by Spam Check).
+-   `EXA_API_KEY`: Exa API key (server-only; used by Spam Check).
+-   `NEXT_PUBLIC_GA_ID`: Google Analytics measurement ID.
+-   `NEXT_PUBLIC_BASE_URL`: Comma-separated list of allowed origins for certain API routes (e.g. `http://localhost:3000,https://buddhsentripathi.com`).
 
 Example `.env.local`:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=YOUR_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+SUPABASE_URL=YOUR_SUPABASE_URL
 SUPABASE_SERVICE_ROLE_KEY=YOUR_SUPABASE_SERVICE_KEY
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 EXA_API_KEY=YOUR_EXA_API_KEY
+NEXT_PUBLIC_GA_ID=YOUR_GA_MEASUREMENT_ID
 ```
 
 ## Project Structure
@@ -93,7 +106,8 @@ A brief overview of the key directories:
 -   **`app/`**: Contains all the routes, pages, and API endpoints, following the Next.js App Router structure.
     -   `app/api/`: API routes (e.g., for view counts, spam checks, resume suggestions).
     -   `app/blogs/`: Blog-related pages, MDX posts are in `app/blogs/posts/`.
-    -   `app/(tools)/`: Directories for interactive tools like `code-runner/`, `spam-or-not/`, `linkedinfy-my-post/`.
+    -   `app/code-runner/`: Code Runner game.
+    -   `app/spam-or-not/`: Twitter/X Spam Check tool.
     -   `app/layout.tsx`: The main layout component.
     -   `app/page.tsx`: The entry page for the portfolio.
     -   `app/globals.css`: Global styles and Tailwind CSS directives.
