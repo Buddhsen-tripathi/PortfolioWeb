@@ -115,7 +115,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
   if (tocItems.length === 0) return null
 
   return (
-    <div className="bg-card border rounded-sm p-4 shadow-sm sticky top-20 z-10">
+    <div className="bg-background/40 border rounded-sm p-4 shadow-sm sticky top-20 z-10">
       {/* Header */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}

@@ -38,7 +38,7 @@ export default function NewsletterSubscription() {
     return (
         <div className="group block p-6 border border-border rounded-sm shadow-md shadow-primary/15 hover:shadow-lg transition-all bg-background/40">
             <h2 className="text-2xl font-bold mb-2 text-tracking-tight">
-                Never Miss a <span className='text-destructive'>Blog</span>
+                Never Miss a Blog
             </h2>
             <p className="mb-4 text-md text-muted-foreground leading-relaxed">
                 It's <span className='text-green-600'>free!</span> Get notified instantly whenever a new post drops. Stay updated, stay ahead.
@@ -49,7 +49,7 @@ export default function NewsletterSubscription() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
-                    className="w-full px-4 py-2 border rounded-sm shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background focus-ring transition-colors"
+                    className="w-full px-4 py-2 border rounded-sm shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-colors"
                     required
                 />
                 <div className="flex items-center gap-8 mt-4">

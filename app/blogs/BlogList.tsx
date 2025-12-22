@@ -156,7 +156,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
             placeholder="Search articles..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-11 px-4 pr-11 border border-border rounded-sm bg-background/40 text-foreground placeholder:text-muted-foreground focus-ring transition-colors"
+            className="w-full h-11 px-4 pr-11 border border-border rounded-sm focus:outline-none focus:ring-2 focus:ring-primary bg-background/40 text-foreground placeholder:text-muted-foreground transition-colors"
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
           <motion.div
@@ -174,7 +174,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
         <motion.select
           value={sortType}
           onChange={(e) => setSortType(e.target.value as 'newest' | 'oldest' | 'mostread')}
-          className="h-11 px-4 border border-border rounded-sm bg-background/40 text-foreground focus-ring transition-colors cursor-pointer"
+          className="h-11 px-4 border border-border rounded-sm bg-background/40 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors cursor-pointer"
         >
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
@@ -204,7 +204,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                 >
                   <Link href={`/blogs/${post.slug}`} className="block h-full focus-ring rounded-sm">
                     <motion.article 
-                      className="p-6 bg-card rounded-sm shadow-sm shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
+                      className="p-6 bg-background/40 rounded-sm shadow-sm shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
                       transition={{ duration: 0.2 }}
                     >
                       
