@@ -88,7 +88,7 @@ export default function FeaturedProjects() {
         {projects.slice(0, isHomePage ? 2 : projects.length).map((project, index) => (
           <div 
             key={project.title} 
-            className="flex flex-col bg-card rounded-sm overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
+            className="flex flex-col bg-background/40 rounded-sm overflow-hidden shadow-sm shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 border border-border hover:border-primary/30 group"
           >
             {/* Image with fixed aspect ratio */}
             <div className="relative w-full aspect-video overflow-hidden">
@@ -107,7 +107,7 @@ export default function FeaturedProjects() {
             {/* Content */}
             <div className="flex flex-col flex-1 p-5">
               <div className="flex items-start justify-between mb-2 gap-2">
-                <h3 className="text-xl font-semibold text-foreground text-tracking-normal group-hover:text-primary transition-colors flex-1">
+                <h3 className="text-xl font-semibold text-foreground text-tracking-normal transition-colors flex-1">
                   {project.title}
                 </h3>
                 {project.active ? (
@@ -150,7 +150,7 @@ export default function FeaturedProjects() {
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-primary/80 hover:text-primary hover:underline focus-ring rounded transition-colors text-sm flex items-center gap-1"
+                    className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
                   >
                     <BsArrowUpRight /> Github
                   </a>
@@ -159,7 +159,7 @@ export default function FeaturedProjects() {
                   href={project.demo} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-primary/80 hover:text-primary hover:underline focus-ring rounded transition-colors text-sm flex items-center gap-1"
+                  className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
                 >
                   <BsArrowUpRight /> Live
                 </a>
@@ -205,7 +205,7 @@ export default function FeaturedProjects() {
             {funProjects.map((project) => (
               <div 
                 key={project.title} 
-                className="flex flex-col bg-card rounded-sm overflow-hidden shadow-md shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 border border-border hover:border-primary/30 group"
+                className="flex flex-col bg-card rounded-sm overflow-hidden shadow-sm shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 border border-border hover:border-primary/30 group"
               >
                 {/* Image with fixed aspect ratio */}
                 <div className="relative w-full aspect-video overflow-hidden">

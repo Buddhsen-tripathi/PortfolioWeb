@@ -286,7 +286,7 @@ export default function CodeRunner() {
   if (!name) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4 px-4 bg-background">
-        <div className="bg-card p-8 rounded-lg shadow-lg shadow-primary/15 border border-border text-center space-y-4">
+        <div className="bg-card p-8 rounded-lg shadow-sm shadow-primary/15 border border-border text-center space-y-4">
           <h1 className="text-2xl font-bold text-foreground  text-tracking-tight">Code Runner - Enter Your Name</h1>
           <input
             type="text"
@@ -344,11 +344,11 @@ export default function CodeRunner() {
             ref={canvasRef}
             width={GAME_WIDTH}
             height={GAME_HEIGHT}
-            className="border border-border rounded-lg w-full h-full touch-none shadow-lg shadow-primary/15"
+            className="border border-border rounded-lg w-full h-full touch-none shadow-sm shadow-primary/15"
           />
         </div>
         {gameOver && (
-          <div className="space-y-4 bg-card p-6 rounded-lg border border-border shadow-md shadow-primary/15 text-center">
+          <div className="space-y-4 bg-card p-6 rounded-lg border border-border shadow-sm shadow-primary/15 text-center">
             <p className="text-xl font-bold text-foreground">Game Over!</p>
             <div className="flex gap-4 justify-center">
               <button
@@ -369,7 +369,7 @@ export default function CodeRunner() {
           Use arrow keys or touch to dodge bugs
         </div>
 
-        <div className="w-full max-w-md mt-8 bg-card p-6 rounded-lg border border-border shadow-md shadow-primary/15">
+        <div className="w-full max-w-md mt-8 bg-card p-6 rounded-lg border border-border shadow-sm shadow-primary/15">
           <h2 className="text-xl font-bold mb-4 text-foreground  text-tracking-normal">🏆 Leaderboard (Top 10)</h2>
           <ul className="space-y-2 text-sm">
             {leaderboard.map((entry, index) => (

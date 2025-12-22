@@ -204,7 +204,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                 >
                   <Link href={`/blogs/${post.slug}`} className="block h-full focus-ring rounded-sm">
                     <motion.article 
-                      className="p-6 bg-card rounded-sm shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
+                      className="p-6 bg-card rounded-sm shadow-sm shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
                       transition={{ duration: 0.2 }}
                     >
                       

@@ -17,7 +17,7 @@ export default async function FeaturedPosts() {
               href={`/blogs/${post.slug}`}
               className="block group focus-ring rounded-sm h-full"
             >
-              <div className="bg-card rounded-sm overflow-hidden shadow-md shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 h-full flex flex-col">
+              <div className="bg-background/40 rounded-sm overflow-hidden shadow-sm shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 hover:border-primary/30 h-full flex flex-col">
                 <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-semibold mb-2 text-foreground text-tracking-normal group-hover:text-primary transition-colors">
                     {post.title}
@@ -35,7 +35,7 @@ export default async function FeaturedPosts() {
                         <ViewCounter slug={post.slug} readOnly={true} />
                       </span>
                     </div>
-                    <span className="shrink-0 inline-flex items-center text-sm text-primary group-hover:text-primary/80 group-hover:underline transition-colors">
+                    <span className="shrink-0 inline-flex items-center text-sm text-foreground group-hover:text-primary transition-colors">
                       Read more →
                     </span>
                   </div>

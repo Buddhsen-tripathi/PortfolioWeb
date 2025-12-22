@@ -19,7 +19,7 @@ export default function Hero() {
     <section className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
       {/* Profile Image */}
       <div className="relative group">
-        <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-lg ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
+        <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-sm ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
           <Image
             src="/profpic.webp"
             alt="Buddhsen Tripathi"

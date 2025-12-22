@@ -36,7 +36,7 @@ export default function NewsletterSubscription() {
     }
 
     return (
-        <div className="group block p-6 border border-border rounded-sm shadow-md shadow-primary/15 hover:shadow-lg transition-all bg-card">
+        <div className="group block p-6 border border-border rounded-sm shadow-md shadow-primary/15 hover:shadow-lg transition-all bg-background/40">
             <h2 className="text-2xl font-bold mb-2 text-tracking-tight">
                 Never Miss a <span className='text-destructive'>Blog</span>
             </h2>
