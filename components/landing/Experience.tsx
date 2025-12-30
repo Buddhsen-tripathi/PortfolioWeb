@@ -60,7 +60,7 @@ export default function Experience() {
 									</span>
 								</div>
 								<div className="flex flex-col items-start sm:items-end">
-									<span className="text-sm text-muted-foreground tabular-nums">
+									<span className="text-sm text-foreground tabular-nums">
 										{exp.location}
 									</span>
 									<span className="text-sm text-muted-foreground tabular-nums">
