@@ -10,15 +10,6 @@ export const DynamicTableOfContents = dynamic(
     loading: () => <div className="animate-pulse h-32 bg-gray-200 rounded" />
   }
 )
-
-export const DynamicReadAloudButton = dynamic(
-  () => import('@/app/blogs/[slug]/ReadAloudButton'),
-  { 
-    ssr: false,
-    loading: () => <div className="w-24 h-8 bg-gray-200 rounded animate-pulse" />
-  }
-)
-
 export const DynamicRelatedBlogs = dynamic(
   () => import('@/components/blog/RelatedBlogs'),
   { 
