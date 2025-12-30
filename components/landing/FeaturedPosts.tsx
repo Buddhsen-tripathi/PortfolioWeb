@@ -9,7 +9,7 @@ export default async function FeaturedPosts() {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-5 text-tracking-tight">Recent Blogs</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {blogPosts.slice(0, 2).map((post) => {
           return (
             <Link

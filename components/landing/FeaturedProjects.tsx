@@ -84,7 +84,7 @@ export default function FeaturedProjects() {
       <h1 className="text-2xl font-bold mb-5 text-tracking-tight">Projects</h1>
       
       {/* Grid Layout for Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {projects.slice(0, isHomePage ? 2 : projects.length).map((project, index) => (
           <div 
             key={project.title} 
@@ -196,7 +196,7 @@ export default function FeaturedProjects() {
           </h3>
           
           {/* Grid Layout for Fun Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {funProjects.map((project) => (
               <div 
                 key={project.title} 

@@ -187,7 +187,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
         {filteredPosts.length > 0 ? (
           <motion.div 
             key="blog-grid"
-            className="grid gap-6 md:grid-cols-2"
+            className="grid gap-2 md:grid-cols-2"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
