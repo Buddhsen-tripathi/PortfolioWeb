@@ -69,7 +69,7 @@ export default function RootLayout({
           <ScrollProgress />
           <Navbar />
           <main className="flex-grow">
-            <div className="max-w-[1000px] mx-auto px-4 py-12">
+            <div className="max-w-[1000px] mx-auto px-8 py-12">
               {children}
             </div>
           </main>

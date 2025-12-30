@@ -22,7 +22,7 @@ const projects = [
     description: "OpenVScan is a web-based vulnerability scanner that integrates open-source tools with AI to deliver smarter, faster and more reliable pre-production security testing.",
     github: "https://github.com/Buddhsen-tripathi/openvscan",
     demo: "https://www.openvscan.com",
-    technologies: ["Next.Js", "TypeScript", "Tailwind CSS"],
+    technologies: ["Next.Js", "NestJs", "TypeScript", "Tailwind CSS"],
     active: true,
   },
   {
@@ -128,7 +128,7 @@ export default function FeaturedProjects() {
 
               {/* Technologies */}
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.slice(0, 3).map((tech) => (
+                {project.technologies.map((tech) => (
                   <span 
                     key={tech} 
                     className="bg-secondary dark:bg-primary/90 text-primary-foreground px-2 py-1 rounded text-xs"
@@ -136,11 +136,6 @@ export default function FeaturedProjects() {
                     {tech}
                   </span>
                 ))}
-                {project.technologies.length > 3 && (
-                  <span className="bg-secondary dark:bg-primary/90 text-primary-foreground px-2 py-1 rounded text-xs">
-                    +{project.technologies.length - 3}
-                  </span>
-                )}
               </div>
 
               {/* Links */}
@@ -183,7 +178,7 @@ export default function FeaturedProjects() {
       {/* Fun X Projects Section */}
       {!isHomePage && (
         <section className="mt-12 mb-8">
-          <h2 className="text-3xl font-bold mb-6 text-foreground font-serif text-tracking-tight">𝕏 Projects</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground font-serif text-tracking-tight">𝕏 Projects</h2>
           <h3
             className="text-lg font-semibold mb-4 text-foreground text-tracking-normal"
             aria-label="I make random projects to engage my Twitter/X community"

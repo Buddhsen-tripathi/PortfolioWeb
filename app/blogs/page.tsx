@@ -39,7 +39,7 @@ export default async function BlogPage() {
   const personalPosts = allPosts.filter(post => post.type === 'personal');
 
   return (
-    <div className="container max-w-4xl space-y-8">
+    <div className="space-y-8">
       <header className="space-y-2">
         <h1 className="text-2xl font-bold text-foreground text-tracking-tight">Blogs</h1>
         <p className="text-muted-foreground leading-relaxed">Latest articles and tutorials</p>

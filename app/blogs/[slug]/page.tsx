@@ -6,7 +6,6 @@ import remarkGfm from 'remark-gfm'
 import remarkfrontmatter from 'remark-frontmatter'
 import { RelatedBlogs, mdxComponents, TableOfContents } from '@/components/blog'
 import { BackToTopButton, ViewCounter, NewsletterSubscription } from '@/components/common'
-import ReadAloudButton from './ReadAloudButton'
 import { getReadingTime } from '@/lib/utils'
 import SocialShare from '../SocialShare'
 import { getBlogPostFromS3, getBlogSlugsFromS3 } from '@/lib/r2Client'
@@ -64,7 +63,6 @@ export default async function BlogPost({ params }: { params: paramsType }) {
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Blogs
         </Link>
-        <ReadAloudButton content={content} />
       </div>
 
       <h1 className="text-3xl font-bold">{data.title}</h1>
