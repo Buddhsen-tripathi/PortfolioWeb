@@ -152,6 +152,4 @@ This project is open source under the [MIT License](LICENSE).
 -   [Supabase](https://supabase.com/docs) - Open source Firebase alternative
 -   [Cloudflare R2](https://developers.cloudflare.com/r2/) - Object storage
 
----
-
 Built with ❤️ by [Buddhsen Tripathi](https://buddhsentripathi.com)
