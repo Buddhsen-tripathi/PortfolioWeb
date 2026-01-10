@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect, useRef, ReactNode } from 'react'
 
 interface ViewsCache {
   views: Record<string, number>
@@ -17,10 +17,14 @@ const ViewsContext = createContext<ViewsContextType | null>(null)
 
 const CACHE_KEY = 'views-cache-all'
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+const BATCH_DELAY = 50 // ms to wait before batching requests
+const SITE_VISITOR_SLUG = '_site_visitors' // Special slug for total site visitors
 
 export function ViewsProvider({ children }: { children: ReactNode }) {
   const [viewsMap, setViewsMap] = useState<Record<string, number>>({})
-  const [pendingSlugs, setPendingSlugs] = useState<Set<string>>(new Set())
+  const pendingSlugsRef = useRef<Set<string>>(new Set())
+  const batchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const fetchingRef = useRef<Set<string>>(new Set())
 
   // Load cache on mount
   useEffect(() => {
@@ -39,7 +43,7 @@ export function ViewsProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  // Save to cache whenever viewsMap changes
+  // Save to cache
   const saveCache = useCallback((views: Record<string, number>) => {
     try {
       const cacheData: ViewsCache = {
@@ -51,14 +55,14 @@ export function ViewsProvider({ children }: { children: ReactNode }) {
   }, [])
 
   // Batch fetch views for multiple slugs
-  const prefetchViews = useCallback(async (slugs: string[]) => {
-    // Filter out slugs we already have
-    const slugsToFetch = slugs.filter(slug => !(slug in viewsMap))
-    
-    if (slugsToFetch.length === 0) return
+  const fetchBatch = useCallback(async (slugs: string[]) => {
+    if (slugs.length === 0) return
+
+    // Mark as fetching to prevent duplicate requests
+    slugs.forEach(slug => fetchingRef.current.add(slug))
 
     try {
-      const res = await fetch(`/api/views/batch?slugs=${slugsToFetch.join(',')}`)
+      const res = await fetch(`/api/views/batch?slugs=${slugs.join(',')}`)
       if (res.ok) {
         const data = await res.json()
         setViewsMap(prev => {
@@ -68,56 +72,71 @@ export function ViewsProvider({ children }: { children: ReactNode }) {
         })
       }
     } catch (error) {
-      console.error('Error prefetching views:', error)
+      console.error('Error fetching views:', error)
+    } finally {
+      slugs.forEach(slug => fetchingRef.current.delete(slug))
     }
-  }, [viewsMap, saveCache])
+  }, [saveCache])
 
-  // Get views for a single slug (returns cached value or null if not loaded)
+  // Schedule batch fetch
+  const scheduleBatchFetch = useCallback(() => {
+    if (batchTimeoutRef.current) {
+      clearTimeout(batchTimeoutRef.current)
+    }
+
+    batchTimeoutRef.current = setTimeout(() => {
+      const slugsToFetch = Array.from(pendingSlugsRef.current)
+      pendingSlugsRef.current.clear()
+      if (slugsToFetch.length > 0) {
+        fetchBatch(slugsToFetch)
+      }
+    }, BATCH_DELAY)
+  }, [fetchBatch])
+
+  // Prefetch views for multiple slugs
+  const prefetchViews = useCallback(async (slugs: string[]) => {
+    setViewsMap(current => {
+      const slugsToFetch = slugs.filter(
+        slug => !(slug in current) && !fetchingRef.current.has(slug)
+      )
+      
+      if (slugsToFetch.length > 0) {
+        slugsToFetch.forEach(slug => pendingSlugsRef.current.add(slug))
+        scheduleBatchFetch()
+      }
+      
+      return current
+    })
+  }, [scheduleBatchFetch])
+
+  // Get views for a single slug
   const getViews = useCallback((slug: string): number | null => {
-    if (slug in viewsMap) {
-      return viewsMap[slug]
-    }
+    setViewsMap(current => {
+      if (!(slug in current) && !pendingSlugsRef.current.has(slug) && !fetchingRef.current.has(slug)) {
+        pendingSlugsRef.current.add(slug)
+        scheduleBatchFetch()
+      }
+      return current
+    })
     
-    // Queue this slug for fetching if not already pending
-    if (!pendingSlugs.has(slug)) {
-      setPendingSlugs(prev => new Set(prev).add(slug))
-    }
-    
-    return null
-  }, [viewsMap, pendingSlugs])
+    return viewsMap[slug] ?? null
+  }, [viewsMap, scheduleBatchFetch])
 
-  // Batch fetch pending slugs
-  useEffect(() => {
-    if (pendingSlugs.size === 0) return
-
-    const timeout = setTimeout(() => {
-      const slugsToFetch = Array.from(pendingSlugs)
-      setPendingSlugs(new Set())
-      prefetchViews(slugsToFetch)
-    }, 50) // Small debounce to batch multiple requests
-
-    return () => clearTimeout(timeout)
-  }, [pendingSlugs, prefetchViews])
-
-  // Increment views for a slug
+  // Increment views for a slug (once per session)
   const incrementViews = useCallback(async (slug: string) => {
     const sessionKey = `viewed-${slug}`
     
     // Check if already viewed this session
     if (sessionStorage.getItem(sessionKey)) {
-      // Just fetch current count if not in cache
-      if (!(slug in viewsMap)) {
-        try {
-          const res = await fetch(`/api/views?slug=${slug}`)
-          if (res.ok) {
-            const data = await res.json()
-            setViewsMap(prev => {
-              const updated = { ...prev, [slug]: data.views }
-              saveCache(updated)
-              return updated
-            })
+      // Already counted, just fetch current count if not in cache
+      if (!pendingSlugsRef.current.has(slug) && !fetchingRef.current.has(slug)) {
+        setViewsMap(current => {
+          if (!(slug in current)) {
+            pendingSlugsRef.current.add(slug)
+            scheduleBatchFetch()
           }
-        } catch {}
+          return current
+        })
       }
       return
     }
@@ -136,12 +155,22 @@ export function ViewsProvider({ children }: { children: ReactNode }) {
           saveCache(updated)
           return updated
         })
+        // Mark as viewed for this session
         sessionStorage.setItem(sessionKey, 'true')
       }
     } catch (error) {
       console.error('Error incrementing views:', error)
     }
-  }, [viewsMap, saveCache])
+  }, [saveCache, scheduleBatchFetch])
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (batchTimeoutRef.current) {
+        clearTimeout(batchTimeoutRef.current)
+      }
+    }
+  }, [])
 
   return (
     <ViewsContext.Provider value={{ getViews, incrementViews, prefetchViews }}>

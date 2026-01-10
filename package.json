@@ -59,6 +59,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/rss": "^0.0.32",
+    "baseline-browser-mapping": "^2.9.14",
     "dotenv": "^17.2.3",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.0.1",

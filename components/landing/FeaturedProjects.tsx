@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { BsArrowUpRight, BsArrowRight } from "react-icons/bs";
+import { ExternalLink, ArrowRight } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import ViewCounter from '@/components/common/ViewCounter';
 
@@ -147,7 +147,7 @@ export default function FeaturedProjects() {
                     rel="noopener noreferrer" 
                     className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
                   >
-                    <BsArrowUpRight /> Github
+                    <ExternalLink className="w-3.5 h-3.5" /> Github
                   </a>
                 )}
                 <a 
@@ -156,7 +156,7 @@ export default function FeaturedProjects() {
                   rel="noopener noreferrer" 
                   className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
                 >
-                  <BsArrowUpRight /> Live
+                  <ExternalLink className="w-3.5 h-3.5" /> Live
                 </a>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function FeaturedProjects() {
           <Link href="/projects" className="block focus-ring rounded-sm">
             <div className="group w-full rounded-sm border border-border bg-background/40 text-muted-foreground hover:text-foreground hover:bg-accent/30 hover:border-primary/30 transition-colors px-4 py-3 flex items-center justify-center gap-2">
               <span className="text-sm font-medium">View more</span>
-              <BsArrowRight className="inline-block transition-transform duration-200 group-hover:translate-x-0.5" />
+              <ArrowRight className="w-4 h-4 inline-block transition-transform duration-200 group-hover:translate-x-0.5" />
             </div>
           </Link>
         </div>
@@ -233,7 +233,7 @@ export default function FeaturedProjects() {
                       href={`/${project.path}`} 
                       className="text-primary/80 hover:text-primary hover:underline focus-ring rounded transition-colors text-sm flex items-center gap-1"
                     >
-                      <BsArrowUpRight /> Live
+                      <ExternalLink className="w-3.5 h-3.5" /> Live
                     </Link>
                   </div>
                 </div>

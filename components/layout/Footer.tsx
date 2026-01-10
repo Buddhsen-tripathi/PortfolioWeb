@@ -1,4 +1,4 @@
-import VisitorCounter from '@/components/common/VisitorCounter'
+import { ViewCounter } from '@/components/common'
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Buddhsen Tripathi. All rights reserved.
           </p>
-          <VisitorCounter />
+          <ViewCounter type="visitors" readOnly={false} />
         </div>
       </div>
     </footer>
