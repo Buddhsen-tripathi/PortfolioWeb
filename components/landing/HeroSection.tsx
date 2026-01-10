@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode, SiGmail, SiTryhackme } from "react-icons/si";
-import { Download } from 'lucide-react';
+import { CalendarClock, Download } from 'lucide-react';
 import Link from 'next/link';
 
 const socialLinks = [
@@ -55,10 +55,12 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
           <a
-            href="mailto:buddhsen.work@gmail.com"
+            href="https://cal.com/buddhsen/30min"
+            target='_blank'
             className="px-6 py-2.5 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
           >
-            Get in Touch
+            <CalendarClock size={16} />
+            Book 1:1 
           </a>
           <Link
             href="/Resume.pdf"
@@ -71,7 +73,7 @@ export default function Hero() {
         </div>
 
         {/* Social Links */}
-        <div className="flex flex-wrap gap-3 justify-center md:justify-start pt-2">
+        <div className="flex flex-wrap gap-2 justify-center md:justify-start pt-2">
           {socialLinks.map(({ href, icon: Icon, label }) => (
             <a
               key={label}

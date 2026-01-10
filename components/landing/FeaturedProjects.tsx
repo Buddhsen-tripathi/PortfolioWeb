@@ -105,8 +105,8 @@ export default function FeaturedProjects() {
             </div>
 
             {/* Content */}
-            <div className="flex flex-col flex-1 p-5">
-              <div className="flex items-start justify-between mb-2 gap-2">
+            <div className="flex flex-col flex-1 p-4">
+              <div className="flex items-start justify-between mb-1.5 gap-2">
                 <h3 className="text-xl font-semibold text-foreground text-tracking-normal transition-colors flex-1">
                   {project.title}
                 </h3>
@@ -122,12 +122,12 @@ export default function FeaturedProjects() {
                   </span>
                 )}
               </div>
-              <p className="mb-4 text-muted-foreground leading-relaxed text-sm flex-1">
+              <p className="mb-3 text-muted-foreground leading-relaxed text-sm flex-1">
                 {project.description}
               </p>
 
               {/* Technologies */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-3">
                 {project.technologies.map((tech) => (
                   <span 
                     key={tech} 
@@ -165,7 +165,7 @@ export default function FeaturedProjects() {
       </div>
 
       {isHomePage && (
-        <div className="mt-5">
+        <div className="mt-4">
           <Link href="/projects" className="block focus-ring rounded-sm">
             <div className="group w-full rounded-sm border border-border bg-background/40 text-muted-foreground hover:text-foreground hover:bg-accent/30 hover:border-primary/30 transition-colors px-4 py-3 flex items-center justify-center gap-2">
               <span className="text-sm font-medium">View more</span>

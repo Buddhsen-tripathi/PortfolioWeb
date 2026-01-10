@@ -46,7 +46,7 @@ export default async function FeaturedPosts() {
         })}
       </div>
 
-      <div className="mt-5">
+      <div className="mt-4">
         <Link href="/blogs" className="block focus-ring rounded-sm">
           <div className="group w-full rounded-sm border border-border bg-background/40 text-muted-foreground hover:border-primary/30 hover:text-foreground hover:bg-accent/30 transition-colors px-4 py-3 flex items-center justify-center gap-2">
             <span className="text-sm font-medium">View more</span>
