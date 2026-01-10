@@ -6,6 +6,12 @@ import { ExternalLink, ArrowRight } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import ViewCounter from '@/components/common/ViewCounter';
 
+const statusConfig = {
+  live: { label: 'Live', dotColor: 'bg-green-500', pulse: true },
+  building: { label: 'Building', dotColor: 'bg-amber-500', pulse: false },
+  completed: { label: 'Completed', dotColor: 'bg-blue-500', pulse: false },
+} as const;
+
 const projects = [
   {
     title: "DeepFind.Me",
@@ -14,7 +20,7 @@ const projects = [
     github: null,
     demo: "https://deepfind.me",
     technologies: ["Next.Js", "NestJs", "MySQL","AWS", "Web Crypto API", "OpenAI API"],
-    active: true,
+    status: "live" as const,
   },
   {
     title: "OpenVScan",
@@ -23,7 +29,7 @@ const projects = [
     github: "https://github.com/Buddhsen-tripathi/openvscan",
     demo: "https://www.openvscan.com",
     technologies: ["Next.Js", "NestJs", "TypeScript", "Tailwind CSS"],
-    active: true,
+    status: "building" as const,
   },
   {
     title: "Clonvo",
@@ -32,7 +38,7 @@ const projects = [
     github: null,
     demo: "https://clonvo.com",
     technologies: ["Next.Js", "TypeScript", "Tailwind CSS"],
-    active: false,
+    status: "live" as const,
   },
   {
     title: "openai-api-helper",
@@ -41,7 +47,7 @@ const projects = [
     github: "https://github.com/Buddhsen-tripathi/openai-api-helper",
     demo: "https://www.npmjs.com/package/openai-api-helper",
     technologies: ["JavaScript", "TypeScript"],
-    active: false,
+    status: "completed" as const,
   },
   {
     title: "SmartText Enhancer",
@@ -50,7 +56,7 @@ const projects = [
     github: null,
     demo: "https://chromewebstore.google.com/detail/smarttext-enhancer/chmpfoicecijpgmgcpnfhakmeaofmipm",
     technologies: ["JavaScript", "HTML", "CSS", "Express", "OpenAI API"],
-    active: false,
+    status: "completed" as const,
   }
 ];
 
@@ -110,17 +116,15 @@ export default function FeaturedProjects() {
                 <h3 className="text-xl font-semibold text-foreground text-tracking-normal transition-colors flex-1">
                   {project.title}
                 </h3>
-                {project.active ? (
-                  <span className="inline-flex items-center gap-1 bg-green-500/20 text-green-700 dark:text-green-400 px-2 py-0.5 rounded text-xs font-medium whitespace-nowrap">
-                    <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
-                    Active
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 bg-slate-500/20 text-slate-700 dark:text-slate-400 px-2 py-0.5 rounded text-xs font-medium whitespace-nowrap">
-                    <span className="inline-block w-2 h-2 bg-slate-500 rounded-full"></span>
-                    Inactive
-                  </span>
-                )}
+                {(() => {
+                  const config = statusConfig[project.status];
+                  return (
+                    <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs font-medium whitespace-nowrap">
+                      <span className={`inline-block w-2 h-2 ${config.dotColor} rounded-full ${config.pulse ? 'animate-pulse' : ''}`}></span>
+                      {config.label}
+                    </span>
+                  );
+                })()}
               </div>
               <p className="mb-3 text-muted-foreground leading-relaxed text-sm flex-1">
                 {project.description}
@@ -231,7 +235,7 @@ export default function FeaturedProjects() {
                   <div className="flex space-x-4 pt-2 border-t border-border">
                     <Link 
                       href={`/${project.path}`} 
-                      className="text-primary/80 hover:text-primary hover:underline focus-ring rounded transition-colors text-sm flex items-center gap-1"
+                      className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
                     >
                       <ExternalLink className="w-3.5 h-3.5" /> Live
                     </Link>

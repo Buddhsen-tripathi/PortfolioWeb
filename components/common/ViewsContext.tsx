@@ -18,7 +18,6 @@ const ViewsContext = createContext<ViewsContextType | null>(null)
 const CACHE_KEY = 'views-cache-all'
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
 const BATCH_DELAY = 50 // ms to wait before batching requests
-const SITE_VISITOR_SLUG = '_site_visitors' // Special slug for total site visitors
 
 export function ViewsProvider({ children }: { children: ReactNode }) {
   const [viewsMap, setViewsMap] = useState<Record<string, number>>({})
