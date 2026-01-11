@@ -19,7 +19,7 @@ const projects = [
     description: "Deepfind.me is an educational OSINT platform offering tools and resources to help users understand and manage their digital footprint.",
     github: null,
     demo: "https://deepfind.me",
-    technologies: ["Next.Js", "NestJs", "MySQL","AWS", "Web Crypto API", "OpenAI API"],
+    technologies: ["Next.Js", "NestJs", "PostgreSQL", "Docker", "AWS", "Web Crypto API", "OpenAI API"],
     status: "live" as const,
   },
   {
@@ -30,6 +30,15 @@ const projects = [
     demo: "https://www.openvscan.com",
     technologies: ["Next.Js", "NestJs", "TypeScript", "Tailwind CSS"],
     status: "building" as const,
+  },
+  {
+    title: "Bucket0",
+    image: "/bucket0.png",
+    description: "Platform to store files and manage all your S3-compatible buckets in a single, powerful interface.",
+    github: null,
+    demo: "https://bucket0.com",
+    technologies: ["Next.Js", "TypeScript","PostgreSQL", "Tailwind CSS"],
+    status: "live" as const,
   },
   {
     title: "Clonvo",
