@@ -25,7 +25,7 @@ export default function Experience() {
 	return (
 		<section>
 			<h2 className="text-2xl font-bold mb-5 text-tracking-tight">
-				Work Experience
+				Experience
 			</h2>
 
 			<div className="space-y-6">

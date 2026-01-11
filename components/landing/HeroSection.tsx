@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode, SiGmail, SiTryhackme } from "react-icons/si";
 import { CalendarClock, Download } from 'lucide-react';
 import Link from 'next/link';
+import GitHubGraph from './GitHubGraph';
 
 const socialLinks = [
   { href: "https://github.com/buddhsen-tripathi", icon: SiGithub, label: "GitHub" },
@@ -16,79 +17,84 @@ const socialLinks = [
 
 export default function Hero() {
   return (
-    <section className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
-      {/* Profile Image */}
-      <div className="relative group">
-        <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-sm ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
-          <Image
-            src="/profpic.webp"
-            alt="Buddhsen Tripathi"
-            fill
-            className="object-cover transition-transform duration-300"
-            priority
-          />
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col items-center md:items-start space-y-4 flex-1">
-        <div className="space-y-2 text-center md:text-left">
-          <h1 className="text-2xl md:text-4xl font-bold text-foreground">
-            Buddhsen Tripathi
-          </h1>
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm md:text-base">
-            <span className="text-primary">Full-Stack Developer</span>
-            <span className="text-foreground">•</span>
-            <span className="text-primary">MS CS @ NYU</span>
-            <span className="text-foreground">•</span>
-            <span className="text-primary">New York, USA</span>
+    <section className="space-y-8">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+        {/* Profile Image */}
+        <div className="relative group">
+          <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-sm ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
+            <Image
+              src="/profpic.webp"
+              alt="Buddhsen Tripathi"
+              fill
+              className="object-cover transition-transform duration-300"
+              priority
+            />
           </div>
         </div>
 
-        <p className="max-w-2xl text-center md:text-left text-muted-foreground leading-relaxed">
-          <span className="text-foreground font-medium">MS Computer Science student at NYU</span> and <span className="text-foreground font-medium">full-stack developer with 2+ years of experience</span> building 
-          scalable enterprise applications. Skilled in{' '}
-          <span className="text-foreground font-medium">Java, C++, and TypeScript</span>{' '}
-          with expertise in cloud infrastructure and microservices architecture.
-        </p>
+        {/* Content */}
+        <div className="flex flex-col items-center md:items-start space-y-4 flex-1">
+          <div className="space-y-2 text-center md:text-left">
+            <h1 className="text-2xl md:text-4xl font-bold text-foreground">
+              Buddhsen Tripathi
+            </h1>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm md:text-base">
+              <span className="text-primary">Full-Stack Developer</span>
+              <span className="text-foreground">•</span>
+              <span className="text-primary">MS CS @ NYU</span>
+              <span className="text-foreground">•</span>
+              <span className="text-primary">New York, USA</span>
+            </div>
+          </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-          <a
-            href="https://cal.com/buddhsen/30min"
-            target='_blank'
-            className="px-6 py-2.5 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
-          >
-            <CalendarClock size={16} />
-            Book 1:1 
-          </a>
-          <Link
-            href="/Resume.pdf"
-            target="_blank"
-            className="px-6 py-2.5 bg-secondary text-secondary-foreground rounded-sm hover:bg-secondary/80 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
-          >
-            <Download size={16} />
-            Resume
-          </Link>
-        </div>
+          <p className="max-w-2xl text-center md:text-left text-muted-foreground leading-relaxed">
+            <span className="text-foreground font-medium">MS Computer Science student at NYU</span> and <span className="text-foreground font-medium">full-stack developer with 2+ years of experience</span> building 
+            scalable enterprise applications. Skilled in{' '}
+            <span className="text-foreground font-medium">Java, C++, and TypeScript</span>{' '}
+            with expertise in cloud infrastructure and microservices architecture.
+          </p>
 
-        {/* Social Links */}
-        <div className="flex flex-wrap gap-2 justify-center md:justify-start pt-2">
-          {socialLinks.map(({ href, icon: Icon, label }) => (
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-3 justify-center md:justify-start">
             <a
-              key={label}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 focus-ring rounded-sm p-1"
-              aria-label={label}
-              title={label}
+              href="https://cal.com/buddhsen/30min"
+              target='_blank'
+              className="px-6 py-2.5 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
             >
-              <Icon className="w-5 h-5" />
+              <CalendarClock size={16} />
+              Book 1:1 
             </a>
-          ))}
+            <Link
+              href="/Resume.pdf"
+              target="_blank"
+              className="px-6 py-2.5 bg-secondary text-secondary-foreground rounded-sm hover:bg-secondary/80 transition-all duration-300 font-medium shadow-md hover:shadow-lg focus-ring flex items-center gap-2"
+            >
+              <Download size={16} />
+              Resume
+            </Link>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex flex-wrap gap-2 justify-center md:justify-start pt-2">
+            {socialLinks.map(({ href, icon: Icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 focus-ring rounded-sm p-1"
+                aria-label={label}
+                title={label}
+              >
+                <Icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* GitHub Contribution Graph - Full Width */}
+      <GitHubGraph username="buddhsen-tripathi" />
     </section>
   )
 }
