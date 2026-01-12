@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="relative group">
           <div className="w-48 h-48 relative flex-shrink-0 rounded-full overflow-hidden shadow-sm ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
             <Image
-              src="/profpic.webp"
+              src="/profpic.jpg"
               alt="Buddhsen Tripathi"
               fill
               className="object-cover transition-transform duration-300"
