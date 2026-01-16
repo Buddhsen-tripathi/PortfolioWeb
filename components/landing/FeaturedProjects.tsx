@@ -8,11 +8,11 @@ import ViewCounter from '@/components/common/ViewCounter'
 const parseProjectStatus = (status: 'live' | 'building' | 'completed'): string => {
   switch (status) {
     case 'live':
-      return '✨ Live'
+      return 'Live'
     case 'building':
-      return '🏗️ Building'
+      return 'Building'
     case 'completed':
-      return '👍🏽 Completed'
+      return 'Completed'
     default:
       return ''
   }
@@ -28,20 +28,20 @@ const projects = [
     status: "live" as const,
   },
   {
-    title: "OpenVScan",
-    description: "OpenVScan is a web-based vulnerability scanner that integrates open-source tools with AI to deliver smarter, faster and more reliable pre-production security testing.",
-    github: "https://github.com/Buddhsen-tripathi/openvscan",
-    demo: "https://www.openvscan.com",
-    technologies: ["Next.Js", "NestJs", "TypeScript", "Tailwind CSS"],
-    status: "building" as const,
-  },
-  {
     title: "Bucket0",
     description: "Platform to store files and manage all your S3-compatible buckets in a single, powerful interface.",
     github: null,
     demo: "https://bucket0.com",
     technologies: ["Next.Js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
     status: "live" as const,
+  },
+  {
+    title: "OpenVScan",
+    description: "OpenVScan is a web-based vulnerability scanner that integrates open-source tools with AI to deliver smarter, faster and more reliable pre-production security testing.",
+    github: "https://github.com/Buddhsen-tripathi/openvscan",
+    demo: "https://www.openvscan.com",
+    technologies: ["Next.Js", "NestJs", "TypeScript", "Tailwind CSS"],
+    status: "building" as const,
   },
   {
     title: "Clonvo",
@@ -98,7 +98,7 @@ const LinkText = ({ href, children, className = "" }: LinkTextProps) => (
   <Link
     href={href}
     target="_blank"
-    className={`relative inline-flex items-center gap-0.5 text-xs font-normal text-muted-foreground transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:gap-1 hover:text-primary hover:after:w-full ${className}`}
+    className={`relative inline-flex items-center gap-0.5 text-sm font-normal text-muted-foreground transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:gap-1 hover:text-primary hover:after:w-full ${className}`}
   >
     <span>{children}</span>
     <ArrowUpRight className="h-3 w-3" />
@@ -110,16 +110,16 @@ export default function FeaturedProjects() {
   const isHomePage = pathname === '/'
 
   return (
-    <section className="space-y-8 duration-1000 animate-in fade-in fill-mode-both animation-delay-900">
+    <section className="space-y-8 duration-1000 animate-in fade-in fill-mode-both animation-delay-900" id="projects">
       <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">
         projects.
       </h2>
-      
+
       {/* Projects List */}
       <div className="space-y-6">
         {projects.slice(0, isHomePage ? 3 : projects.length).map((project) => (
-          <div 
-            key={project.title} 
+          <div
+            key={project.title}
             className="space-y-2 rounded-lg"
           >
             <div className="flex items-center justify-between">
@@ -170,8 +170,8 @@ export default function FeaturedProjects() {
       </div>
 
       {isHomePage && (
-        <Link 
-          href="/projects" 
+        <Link
+          href="/projects"
           className="group flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
         >
           <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full">
@@ -189,8 +189,8 @@ export default function FeaturedProjects() {
           </h2>
           <p className="text-sm text-muted-foreground">
             Small projects to engage my 𝕏 community (
-            <a 
-              href="https://x.com/intent/follow?screen_name=btr1pathi" 
+            <a
+              href="https://x.com/intent/follow?screen_name=btr1pathi"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
@@ -199,11 +199,11 @@ export default function FeaturedProjects() {
             </a>
             )
           </p>
-          
+
           <div className="space-y-6">
             {funProjects.map((project) => (
-              <div 
-                key={project.title} 
+              <div
+                key={project.title}
                 className="space-y-2 rounded-lg"
               >
                 <div className="flex items-center justify-between">
