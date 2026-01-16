@@ -1,21 +1,26 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
-import { ExternalLink, ArrowRight } from 'lucide-react'
+import { ArrowUpRight, ArrowRight } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import ViewCounter from '@/components/common/ViewCounter';
+import ViewCounter from '@/components/common/ViewCounter'
 
-const statusConfig = {
-  live: { label: 'Live', dotColor: 'bg-green-500', pulse: true },
-  building: { label: 'Building', dotColor: 'bg-amber-500', pulse: false },
-  completed: { label: 'Completed', dotColor: 'bg-blue-500', pulse: false },
-} as const;
+const parseProjectStatus = (status: 'live' | 'building' | 'completed'): string => {
+  switch (status) {
+    case 'live':
+      return '✨ Live'
+    case 'building':
+      return '🏗️ Building'
+    case 'completed':
+      return '👍🏽 Completed'
+    default:
+      return ''
+  }
+}
 
 const projects = [
   {
     title: "DeepFind.Me",
-    image: "/dfme.webp",
     description: "Deepfind.me is an educational OSINT platform offering tools and resources to help users understand and manage their digital footprint.",
     github: null,
     demo: "https://deepfind.me",
@@ -24,7 +29,6 @@ const projects = [
   },
   {
     title: "OpenVScan",
-    image: "/openvscan.avif",
     description: "OpenVScan is a web-based vulnerability scanner that integrates open-source tools with AI to deliver smarter, faster and more reliable pre-production security testing.",
     github: "https://github.com/Buddhsen-tripathi/openvscan",
     demo: "https://www.openvscan.com",
@@ -33,16 +37,14 @@ const projects = [
   },
   {
     title: "Bucket0",
-    image: "/bucket0.png",
     description: "Platform to store files and manage all your S3-compatible buckets in a single, powerful interface.",
     github: null,
     demo: "https://bucket0.com",
-    technologies: ["Next.Js", "TypeScript","PostgreSQL", "Tailwind CSS"],
+    technologies: ["Next.Js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
     status: "live" as const,
   },
   {
     title: "Clonvo",
-    image: "/clonvo.webp",
     description: "Developed the website for Clonvo, an organisation which offers business solutions for AI and web development.",
     github: null,
     demo: "https://clonvo.com",
@@ -51,7 +53,6 @@ const projects = [
   },
   {
     title: "openai-api-helper",
-    image: "/openai-helper.webp",
     description: "Straightforward npm package designed to simplify making calls to the OpenAI API for various text-based prompts and responses.",
     github: "https://github.com/Buddhsen-tripathi/openai-api-helper",
     demo: "https://www.npmjs.com/package/openai-api-helper",
@@ -60,19 +61,17 @@ const projects = [
   },
   {
     title: "SmartText Enhancer",
-    image: "/sme.webp",
     description: "Productivity-focused Chrome extension that uses AI to summarize content and check spelling and grammar.",
     github: null,
     demo: "https://chromewebstore.google.com/detail/smarttext-enhancer/chmpfoicecijpgmgcpnfhakmeaofmipm",
     technologies: ["JavaScript", "HTML", "CSS", "Express", "OpenAI API"],
     status: "completed" as const,
   }
-];
+]
 
 const funProjects = [
   {
     title: "Twitter/X Spam Check",
-    image: "/spam-or-not.webp",
     description: "Enter a Twitter/X username to analyze their recent activity for potential spam-like behavior using AI.",
     github: null,
     demo: "https://www.buddhsentripathi.com/spam-or-not",
@@ -81,179 +80,154 @@ const funProjects = [
   },
   {
     title: "Code Runner",
-    image: "/code-runner.webp",
     description: "A fast-paced game where you dodge bugs and climb the leaderboard. Sharpen your reflexes and aim for the top.",
     github: null,
     demo: "https://www.buddhsentripathi.com/code-runner",
     technologies: [],
     path: "code-runner"
   }
-];
+]
+
+interface LinkTextProps {
+  href: string
+  children: React.ReactNode
+  className?: string
+}
+
+const LinkText = ({ href, children, className = "" }: LinkTextProps) => (
+  <Link
+    href={href}
+    target="_blank"
+    className={`relative inline-flex items-center gap-0.5 text-xs font-normal text-muted-foreground transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:gap-1 hover:text-primary hover:after:w-full ${className}`}
+  >
+    <span>{children}</span>
+    <ArrowUpRight className="h-3 w-3" />
+  </Link>
+)
 
 export default function FeaturedProjects() {
   const pathname = usePathname()
   const isHomePage = pathname === '/'
 
   return (
-    <section>
-      <h1 className="text-2xl font-bold mb-5 text-tracking-tight">Projects</h1>
+    <section className="space-y-8 duration-1000 animate-in fade-in fill-mode-both animation-delay-900">
+      <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">
+        projects.
+      </h2>
       
-      {/* Grid Layout for Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        {projects.slice(0, isHomePage ? 2 : projects.length).map((project, index) => (
+      {/* Projects List */}
+      <div className="space-y-6">
+        {projects.slice(0, isHomePage ? 3 : projects.length).map((project) => (
           <div 
             key={project.title} 
-            className="flex flex-col bg-background/40 rounded-sm overflow-hidden shadow-sm shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 border border-border hover:border-primary/30 group"
+            className="space-y-2 rounded-lg"
           >
-            {/* Image with fixed aspect ratio */}
-            <div className="relative w-full aspect-video overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover transition-transform duration-300"
-                priority={index < 2}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-
-            {/* Content */}
-            <div className="flex flex-col flex-1 p-4">
-              <div className="flex items-start justify-between mb-1.5 gap-2">
-                <h3 className="text-xl font-semibold text-foreground text-tracking-normal transition-colors flex-1">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <h3 className="font-normal capitalize text-primary">
                   {project.title}
                 </h3>
-                {(() => {
-                  const config = statusConfig[project.status];
-                  return (
-                    <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs font-medium whitespace-nowrap">
-                      <span className={`inline-block w-2 h-2 ${config.dotColor} rounded-full ${config.pulse ? 'animate-pulse' : ''}`}></span>
-                      {config.label}
-                    </span>
-                  );
-                })()}
+                {project.status && (
+                  <span className="text-xs text-muted-foreground opacity-70 hidden sm:inline">
+                    [{parseProjectStatus(project.status)}]
+                  </span>
+                )}
               </div>
-              <p className="mb-3 text-muted-foreground leading-relaxed text-sm flex-1">
-                {project.description}
-              </p>
+              <div className="flex flex-row items-center justify-start gap-3 text-sm">
+                {project.demo && (
+                  <LinkText href={project.demo}>
+                    live
+                  </LinkText>
+                )}
+                {project.github && (
+                  <LinkText href={project.github}>
+                    github
+                  </LinkText>
+                )}
+              </div>
+            </div>
 
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2 mb-3">
-                {project.technologies.map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="bg-secondary dark:bg-primary/90 text-primary-foreground px-2 py-1 rounded text-xs"
+            {/* Description */}
+            <p className="text-sm font-normal text-muted-foreground leading-relaxed">
+              {project.description}
+            </p>
+
+            {/* Technologies */}
+            {project.technologies && project.technologies.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {project.technologies.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="text-xs text-muted-foreground opacity-70 hover:opacity-100 transition-opacity"
                   >
-                    {tech}
+                    [{tech}]
                   </span>
                 ))}
               </div>
-
-              {/* Links */}
-              <div className="flex space-x-4 pt-2 border-t border-border">
-                {project.github && (
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" /> Github
-                  </a>
-                )}
-                <a 
-                  href={project.demo} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" /> Live
-                </a>
-              </div>
-            </div>
+            )}
           </div>
         ))}
       </div>
 
       {isHomePage && (
-        <div className="mt-4">
-          <Link href="/projects" className="block focus-ring rounded-sm">
-            <div className="group w-full rounded-sm border border-border bg-background/40 text-muted-foreground hover:text-foreground hover:bg-accent/30 hover:border-primary/30 transition-colors px-4 py-3 flex items-center justify-center gap-2">
-              <span className="text-sm font-medium">View more</span>
-              <ArrowRight className="w-4 h-4 inline-block transition-transform duration-200 group-hover:translate-x-0.5" />
-            </div>
-          </Link>
-        </div>
+        <Link 
+          href="/projects" 
+          className="group flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full">
+            view all projects
+          </span>
+          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+        </Link>
       )}
 
       {/* Fun X Projects Section */}
       {!isHomePage && (
-        <section className="mt-12 mb-8">
-          <h2 className="text-2xl font-bold mb-6 text-foreground font-serif text-tracking-tight">𝕏 Projects</h2>
-          <h3
-            className="text-lg font-semibold mb-4 text-foreground text-tracking-normal"
-            aria-label="I make random projects to engage my Twitter/X community"
-          >
+        <div className="space-y-6 pt-8">
+          <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">
+            𝕏 projects.
+          </h2>
+          <p className="text-sm text-muted-foreground">
             Random projects to engage my 𝕏 community (
             <a 
               href="https://x.com/intent/follow?screen_name=btr1pathi" 
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 focus-ring px-1 rounded transition-colors"
+              className="text-primary hover:underline"
             >
               @btr1pathi
             </a>
             )
-          </h3>
+          </p>
           
-          {/* Grid Layout for Fun Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="space-y-6">
             {funProjects.map((project) => (
               <div 
                 key={project.title} 
-                className="flex flex-col bg-card rounded-sm overflow-hidden shadow-sm shadow-primary/15 transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 border border-border hover:border-primary/30 group"
+                className="space-y-2 rounded-lg"
               >
-                {/* Image with fixed aspect ratio */}
-                <div className="relative w-full aspect-video overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col flex-1 p-5">
-                  <h3 className="text-xl font-semibold mb-2 text-foreground text-tracking-normal group-hover:text-primary transition-colors">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-normal capitalize text-primary">
                     {project.title}
                   </h3>
-                  <p className="mb-4 text-muted-foreground leading-relaxed text-sm flex-1">
-                    {project.description}
-                  </p>
-
-                  {project.path && (
-                    <div className="mb-4">
-                      <ViewCounter slug={project.path} readOnly={true} />
-                    </div>
-                  )}
-
-                  {/* Links */}
-                  <div className="flex space-x-4 pt-2 border-t border-border">
-                    <Link 
-                      href={`/${project.path}`} 
-                      className="text-foreground hover:text-primary focus-ring rounded transition-colors text-sm flex items-center gap-1"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" /> Live
-                    </Link>
-                  </div>
+                  <LinkText href={`/${project.path}`}>
+                    try it
+                  </LinkText>
                 </div>
+
+                <p className="text-sm font-normal text-muted-foreground leading-relaxed">
+                  {project.description}
+                </p>
+
+                {project.path && (
+                  <div className="pt-1">
+                    <ViewCounter slug={project.path} readOnly={true} />
+                  </div>
+                )}
               </div>
             ))}
           </div>
-        </section>
+        </div>
       )}
     </section>
   )

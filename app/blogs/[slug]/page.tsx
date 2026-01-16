@@ -57,16 +57,18 @@ export default async function BlogPost({ params }: { params: paramsType }) {
   const { content, data } = await getBlogPostFromS3((await params).slug)
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 duration-1000 animate-in fade-in fill-mode-both">
       <div className="flex justify-between items-center">
-        <Link href="/blogs" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Blogs
+        <Link href="/blogs" className="group inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors">
+          <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
+          <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full">
+            back to blogs
+          </span>
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold">{data.title}</h1>
-      <div className="flex items-center gap-2 text-muted-foreground">
+      <h1 className="font-serif text-2xl font-medium italic leading-snug text-primary">{data.title}</h1>
+      <div className="flex items-center gap-2 text-xs text-muted-foreground">
         <span>{data.date}</span>
         <span>•</span>
         <ViewCounter slug={data.slug} readOnly={false} />
@@ -80,19 +82,21 @@ export default async function BlogPost({ params }: { params: paramsType }) {
         </div>
       </div>
       {/* Render the MDX content */}
-      <MDXRemote
-        source={content}
-        options={{
-          mdxOptions: {
-            rehypePlugins: [rehypeHighlight],
-            remarkPlugins: [remarkGfm, remarkfrontmatter],
-          },
-        }}
-        components={{
-          ...mdxComponents,
-          SocialShare: SocialShare
-        }}
-      />
+      <div className="mdx-content">
+        <MDXRemote
+          source={content}
+          options={{
+            mdxOptions: {
+              rehypePlugins: [rehypeHighlight],
+              remarkPlugins: [remarkGfm, remarkfrontmatter],
+            },
+          }}
+          components={{
+            ...mdxComponents,
+            SocialShare: SocialShare
+          }}
+        />
+      </div>
 
       {/* Social Share component */}
       <SocialShare
@@ -100,12 +104,12 @@ export default async function BlogPost({ params }: { params: paramsType }) {
         title={data.title}
       />
 
-      <hr className="my-8 border-t" />
+      <hr className="my-6 border-t border-border" />
 
       {/* Newsletter subscription component */}
       <NewsletterSubscription />
 
-      <hr className="my-8 border-t" />
+      <hr className="my-6 border-t border-border" />
 
       {/* Related Blogs component */}
       <RelatedBlogs currentSlug={(await params).slug} currentTitle={data.title} />

@@ -1,6 +1,6 @@
 'use client'
 
-import { CalendarHeart, CalendarPlus } from 'lucide-react'
+import { CalendarHeart, CalendarPlus, ArrowUpRight } from 'lucide-react'
 import React, { useState } from 'react'
 
 export default function NewsletterSubscription() {
@@ -36,60 +36,61 @@ export default function NewsletterSubscription() {
     }
 
     return (
-        <div className="group block p-6 border border-border rounded-sm shadow-md shadow-primary/15 hover:shadow-lg transition-all bg-background/40">
-            <h2 className="text-2xl font-bold mb-2 text-tracking-tight">
-                Never Miss a Blog
+        <section className="space-y-4 duration-1000 animate-in fade-in fill-mode-both animation-delay-[1300ms]">
+            <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">
+                stay updated.
             </h2>
-            <p className="mb-4 text-md text-muted-foreground leading-relaxed">
-                It's <span className='text-green-600'>free!</span> Get notified instantly whenever a new post drops. Stay updated, stay ahead.
-            </p>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="prose max-w-full text-sm font-normal leading-6 text-muted-foreground dark:prose-invert">
+                <p>
+                    It's <span className='text-green-600 font-medium'>free!</span> Get notified instantly whenever a new post drops. Stay updated, stay ahead.
+                </p>
+            </div>
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Your email address"
-                    className="w-full px-4 py-2 border rounded-sm shadow-sm shadow-primary/15 focus:outline-none focus:ring-2 focus:ring-primary bg-background dark:bg-background transition-colors"
+                    placeholder="your@email.com"
+                    className="flex-1 px-3 py-2 text-sm border border-border rounded-sm focus:outline-none focus:ring-1 focus:ring-primary bg-background transition-colors"
                     required
                 />
-                <div className="flex items-center gap-8 mt-4">
-                    {(error || success) && (
-                        <p className="text-sm">
-                            {error ? (
-                                <span className="text-destructive">{error}</span>
-                            ) : (
-                                <span className="text-chart-1">Subscribed successfully!</span>
-                            )}
-                        </p>
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium rounded-sm transition-all duration-300 ${
+                        success 
+                            ? 'text-green-600 bg-green-50 dark:bg-green-950/30' 
+                            : 'text-primary-foreground bg-primary hover:bg-primary/90'
+                    }`}
+                >
+                    {success ? (
+                        <>
+                            <CalendarHeart size={14} />
+                            subscribed!
+                        </>
+                    ) : loading ? (
+                        <>
+                            <div className="animate-spin h-3.5 w-3.5 border-2 border-primary-foreground border-t-transparent rounded-full"></div>
+                            subscribing...
+                        </>
+                    ) : (
+                        <>
+                            <CalendarPlus size={14} />
+                            subscribe
+                            <ArrowUpRight size={12} />
+                        </>
                     )}
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className={`ml-auto inline-flex items-center justify-center gap-2 px-6 py-2 border border-transparent text-sm font-medium rounded-sm shadow-sm transition-all duration-300 min-w-[140px] focus-ring ${
-                            success 
-                                ? 'text-chart-1 bg-chart-1/10 hover:bg-chart-1/20' 
-                                : 'text-primary-foreground bg-primary hover:bg-primary/90'
-                        }`}
-                    >
-                        {success ? (
-                            <>
-                                <CalendarHeart size={16} className="animate-pulse" />
-                                Subscribed!
-                            </>
-                        ) : loading ? (
-                            <>
-                                <div className="animate-spin h-4 w-4 border-2 border-primary-foreground border-t-transparent rounded-full"></div>
-                                Subscribing...
-                            </>
-                        ) : (
-                            <>
-                                <CalendarPlus size={16} />
-                                Subscribe
-                            </>
-                        )}
-                    </button>
-                </div>
+                </button>
             </form>
-        </div>
+            {(error || success) && (
+                <p className="text-xs">
+                    {error ? (
+                        <span className="text-destructive">{error}</span>
+                    ) : (
+                        <span className="text-green-600">You're all set! Check your inbox for confirmation.</span>
+                    )}
+                </p>
+            )}
+        </section>
     )
 }

@@ -60,7 +60,7 @@ export default function RootLayout({
           gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');`}
         </Script>
       </head>
-      <body className={`font-sans bg-background text-foreground max-w-[1000px] mx-auto pt-12 flex flex-col min-h-screen antialiased`}>
+      <body className={`font-sans bg-background text-foreground max-w-[800px] mx-auto pt-12 flex flex-col min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

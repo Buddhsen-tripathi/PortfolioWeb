@@ -39,25 +39,25 @@ export default async function BlogPage() {
   const personalPosts = allPosts.filter(post => post.type === 'personal');
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 duration-1000 animate-in fade-in fill-mode-both">
       <header className="space-y-2">
-        <h1 className="text-2xl font-bold text-foreground text-tracking-tight">Blogs</h1>
-        <p className="text-muted-foreground leading-relaxed">Latest articles and tutorials</p>
+        <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">blogs.</h2>
+        <p className="text-sm text-muted-foreground">Latest articles and tutorials</p>
       </header>
 
       <Tabs defaultValue="technical" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-6 bg-muted/50 border border-border rounded-sm p-1 h-11">
+        <TabsList className="inline-flex gap-4 bg-transparent p-0 h-auto mb-6">
           <TabsTrigger 
             value="technical" 
-            className="h-9 rounded-sm bg-transparent text-sm font-medium text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-colors"
+            className="relative px-0 py-1 bg-transparent text-sm font-medium text-muted-foreground hover:text-primary data-[state=active]:text-primary data-[state=active]:after:absolute data-[state=active]:after:-bottom-0.5 data-[state=active]:after:left-0 data-[state=active]:after:h-[1.5px] data-[state=active]:after:w-full data-[state=active]:after:bg-primary transition-colors"
           >
-            Technical
+            technical
           </TabsTrigger>
           <TabsTrigger 
             value="personal" 
-            className="h-9 rounded-sm bg-transparent text-sm font-medium text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-colors"
+            className="relative px-0 py-1 bg-transparent text-sm font-medium text-muted-foreground hover:text-primary data-[state=active]:text-primary data-[state=active]:after:absolute data-[state=active]:after:-bottom-0.5 data-[state=active]:after:left-0 data-[state=active]:after:h-[1.5px] data-[state=active]:after:w-full data-[state=active]:after:bg-primary transition-colors"
           >
-            Personal
+            personal
           </TabsTrigger>
         </TabsList>
 
@@ -65,9 +65,8 @@ export default async function BlogPage() {
           {technicalPosts.length > 0 ? (
             <BlogList blogPosts={technicalPosts} />
           ) : (
-            <div className="text-center py-12 bg-card rounded-sm border border-border">
-              <p className="text-muted-foreground italic text-lg">No technical articles published yet.</p>
-              <p className="text-muted-foreground text-sm mt-2">Check back soon for new content!</p>
+            <div className="py-8">
+              <p className="text-sm text-muted-foreground">No technical articles published yet.</p>
             </div>
           )}
         </TabsContent>
@@ -76,9 +75,8 @@ export default async function BlogPage() {
           {personalPosts.length > 0 ? (
             <BlogList blogPosts={personalPosts} />
           ) : (
-            <div className="text-center py-12 bg-card rounded-sm border border-border">
-              <p className="text-muted-foreground italic text-lg">No personal blogs published yet.</p>
-              <p className="text-muted-foreground text-sm mt-2">Personal stories and thoughts coming soon!</p>
+            <div className="py-8">
+              <p className="text-sm text-muted-foreground">No personal blogs published yet.</p>
             </div>
           )}
         </TabsContent>

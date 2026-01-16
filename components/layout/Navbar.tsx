@@ -4,20 +4,17 @@ import { memo, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { toZonedTime, format as formatTz } from 'date-fns-tz'
-import { Moon, Sun, Clock, Menu, X } from 'lucide-react'
+import { Moon, Sun, Menu, X } from 'lucide-react'
 
 const Navbar = memo(() => {
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
-  const [currentTime, setCurrentTime] = useState(new Date())
   const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000)
 
     let ticking = false
     const handleScroll = () => {
@@ -34,7 +31,6 @@ const Navbar = memo(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {
-      clearInterval(timer)
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
@@ -88,79 +84,63 @@ const Navbar = memo(() => {
     return null
   }
 
-  const timeZone = 'America/New_York'
-  const zonedTime = toZonedTime(currentTime, timeZone)
-  const formattedTime = formatTz(zonedTime, 'HH:mm')
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl transition-all duration-300 ${
       scrolled
         ? 'bg-background/95 shadow-md border-b border-border'
         : 'bg-background/90 border-b border-transparent'
     }`}>
-      <div className="max-w-[1000px] mx-auto px-8 py-4">
+      <div className="max-w-[800px] mx-auto px-8 py-4">
         <div className="flex items-center justify-between">
-          {/* Time Display - Left (Desktop) */}
-          <div className="hidden md:flex items-center space-x-2 text-sm text-muted-foreground">
-            <Clock size={16} className="text-primary" />
-            <a
-              href='https://www.google.com/search?q=time'
-              target='_blank'
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors font-medium"
-            >
-              {formattedTime}
-            </a>
-          </div>
+          {/* Home Link - Left (Desktop) */}
+          <Link
+            href="/"
+            className={`hidden md:flex relative text-sm font-medium transition-all duration-300 ${
+              pathname === '/'
+                ? 'text-primary after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:bg-primary'
+                : 'text-muted-foreground hover:text-primary after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full'
+            }`}
+          >
+            home
+          </Link>
 
           {/* Home Button - Left (Mobile) */}
           <Link
             href="/"
-            className="md:hidden flex items-center text-foreground hover:text-primary transition-colors font-medium"
+            className="md:hidden flex items-center text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
           >
-            Home
+            home
           </Link>
 
           {/* Desktop Navigation - Right */}
-          <div className="hidden md:flex items-center space-x-1">
-            <Link
-              href="/"
-              className={`px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
-                pathname === '/'
-                  ? 'text-primary-foreground bg-primary'
-                  : 'text-foreground hover:text-primary hover:bg-accent/50'
-              }`}
-            >
-              Home
-            </Link>
-            
+          <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/projects"
-              className={`px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
+              className={`relative text-sm font-medium transition-all duration-300 ${
                 pathname === '/projects'
-                  ? 'text-primary-foreground bg-primary'
-                  : 'text-foreground hover:text-primary hover:bg-accent/50'
+                  ? 'text-primary after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:bg-primary'
+                  : 'text-muted-foreground hover:text-primary after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full'
               }`}
             >
-              Projects
+              projects
             </Link>
             
             <Link
               href="/blogs"
-              className={`px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
+              className={`relative text-sm font-medium transition-all duration-300 ${
                 pathname === '/blogs'
-                  ? 'text-primary-foreground bg-primary'
-                  : 'text-foreground hover:text-primary hover:bg-accent/50'
+                  ? 'text-primary after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-full after:bg-primary'
+                  : 'text-muted-foreground hover:text-primary after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full'
               }`}
             >
-              Blogs
+              blogs
             </Link>
           
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-              className="relative flex items-center justify-center w-9 h-9 rounded-sm text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring overflow-hidden ml-2"
+              className="relative flex items-center justify-center w-8 h-8 text-muted-foreground hover:text-primary transition-all duration-300 focus-ring overflow-hidden"
             >
               <Sun
                 className={`absolute transition-all duration-500 transform ${
@@ -182,11 +162,11 @@ const Navbar = memo(() => {
           </div>
 
           {/* Mobile Controls - Right */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-4">
             <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-              className="flex items-center justify-center w-9 h-9 rounded-sm text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring overflow-hidden"
+              className="flex items-center justify-center w-8 h-8 text-muted-foreground hover:text-primary transition-all duration-300 focus-ring overflow-hidden"
             >
               <Sun
                 className={`absolute transition-all duration-500 transform ${
@@ -209,38 +189,38 @@ const Navbar = memo(() => {
             <button
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
-              className="flex items-center justify-center w-9 h-9 rounded-sm text-foreground hover:text-primary hover:bg-accent/50 transition-all duration-300 focus-ring"
+              className="flex items-center justify-center w-8 h-8 text-muted-foreground hover:text-primary transition-all duration-300 focus-ring"
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pt-4 border-t border-border space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="md:hidden mt-4 pt-4 border-t border-border space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
             <Link
               href="/projects"
               onClick={closeMobileMenu}
-              className={`block px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
+              className={`relative block text-sm font-medium transition-all duration-300 ${
                 pathname === '/projects'
-                  ? 'text-primary-foreground bg-primary'
-                  : 'text-foreground hover:text-primary hover:bg-accent/50'
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-primary'
               }`}
             >
-              Projects
+              projects
             </Link>
             
             <Link
               href="/blogs"
               onClick={closeMobileMenu}
-              className={`block px-4 py-2 rounded-sm transition-all duration-200 font-medium text-sm ${
+              className={`relative block text-sm font-medium transition-all duration-300 ${
                 pathname === '/blogs'
-                  ? 'text-primary-foreground bg-primary'
-                  : 'text-foreground hover:text-primary hover:bg-accent/50'
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-primary'
               }`}
             >
-              Blogs
+              blogs
             </Link>
           </div>
         )}

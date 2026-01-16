@@ -62,8 +62,8 @@ async function migrateBlogPosts() {
     filename.endsWith('.md') || filename.endsWith('.mdx')
   )
 
-  console.log(`📚 Found ${blogFiles.length} blog posts to migrate`)
-  console.log(`🚀 Starting migration to R2 bucket: ${BUCKET_NAME}`)
+  console.log(`Found ${blogFiles.length} blog posts to migrate`)
+  console.log(`Starting migration to R2 bucket: ${BUCKET_NAME}`)
 
   for (const fileName of blogFiles) {
     const filePath = path.join(postsDirectory, fileName)

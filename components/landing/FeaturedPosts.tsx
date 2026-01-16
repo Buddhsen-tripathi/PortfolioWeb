@@ -1,62 +1,57 @@
 import Link from 'next/link';
 import { getAllBlogPosts } from '@/app/blogs/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import ViewCounter from '@/components/common/ViewCounter';
 
 export default async function FeaturedPosts() {
   const blogPosts = await getAllBlogPosts();
 
   return (
-    <section>
-      <h2 className="text-2xl font-bold mb-5 text-tracking-tight">Recent Blogs</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        {blogPosts.slice(0, 2).map((post) => {
+    <section className="space-y-6 duration-1000 animate-in fade-in fill-mode-both animation-delay-[1100ms]">
+      <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">
+        recent blogs.
+      </h2>
+
+      <div className="space-y-4">
+        {blogPosts.slice(0, 3).map((post) => {
           return (
             <Link
               key={post.slug}
               href={`/blogs/${post.slug}`}
-              className="block h-full focus-ring rounded-sm"
+              className="group block"
             >
-              <article className="p-6 bg-background/40 rounded-sm shadow-sm shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground">
-                <div className="space-y-4 flex-grow relative z-10">
-                  <div>
-                    <h3 className="text-xl font-semibold pb-1 text-foreground text-tracking-normal group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                      <time>{post.date}</time>
-                      <span>•</span>
-                      <span>
-                        <ViewCounter slug={post.slug} readOnly={true} />
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {post.excerpt && post.excerpt.length > 150
-                      ? `${post.excerpt.substring(0, 150)}...`
-                      : post.excerpt || ''}
-                  </p>
+              <article className="space-y-1">
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="font-normal text-primary group-hover:underline transition-colors">
+                    {post.title}
+                  </h3>
+                  <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-muted-foreground opacity-0 transition-all group-hover:opacity-100" />
                 </div>
-                <span className="text-primary self-start pt-1 relative z-10 inline-flex items-center group-hover:text-primary/80 transition-colors">
-                  Read more
-                  <span className="ml-1 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-                    →
-                  </span>
-                </span>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <time>{post.date}</time>
+                  <span>•</span>
+                  <ViewCounter slug={post.slug} readOnly={true} />
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {post.excerpt && post.excerpt.length > 120
+                    ? `${post.excerpt.substring(0, 120)}...`
+                    : post.excerpt || ''}
+                </p>
               </article>
             </Link>
           );
         })}
       </div>
 
-      <div className="mt-4">
-        <Link href="/blogs" className="block focus-ring rounded-sm">
-          <div className="group w-full rounded-sm border border-border bg-background/40 text-muted-foreground hover:border-primary/30 hover:text-foreground hover:bg-accent/30 transition-colors px-4 py-3 flex items-center justify-center gap-2">
-            <span className="text-sm font-medium">View more</span>
-            <ArrowRight className="w-4 h-4 inline-block transition-transform duration-200 group-hover:translate-x-0.5" />
-          </div>
-        </Link>
-      </div>
+      <Link 
+        href="/blogs" 
+        className="group flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+      >
+        <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full">
+          view all blogs
+        </span>
+        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+      </Link>
     </section>
   );
 }

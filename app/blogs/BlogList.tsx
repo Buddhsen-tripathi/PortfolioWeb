@@ -144,7 +144,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
     >
       {/* Search and Sort Bar */}
       <motion.div 
-        className="flex gap-4"
+        className="flex gap-3"
         variants={searchVariants}
       >
         {/* Search Bar */}
@@ -153,10 +153,10 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
         >
           <motion.input
             type="text"
-            placeholder="Search articles..."
+            placeholder="search articles..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-11 px-4 pr-11 border border-border rounded-sm focus:outline-none focus:ring-2 focus:ring-primary bg-background/40 text-foreground placeholder:text-muted-foreground transition-colors"
+            className="w-full h-9 px-3 pr-9 text-sm border border-border rounded-sm focus:outline-none focus:ring-1 focus:ring-primary bg-background text-foreground placeholder:text-muted-foreground transition-colors"
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
           <motion.div
@@ -166,7 +166,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <Search className="w-5 h-5 text-muted-foreground" />
+            <Search className="w-4 h-4 text-muted-foreground" />
           </motion.div>
         </motion.div>
 
@@ -174,11 +174,11 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
         <motion.select
           value={sortType}
           onChange={(e) => setSortType(e.target.value as 'newest' | 'oldest' | 'mostread')}
-          className="h-11 px-4 border border-border rounded-sm bg-background/40 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors cursor-pointer"
+          className="h-9 px-3 text-sm border border-border rounded-sm bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
         >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="mostread">Most Read</option>
+          <option value="newest">newest</option>
+          <option value="oldest">oldest</option>
+          <option value="mostread">most read</option>
         </motion.select>
       </motion.div>
 
@@ -187,7 +187,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
         {filteredPosts.length > 0 ? (
           <motion.div 
             key="blog-grid"
-            className="grid gap-2 md:grid-cols-2"
+            className="space-y-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -199,61 +199,39 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                   key={post.slug}
                   variants={itemVariants}
                   layout
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={{ scale: 0.99 }}
                   className="h-full"
                 >
-                  <Link href={`/blogs/${post.slug}`} className="block h-full focus-ring rounded-sm">
+                  <Link href={`/blogs/${post.slug}`} className="group block">
                     <motion.article 
-                      className="p-6 bg-background/40 rounded-sm shadow-sm shadow-primary/15 border border-border transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/20 hover:border-primary/30 cursor-pointer flex flex-col h-full group relative overflow-hidden text-card-foreground"
+                      className="space-y-1"
                       transition={{ duration: 0.2 }}
                     >
-                      
-                      <div className="space-y-4 flex-grow relative z-10">
-                        <div>
-                          <motion.h2 
-                            className="text-xl font-semibold pb-1 text-foreground text-tracking-normal group-hover:text-primary transition-colors"
-                            initial={{ opacity: 0.8 }}
-                            whileHover={{ opacity: 1 }}
-                          >
-                            {post.title}
-                          </motion.h2>
-                          
-                          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                            <motion.time
-                              className="transition-opacity"
-                              initial={{ opacity: 0.6 }}
-                              whileHover={{ opacity: 1 }}
-                            >
-                              {post.date}
-                            </motion.time>
-                            <span>•</span>
-                            <motion.span
-                              className="transition-opacity"
-                              initial={{ opacity: 0.6 }}
-                              whileHover={{ opacity: 1 }}
-                            >
-                              <ViewCounter slug={post.slug} readOnly={true} />
-                            </motion.span>
-                          </div>
-                        </div>
-                        
-                        <motion.p 
-                          className="text-muted-foreground leading-relaxed"
+                      <div className="flex items-start justify-between">
+                        <motion.h2 
+                          className="font-normal text-primary group-hover:underline transition-colors"
                           initial={{ opacity: 0.8 }}
                           whileHover={{ opacity: 1 }}
                         >
-                          {post.excerpt.length > 150
-                            ? `${post.excerpt.substring(0, 150)}...`
-                            : post.excerpt}
-                        </motion.p>
+                          {post.title}
+                        </motion.h2>
                       </div>
                       
-                      <span className="text-primary self-start pt-1 relative z-10 inline-flex items-center group-hover:text-primary/80 transition-colors">
-                        Read more
-                        <span className="ml-1 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-                          →
-                        </span>
-                      </span>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <time>{post.date}</time>
+                        <span>•</span>
+                        <ViewCounter slug={post.slug} readOnly={true} />
+                      </div>
+                      
+                      <motion.p 
+                        className="text-sm text-muted-foreground leading-relaxed"
+                        initial={{ opacity: 0.8 }}
+                        whileHover={{ opacity: 1 }}
+                      >
+                        {post.excerpt.length > 120
+                          ? `${post.excerpt.substring(0, 120)}...`
+                          : post.excerpt}
+                      </motion.p>
                     </motion.article>
                   </Link>
                 </motion.div>
@@ -267,37 +245,15 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="text-center py-12 bg-card rounded-sm border border-border"
+            className="py-8"
           >
-            <motion.div
-              animate={{ 
-                scale: [1, 1.05, 1],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="text-6xl mb-4"
-            >
-              🔍
-            </motion.div>
             <motion.p 
-              className="text-muted-foreground text-lg"
+              className="text-sm text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              No matching blog posts found in this section.
-            </motion.p>
-            <motion.p 
-              className="text-muted-foreground text-sm mt-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              Try adjusting your search terms
+              No matching blog posts found. Try adjusting your search.
             </motion.p>
           </motion.div>
         )}
