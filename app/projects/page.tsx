@@ -31,8 +31,11 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="space-y-8">
+      <header className="space-y-2">
+        <h1 className="font-serif text-xl font-medium italic text-foreground">projects.</h1>
+        <p className="text-sm text-muted-foreground">Things I've built and worked on</p>
+      </header>
       <FeaturedProjects />
-      {/* Add more projects here if needed */}
     </div>
   )
 }

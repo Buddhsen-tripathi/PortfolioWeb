@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Search } from 'lucide-react'
+import { Search, ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { ViewCounter } from '@/components/common';
 
@@ -207,7 +207,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                       className="space-y-1"
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="flex items-start justify-between">
+                      <div className="flex items-start justify-between gap-2">
                         <motion.h2 
                           className="font-normal text-primary group-hover:underline transition-colors"
                           initial={{ opacity: 0.8 }}
@@ -215,6 +215,7 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                         >
                           {post.title}
                         </motion.h2>
+                        <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-muted-foreground opacity-0 transition-all group-hover:opacity-100" />
                       </div>
                       
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">

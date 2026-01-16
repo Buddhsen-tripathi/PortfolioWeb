@@ -13,7 +13,21 @@ const experiences = [
 			start: 'Jul 2023',
 			end: 'Aug 2025'
 		},
-		tech: ['Java', 'C++', 'TypeScript', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes'],
+		tech: [
+			'Java',
+			'Spring Boot',
+			'C++',
+			'Angular',
+			'REST APIs',
+			'MySQL',
+			'MongoDB',
+			'Docker',
+			'Azure',
+			'Microservices',
+			'CI/CD',
+			'Application Security (Fortify, Black Duck)'
+		]
+
 	},
 	{
 		title: 'Software Development Engineer Intern',
@@ -24,7 +38,7 @@ const experiences = [
 			start: 'Jan 2023',
 			end: 'Jun 2023'
 		},
-		tech: ['Java', 'Spring Boot', 'PostgreSQL', 'REST APIs'],
+		tech: ['Java', 'Spring Boot', 'Angular', 'MySQL', 'REST APIs'],
 	},
 ]
 
@@ -61,12 +75,12 @@ export default function Experience() {
 						<div className="flex flex-wrap items-start justify-between gap-2">
 							<div>
 								<h3 className="font-normal text-primary">
-									{exp.title}, {exp.company}
+									{exp.title}
 								</h3>
 								<div className="flex items-center justify-start gap-1.5 text-sm text-muted-foreground">
-									at,{" "}
+									at{" "}
 									<LinkText href={exp.companyUrl}>
-										{exp.websiteDisplayName}
+										{exp.company}
 									</LinkText>
 								</div>
 							</div>

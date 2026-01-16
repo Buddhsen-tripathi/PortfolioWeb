@@ -188,7 +188,7 @@ export default function FeaturedProjects() {
             𝕏 projects.
           </h2>
           <p className="text-sm text-muted-foreground">
-            Random projects to engage my 𝕏 community (
+            Small projects to engage my 𝕏 community (
             <a 
               href="https://x.com/intent/follow?screen_name=btr1pathi" 
               target="_blank"

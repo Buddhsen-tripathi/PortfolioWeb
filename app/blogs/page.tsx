@@ -41,7 +41,7 @@ export default async function BlogPage() {
   return (
     <div className="space-y-8 duration-1000 animate-in fade-in fill-mode-both">
       <header className="space-y-2">
-        <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">blogs.</h2>
+        <h1 className="font-serif text-xl font-medium italic text-foreground">blogs.</h1>
         <p className="text-sm text-muted-foreground">Latest articles and tutorials</p>
       </header>
 
