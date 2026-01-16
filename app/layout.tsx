@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'next-themes'
-import { Navbar, ScrollProgress, Footer } from '@/components/layout'
+import { Navbar, Footer } from '@/components/layout'
 import { ViewsProvider } from '@/components/common/ViewsContext'
 import Script from 'next/script'
 import './globals.css'
@@ -68,7 +68,6 @@ export default function RootLayout({
           storageKey="theme"
         >
           <ViewsProvider>
-            <ScrollProgress />
             <Navbar />
             <main className="flex-grow">
               <div className="max-w-[1000px] mx-auto px-8 py-12">

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { SiX, SiLinkedin, SiGithub, SiBuymeacoffee, SiYoutube, SiLeetcode, SiGmail, SiTryhackme } from "react-icons/si"
-import GitHubGraph from './GitHubGraph'
 
 const socialLinks = [
   { href: "https://github.com/buddhsen-tripathi", icon: SiGithub, label: "GitHub", display: "@buddhsen-tripathi" },

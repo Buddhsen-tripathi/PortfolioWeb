@@ -75,29 +75,29 @@ export default function SpamOrNotPage() {
     };
 
     return (
-        <main className="container mx-auto">
+        <main className="container flex flex-col space-y-8">
             
-            <div className="flex items-center justify-between mb-8">
-                <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Projects
+            <div className="flex items-center justify-between">
+                <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    back
                 </Link>
                 <div className="text-sm text-muted-foreground">
                     <ViewCounter slug="spam-or-not" readOnly={false} />
                 </div>
             </div>
 
-            <div className="text-center mb-10">
-                <h1 className="text-3xl md:text-4xl font-bold mb-4">Twitter/X Spam Check</h1>
-                <p className="text-muted-foreground max-w-xl mx-auto">
+            <div className="space-y-4">
+                <h1 className="text-2xl md:text-3xl font-serif italic text-foreground">spam checker</h1>
+                <p className="text-muted-foreground leading-relaxed">
                     Enter a Twitter/X username (without the @) to analyze their recent activity for potential spam-like behavior using AI.
                 </p>
-                <p className="text-muted-foreground max-w-xl mx-auto mt-2">
-                    Built using Exa and Gemini AI models for accurate analysis.
+                <p className="text-sm text-muted-foreground">
+                    Built using Exa and Gemini AI models.
                 </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5 mb-10">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
                     <Label htmlFor="username" className="sr-only">Twitter/X Username</Label>
                     <Twitter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -109,14 +109,14 @@ export default function SpamOrNotPage() {
                         placeholder="e.g., elonmusk"
                         disabled={isLoading}
                         required
-                        className="pl-10"
+                        className="pl-10 bg-transparent border-muted-foreground/30 focus:border-foreground"
                     />
                 </div>
-                <Button type="submit" disabled={isLoading} className="w-full">
+                <Button type="submit" disabled={isLoading} variant="outline" className="w-full border-muted-foreground/30 hover:bg-muted">
                     {isLoading ? (
                         <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Analyzing...</>
                     ) : (
-                        'Check for Spam'
+                        'check for spam'
                     )}
                 </Button>
             </form>
@@ -130,39 +130,37 @@ export default function SpamOrNotPage() {
             )}
 
             {result && !isLoading && (
-                <Card className="overflow-hidden animate-in fade-in duration-500">
+                <Card className="overflow-hidden animate-in fade-in duration-500 border-muted-foreground/20 bg-transparent">
                     <CardHeader className="pb-4">
-                        <CardTitle className="flex items-center justify-between">
-                            <span>Analysis for "{submittedUsername}"</span>
-                            <Badge variant={result.isSpam ? "destructive" : "outline"} className={`text-sm ${!result.isSpam && 'border-green-500 text-green-600 dark:text-green-400'}`}>
-                                {result.isSpam ? <AlertCircle className="w-4 h-4 mr-1.5" /> : <CheckCircle className="w-4 h-4 mr-1.5" />}
-                                {result.isSpam ? 'Likely Spam' : 'Likely Not Spam'}
+                        <CardTitle className="flex items-center justify-between text-base font-normal">
+                            <span className="font-serif italic">@{submittedUsername}</span>
+                            <Badge variant={result.isSpam ? "destructive" : "outline"} className={`text-xs font-normal ${!result.isSpam && 'border-green-500/50 text-green-600 dark:text-green-400'}`}>
+                                {result.isSpam ? <AlertCircle className="w-3 h-3 mr-1" /> : <CheckCircle className="w-3 h-3 mr-1" />}
+                                {result.isSpam ? 'likely spam' : 'likely not spam'}
                             </Badge>
                         </CardTitle>
-                        <CardDescription>Based on recent activity analysis.</CardDescription>
+                        <CardDescription className="text-xs">based on recent activity analysis</CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-5">
+                    <CardContent className="space-y-4">
                         <div>
-                            <Label className="text-xs text-muted-foreground">Reason</Label>
-                            <p className="text-sm">{result.reason}</p>
+                            <Label className="text-xs text-muted-foreground">reason</Label>
+                            <p className="text-sm text-foreground">{result.reason}</p>
                         </div>
                         <div>
-                            <Label className="text-xs text-muted-foreground mb-1 block">Spam Score ({result.spamScore}/10)</Label>
-                            <div className="relative w-full h-2 rounded-full overflow-hidden bg-muted border border-border">
+                            <Label className="text-xs text-muted-foreground mb-1 block">spam score ({result.spamScore}/10)</Label>
+                            <div className="relative w-full h-1.5 rounded-full overflow-hidden bg-muted">
                                 <Progress value={result.spamScore * 10} className={`absolute top-0 left-0 h-full w-full ${getScoreColor(result.spamScore).replace('text-', 'bg-')}`} style={{ transformOrigin: 'left center' }} />
                             </div>
                             <p className={`text-xs mt-1 ${getScoreColor(result.spamScore)}`}>
-                                {result.spamScore > 7 ? 'High Spam Likelihood' : result.spamScore > 4 ? 'Moderate Spam Likelihood' : 'Low Spam Likelihood'}
+                                {result.spamScore > 7 ? 'high spam likelihood' : result.spamScore > 4 ? 'moderate spam likelihood' : 'low spam likelihood'}
                             </p>
                         </div>
                     </CardContent>
                 </Card>
             )}
-            <div className="flex justify-center mt-8">
-                <p className="text-center text-sm text-muted-foreground max-w-lg">
-                    Note: This analysis is based on recent activity and may not be accurate.<br/>Always use caution when interacting with accounts. If the username was recently changed, results may be inaccurate due to insufficient data.
-                </p>
-            </div>
+            <p className="text-xs text-muted-foreground text-center">
+                Note: This analysis is based on recent activity and may not be accurate. Always use caution when interacting with accounts.
+            </p>
         </main>
     );
 }

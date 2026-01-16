@@ -285,21 +285,24 @@ export default function CodeRunner() {
 
   if (!name) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4 px-4 bg-background">
-        <div className="bg-card p-8 rounded-lg shadow-sm shadow-primary/15 border border-border text-center space-y-4">
-          <h1 className="text-2xl font-bold text-foreground  text-tracking-tight">Code Runner - Enter Your Name</h1>
+      <div className="container flex flex-col space-y-8">
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <h1 className="text-2xl font-serif italic text-foreground">code runner</h1>
+            <p className="text-sm text-muted-foreground">enter your name to begin</p>
+          </div>
           <input
             type="text"
             value={inputName}
             onChange={(e) => setInputName(e.target.value)}
-            className="border border-border rounded-lg shadow-sm shadow-primary/15 px-4 py-2 w-full max-w-sm bg-background dark:bg-background text-foreground placeholder:text-muted-foreground focus-ring transition-colors" 
-            placeholder="Your coder alias"
+            className="w-full max-w-md px-4 py-2 bg-transparent border border-muted-foreground/30 rounded-none text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none transition-colors" 
+            placeholder="your coder alias"
           />
           <button
             onClick={handleNameSubmit}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors focus-ring font-medium shadow-sm shadow-primary/15"
+            className="px-6 py-2 border border-muted-foreground/30 text-foreground hover:bg-muted transition-colors"
           >
-            Start Coding
+            start
           </button>
         </div>
       </div>
@@ -307,30 +310,32 @@ export default function CodeRunner() {
   }
 
   return (
-    <div className="container mx-auto space-y-4">
+    <div className="container flex flex-col space-y-8">
       
       <div className="flex items-center justify-between">
         <Link 
           href="/projects" 
-          className="flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-lg"
+          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors group"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Projects
+          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+          back
         </Link>
-        <div className="flex items-center text-sm text-muted-foreground">
+        <div className="text-sm text-muted-foreground">
           <ViewCounter slug="code-runner" readOnly={false} />
         </div>
       </div>
 
       <div className="flex flex-col items-center gap-4 w-full">
-        <h1 className="text-3xl font-bold text-foreground  text-tracking-tight">Code Runner</h1>
-        <p className="text-sm text-muted-foreground">Welcome, <span className="text-primary font-medium">{name}</span>!</p>
-        <div className="flex gap-4 text-foreground">
-          <p className="bg-secondary text-secondary-foreground px-3 py-1 rounded-lg border border-border">
-            Score: <span className="font-bold text-primary">{score}</span>
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-serif italic text-foreground">code runner</h1>
+          <p className="text-sm text-muted-foreground">welcome, <span className="text-foreground">{name}</span></p>
+        </div>
+        <div className="flex gap-4 text-sm">
+          <p className="text-muted-foreground">
+            score: <span className="text-foreground">{score}</span>
           </p>
-          <p className="bg-secondary text-secondary-foreground px-3 py-1 rounded-lg border border-border">
-            High Score: <span className="font-bold text-chart-1">{highScore}</span>
+          <p className="text-muted-foreground">
+            best: <span className="text-foreground">{highScore}</span>
           </p>
         </div>
         <div
@@ -348,50 +353,40 @@ export default function CodeRunner() {
           />
         </div>
         {gameOver && (
-          <div className="space-y-4 bg-card p-6 rounded-lg border border-border shadow-sm shadow-primary/15 text-center">
-            <p className="text-xl font-bold text-foreground">Game Over!</p>
-            <div className="flex gap-4 justify-center">
-              <button
-                onClick={() => {
-                  setGameOver(false);
-                  setScore(0);
-                  scoreRef.current = 0;
-                  startGame();
-                }}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors focus-ring font-medium shadow-sm shadow-primary/15"
-              >
-                Run Again
-              </button>
-            </div>
+          <div className="space-y-4 text-center">
+            <p className="text-lg font-serif italic text-foreground">game over</p>
+            <button
+              onClick={() => {
+                setGameOver(false);
+                setScore(0);
+                scoreRef.current = 0;
+                startGame();
+              }}
+              className="px-4 py-2 border border-muted-foreground/30 text-foreground hover:bg-muted transition-colors"
+            >
+              run again
+            </button>
           </div>
         )}
-        <div className="text-sm text-muted-foreground text-center px-4 py-2 rounded-lg border border-border">
-          Use arrow keys or touch to dodge bugs
-        </div>
+        <p className="text-xs text-muted-foreground text-center">
+          use arrow keys or touch to dodge bugs
+        </p>
 
-        <div className="w-full max-w-md mt-8 bg-card p-6 rounded-lg border border-border shadow-sm shadow-primary/15">
-          <h2 className="text-xl font-bold mb-4 text-foreground  text-tracking-normal">🏆 Leaderboard (Top 10)</h2>
-          <ul className="space-y-2 text-sm">
+        <div className="w-full mt-8 space-y-4">
+          <h2 className="text-lg font-serif italic text-foreground">leaderboard</h2>
+          <ul className="space-y-1 text-sm">
             {leaderboard.map((entry, index) => (
               <li 
                 key={entry.id} 
-                className={`flex justify-between p-2 rounded-lg transition-colors ${
-                  index === 0 
-                    ? 'bg-chart-1/10 text-chart-1 border border-chart-1/20' 
-                    : index === 1 
-                      ? 'bg-chart-2/10 text-chart-2 border border-chart-2/20'
-                      : index === 2
-                        ? 'bg-chart-3/10 text-chart-6 border border-chart-6/20'
-                        : 'bg-secondary dark:bg-secondary/80 text-secondary-foreground border border-border'
-                }`}
+                className="flex justify-between py-2 border-b border-muted-foreground/10 last:border-0"
               >
-                <span className="font-medium">
-                  {index + 1}. {entry.name}
+                <span className="text-muted-foreground">
+                  {index + 1}. <span className="text-foreground">{entry.name}</span>
                   {index === 0 && ' 👑'}
                   {index === 1 && ' 🥈'}
                   {index === 2 && ' 🥉'}
                 </span>
-                <span className="font-bold">{entry.score}</span>
+                <span className="text-foreground">{entry.score}</span>
               </li>
             ))}
           </ul>

@@ -21,29 +21,30 @@ export const metadata: Metadata = {
 
 export default function NewsletterPage() {
     return (
-        <div className="container max-w-4xl items-center space-y-8">
+        <div className="container max-w-2xl space-y-12">
             <Link 
                 href="/" 
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors focus-ring rounded-sm"
+                className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors group"
             >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Home
+                <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                back
             </Link>
-            <div className="mx-auto px-4 py-8 md:py-12 lg:py-20">
-                <div className="max-w-2xl mx-auto text-center">
-                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-tracking-tight mb-4">
-                        Join My Newsletter
+            
+            <div className="space-y-8">
+                <div className="space-y-4">
+                    <h1 className="text-2xl md:text-3xl font-serif italic text-foreground">
+                        newsletter
                     </h1>
-                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
+                    <p className="text-muted-foreground leading-relaxed">
                         Personal stories. Tech updates. No spam, just value.
                     </p>
-
-                    <NewsletterSubscription />
-
-                    <p className="mt-8 text-sm text-muted-foreground">
-                        You can unsubscribe at any time. Your privacy is respected.
-                    </p>
                 </div>
+
+                <NewsletterSubscription />
+
+                <p className="text-sm text-muted-foreground">
+                    You can unsubscribe at any time. Your privacy is respected.
+                </p>
             </div>
         </div>
     );
