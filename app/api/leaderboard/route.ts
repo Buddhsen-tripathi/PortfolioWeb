@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabaseClient'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import crypto from 'crypto'
 
@@ -40,7 +39,7 @@ function getIP(request: Request) {
 export async function GET(request: Request) {
     
     try {
-        const { data, error } = await supabase
+        const { data, error } = await supabaseAdmin
             .from('coderunner_leaderboard')
             .select('name, score, created_at')
             .order('score', { ascending: false })
