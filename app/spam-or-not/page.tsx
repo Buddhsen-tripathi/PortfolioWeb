@@ -88,7 +88,7 @@ export default function SpamOrNotPage() {
             </div>
 
             <div className="space-y-4">
-                <h1 className="text-2xl md:text-3xl font-serif italic text-foreground">spam checker</h1>
+                <h1 className="text-2xl md:text-3xl font-serif italic text-foreground">twitter/x spam check</h1>
                 <p className="text-muted-foreground leading-relaxed">
                     Enter a Twitter/X username (without the @) to analyze their recent activity for potential spam-like behavior using AI.
                 </p>
@@ -97,7 +97,7 @@ export default function SpamOrNotPage() {
                 </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="relative">
                     <Label htmlFor="username" className="sr-only">Twitter/X Username</Label>
                     <Twitter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />

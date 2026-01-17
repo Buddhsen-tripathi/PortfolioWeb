@@ -45,7 +45,7 @@ export default function NewsletterSubscription() {
                     It's <span className='text-green-600 font-medium'>free!</span> Get notified instantly whenever a new post drops. Stay updated, stay ahead.
                 </p>
             </div>
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
                 <input
                     type="email"
                     value={email}

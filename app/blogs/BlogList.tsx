@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { Search, ArrowUpRight } from 'lucide-react'
+import { Search, ArrowUpRight, Check } from 'lucide-react'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
-import { ViewCounter } from '@/components/common';
+import { ViewCounter } from '@/components/common'
+import { useViews } from '@/components/common/ViewsContext';
 
 export interface BlogPost {
   title: string;
@@ -17,39 +18,26 @@ export interface BlogPost {
 export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortType, setSortType] = useState<'newest' | 'oldest' | 'mostread'>('newest');
-  const [viewsData, setViewsData] = useState<Record<string, number>>({});
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { getViews, prefetchViews } = useViews();
 
-  // Initialize and sync views from localStorage
+  // Prefetch all blog post views for sorting
   useEffect(() => {
-    const initializeViews = () => {
-      const viewsMap: Record<string, number> = {};
-      const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-      const now = Date.now();
-      
-      // Iterate through localStorage and extract all views-cache entries
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key?.startsWith('views-cache-')) {
-          const slug = key.replace('views-cache-', '');
-          const cached = localStorage.getItem(key);
-          if (cached) {
-            try {
-              const data = JSON.parse(cached);
-              // Check if cache is still valid
-              if (now - data.timestamp < CACHE_DURATION) {
-                viewsMap[slug] = data.views || 0;
-              }
-            } catch (e) {
-              console.error(`Failed to parse views cache for ${slug}:`, e);
-            }
-          }
-        }
+    const slugs = blogPosts.map(post => post.slug);
+    prefetchViews(slugs);
+  }, [blogPosts, prefetchViews]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
       }
-      
-      setViewsData(viewsMap);
     };
 
-    initializeViews();
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   // Sort posts based on sortType
@@ -58,7 +46,9 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
       case 'oldest':
         return new Date(a.date).getTime() - new Date(b.date).getTime();
       case 'mostread':
-        return (viewsData[b.slug] || 0) - (viewsData[a.slug] || 0);
+        const viewsA = getViews(a.slug) || 0;
+        const viewsB = getViews(b.slug) || 0;
+        return viewsB - viewsA;
       case 'newest':
       default:
         return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -110,14 +100,11 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
   };
 
   const searchVariants: Variants = {
-    hidden: { opacity: 0, y: -10 },
+    hidden: { opacity: 0 },
     visible: { 
-      opacity: 1, 
-      y: 0,
+      opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20
+        duration: 0.2
       }
     }
   };
@@ -143,44 +130,63 @@ export default function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
       variants={containerVariants}
     >
       {/* Search and Sort Bar */}
-      <motion.div 
-        className="flex gap-3"
-        variants={searchVariants}
-      >
+      <div className="flex gap-3">
         {/* Search Bar */}
-        <motion.div 
-          className="relative flex-1"
-        >
-          <motion.input
+        <div className="relative flex-1">
+          <input
             type="text"
             placeholder="search articles..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full h-9 px-3 pr-9 text-sm border border-border rounded-sm focus:outline-none focus:ring-1 focus:ring-primary bg-background text-foreground placeholder:text-muted-foreground transition-colors"
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
-          <motion.div
-            className="absolute right-3 top-1/2 -translate-y-1/2"
-            animate={{ 
-              rotate: searchQuery ? 15 : 0
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
+          <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <Search className="w-4 h-4 text-muted-foreground" />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Sort Dropdown */}
-        <motion.select
-          value={sortType}
-          onChange={(e) => setSortType(e.target.value as 'newest' | 'oldest' | 'mostread')}
-          className="h-9 px-3 text-sm border border-border rounded-sm bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
-        >
-          <option value="newest">newest</option>
-          <option value="oldest">oldest</option>
-          <option value="mostread">most read</option>
-        </motion.select>
-      </motion.div>
+        <div className="relative" ref={dropdownRef}>
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="h-9 px-3 text-sm border border-border rounded-sm bg-background text-foreground hover:bg-muted focus:outline-none focus:ring-1 focus:ring-primary transition-colors cursor-pointer flex items-center gap-2"
+          >
+            <Check className="w-3 h-3" />
+            <span>{sortType}</span>
+          </button>
+          
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.15 }}
+                className="absolute right-0 mt-1 w-32 border border-border rounded-sm bg-background shadow-lg overflow-hidden z-50"
+              >
+                {(['newest', 'oldest', 'most read'] as const).map((option) => {
+                  const value = option === 'most read' ? 'mostread' : option;
+                  return (
+                    <button
+                      key={value}
+                      onClick={() => {
+                        setSortType(value as 'newest' | 'oldest' | 'mostread');
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full px-3 py-2 text-sm text-left hover:bg-muted transition-colors flex items-center justify-between ${
+                        sortType === value ? 'text-primary' : 'text-foreground'
+                      }`}
+                    >
+                      <span>{option}</span>
+                      {sortType === value && <Check className="w-3 h-3" />}
+                    </button>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
 
       {/* Blog List */}
       <AnimatePresence mode="wait">

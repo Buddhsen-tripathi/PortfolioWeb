@@ -111,9 +111,11 @@ export default function FeaturedProjects() {
 
   return (
     <section className="space-y-8 duration-1000 animate-in fade-in fill-mode-both animation-delay-900" id="projects">
-      <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">
-        projects.
-      </h2>
+      {isHomePage && (
+        <h2 className="font-serif text-xl font-medium italic leading-snug text-primary">
+          projects.
+        </h2>
+      )}
 
       {/* Projects List */}
       <div className="space-y-6">

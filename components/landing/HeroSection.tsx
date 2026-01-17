@@ -35,7 +35,7 @@ export default function Hero() {
             alt="Buddhsen Tripathi"
             width={64}
             height={64}
-            className="rounded-full transition-all hover:grayscale"
+            className="rounded-full transition-all"
             priority
           />
         </div>
