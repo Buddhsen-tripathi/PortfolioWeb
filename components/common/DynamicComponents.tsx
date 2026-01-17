@@ -10,16 +10,6 @@ export const DynamicTableOfContents = dynamic(
     loading: () => <div className="animate-pulse h-32 bg-gray-200 rounded" />
   }
 )
-export const DynamicRelatedBlogs = dynamic(
-  () => import('@/components/blog/RelatedBlogs'),
-  { 
-    loading: () => <div className="animate-pulse space-y-4">
-      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-      <div className="h-20 bg-gray-200 rounded"></div>
-      <div className="h-20 bg-gray-200 rounded"></div>
-    </div>
-  }
-)
 
 export const DynamicBackToTopButton = dynamic(
   () => import('@/components/common/BackToTopButton'),

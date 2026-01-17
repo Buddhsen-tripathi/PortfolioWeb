@@ -4,7 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import remarkfrontmatter from 'remark-frontmatter'
-import { RelatedBlogs, mdxComponents, TableOfContents } from '@/components/blog'
+import { mdxComponents, TableOfContents } from '@/components/blog'
 import { BackToTopButton, ViewCounter, NewsletterSubscription } from '@/components/common'
 import { getReadingTime } from '@/lib/utils'
 import SocialShare from '../SocialShare'
@@ -108,11 +108,6 @@ export default async function BlogPost({ params }: { params: paramsType }) {
 
       {/* Newsletter subscription component */}
       <NewsletterSubscription />
-
-      <hr className="my-6 border-t border-border" />
-
-      {/* Related Blogs component */}
-      <RelatedBlogs currentSlug={(await params).slug} currentTitle={data.title} />
 
       {/* Back to Top button */}
       <BackToTopButton />
